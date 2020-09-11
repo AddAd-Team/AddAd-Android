@@ -8,13 +8,12 @@
     tools:context=".ui.fragment.FirstLandingFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:background="@color/colorWhite"
         app:cardCornerRadius="300dp"
         app:layout_constraintBottom_toTopOf="@+id/first_landing_gl_middle"
         app:layout_constraintEnd_toStartOf="@+id/first_landing_gl_right"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/first_landing_gl_left"
         app:layout_constraintTop_toTopOf="@+id/first_landing_gl_top">
 
@@ -23,10 +22,10 @@
     <Button
         android:id="@+id/go_second_landing_btn"
         android:layout_width="0dp"
-        android:text="@string/next_tv"
-        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:background="@drawable/white_radius_view"
+        android:text="@string/next_tv"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/first_landing_gl_bottom"
         app:layout_constraintEnd_toStartOf="@+id/first_landing_gl_right"
         app:layout_constraintStart_toStartOf="@+id/first_landing_gl_left" />
@@ -50,20 +49,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/first_landing_gl_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.14" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/first_landing_gl_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.88" />
+        app:layout_constraintGuide_percent="0.84" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
