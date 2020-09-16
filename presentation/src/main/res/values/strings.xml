@@ -3,4 +3,7 @@
 
     <string name="next_tv">다음</string>
     <string name="start_tv">시작하기</string>
+    <string name="main_tv">addad</string>
+    <string name="email_tv">이메일</string>
+    <string name="pw_tv">비밀번호</string>
 </resources>
