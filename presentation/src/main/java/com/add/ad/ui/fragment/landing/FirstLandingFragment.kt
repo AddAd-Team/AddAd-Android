@@ -1,4 +1,4 @@
-package com.add.ad.ui.fragment
+package com.add.ad.ui.fragment.landing
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

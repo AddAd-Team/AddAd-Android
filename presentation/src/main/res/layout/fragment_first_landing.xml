@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlack"
-    tools:context=".ui.fragment.FirstLandingFragment">
+    tools:context=".ui.fragment.landing.FirstLandingFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

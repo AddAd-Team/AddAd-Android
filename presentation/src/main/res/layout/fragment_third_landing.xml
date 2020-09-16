@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBlack"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.ThirdLandingFragment">
+    tools:context=".ui.fragment.landing.ThirdLandingFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
