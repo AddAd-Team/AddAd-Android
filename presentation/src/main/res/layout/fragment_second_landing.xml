@@ -9,8 +9,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="260dp"
-        android:layout_height="260dp"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1"
         android:background="@color/colorWhite"
         app:cardCornerRadius="1000dp"
         app:layout_constraintBottom_toTopOf="@+id/second_landing_gl_middle"
@@ -36,6 +37,7 @@
         android:text="여러분의 상품을 광고하세요"
         android:textColor="@color/colorWhite"
         android:textSize="17sp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/second_landing_gl_right"
         app:layout_constraintStart_toStartOf="@+id/second_landing_gl_left"
         app:layout_constraintTop_toTopOf="@+id/second_landing_gl_middle" />
