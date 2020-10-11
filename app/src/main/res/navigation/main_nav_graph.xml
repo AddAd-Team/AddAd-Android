@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/feedFragment">
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.feed.FeedFragment"
+        android:label="FeedFragment"
+        tools:layout="@layout/fragment_feed"/>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.contact.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.MyPageFragment"
+        android:label="fragment_my_page"
+        tools:layout="@layout/fragment_my_page" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/writeFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.write.WriteFragment"
+        android:label="fragment_write"
+        tools:layout="@layout/fragment_write" />
+
+    <action android:id="@+id/action_global_FeedFragment"
+        app:destination="@id/feedFragment"/>
+    <action android:id="@+id/action_global_SearchFragment"
+        app:destination="@id/searchFragment"/>
+    <action android:id="@+id/action_global_WriteFragment"
+        app:destination="@id/writeFragment"/>
+    <action android:id="@+id/action_global_ContactFragment"
+        app:destination="@id/contactFragment"/>
+    <action android:id="@+id/action_global_MyPageFragment"
+        app:destination="@+id/myPageFragment"/>
+
+</navigation>
