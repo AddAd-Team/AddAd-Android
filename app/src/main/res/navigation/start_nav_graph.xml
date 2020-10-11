@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/start_nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/firstLandingFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -16,10 +16,10 @@
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginInFragment_to_MainFragment"
+            android:id="@+id/action_LoginInFragment_to_MainFragment"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/action_loginInFragment_to_RegisterFragment"
+            android:id="@+id/action_LoginInFragment_to_RegisterFragment"
             app:destination="@id/registerFragment" />
     </fragment>
 
@@ -28,4 +28,31 @@
         android:name="com.add.ad.presentation.ui.fragment.register.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/firstLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.FirstLandingFragment"
+        android:label="FirstLandingFragment"
+        tools:layout="@layout/fragment_first_landing">
+        <action
+            android:id="@+id/action_FirstLandingFragment_to_SecondLandingFragment"
+            app:destination="@id/secondLandingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.SecondLandingFragment"
+        android:label="fragment_second_landing"
+        tools:layout="@layout/fragment_second_landing">
+        <action
+            android:id="@+id/action_SecondLandingFragment_to_ThirdLandingFragment"
+            app:destination="@id/thirdLandingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.ThirdLandingFragment"
+        android:label="ThirdLandingFragment"
+        tools:layout="@layout/fragment_third_landing">
+        <action
+            android:id="@+id/action_ThirdLandingFragment_to_LoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
