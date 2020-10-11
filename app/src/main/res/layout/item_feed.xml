@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorTopBlack">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:id="@+id/feed_user_profile_card"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         app:cardCornerRadius="300dp"
         app:layout_constraintBottom_toTopOf="@+id/item_feed_gl_top"
         app:layout_constraintDimensionRatio="1"
@@ -15,11 +17,121 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:src="@mipmap/ic_launcher"
+            android:id="@+id/feed_user_profile_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher" />
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/feed_user_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="갤럭시 폴드2 톰브라운 광고"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/item_feed_gl_top"
+        app:layout_constraintStart_toEndOf="@+id/feed_user_profile_card"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/feed_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/ic_sample_feed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_feed_gl_top" />
+
+    <TextView
+        android:id="@+id/feed_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="@string/feed_price_tv"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/item_feed_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/feed_image" />
+
+    <TextView
+        android:id="@+id/feed_end_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="@string/feed_end_date_tv"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/item_feed_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/feed_price_tv" />
+
+    <TextView
+        android:id="@+id/feed_remain_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="( 16일 )"
+        android:textColor="@color/colorOrange"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/feed_end_date_tv"
+        app:layout_constraintTop_toBottomOf="@+id/feed_price_tv" />
+
+    <TextView
+        android:id="@+id/feed_hashtag_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="#it #삼성 #폴더2 #톰브라운 #리뷰 #sns"
+        android:textColor="@color/colorGray"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/item_feed_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/feed_end_date_tv" />
+
+    <Button
+        android:id="@+id/feed_apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/apply_btn_normal"
+        android:gravity="center"
+        android:text="신청하기"
+        android:textColor="@color/colorOrange"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/feed_like_btn"
+        app:layout_constraintTop_toBottomOf="@+id/feed_image" />
+
+    <CheckBox
+        android:id="@+id/feed_like_btn"
+        android:layout_width="24dp"
+        android:layout_height="20dp"
+        android:background="@drawable/ic_heart"
+        android:button="@null"
+        android:checked="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_feed_gl_right"
+        app:layout_constraintTop_toBottomOf="@+id/feed_image" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDarkGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/feed_hashtag_tv" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/item_feed_gl_left"
@@ -40,6 +152,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.09" />
+        app:layout_constraintGuide_percent="0.12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="@+id/register_gl_left"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.add.ad.presentation.ui.customView.ClearEditText
             android:id="@+id/register_email_et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -52,14 +52,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:visibility="gone"
+        android:visibility="visible"
         android:hint=" "
         app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
         app:layout_constraintStart_toStartOf="@+id/register_gl_left"
         app:layout_constraintTop_toBottomOf="@+id/register_email_et_layout">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.add.ad.presentation.ui.customView.ClearEditText
             android:id="@+id/register_pw_et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
