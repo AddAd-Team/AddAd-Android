@@ -31,15 +31,4 @@
         android:label="fragment_write"
         tools:layout="@layout/fragment_write" />
 
-    <action android:id="@+id/action_global_FeedFragment"
-        app:destination="@id/feedFragment"/>
-    <action android:id="@+id/action_global_SearchFragment"
-        app:destination="@id/searchFragment"/>
-    <action android:id="@+id/action_global_WriteFragment"
-        app:destination="@id/writeFragment"/>
-    <action android:id="@+id/action_global_ContactFragment"
-        app:destination="@id/contactFragment"/>
-    <action android:id="@+id/action_global_MyPageFragment"
-        app:destination="@+id/myPageFragment"/>
-
 </navigation>
