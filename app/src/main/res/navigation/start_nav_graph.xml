@@ -35,6 +35,10 @@
         tools:layout="@layout/fragment_first_landing">
         <action
             android:id="@+id/action_FirstLandingFragment_to_SecondLandingFragment"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
             app:destination="@id/secondLandingFragment" />
     </fragment>
     <fragment
@@ -44,6 +48,10 @@
         tools:layout="@layout/fragment_second_landing">
         <action
             android:id="@+id/action_SecondLandingFragment_to_ThirdLandingFragment"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
             app:destination="@id/thirdLandingFragment" />
     </fragment>
     <fragment
@@ -53,6 +61,10 @@
         tools:layout="@layout/fragment_third_landing">
         <action
             android:id="@+id/action_ThirdLandingFragment_to_LoginFragment"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/fade_out"
             app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
