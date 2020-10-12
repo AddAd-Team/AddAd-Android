@@ -12,4 +12,13 @@
     //feed
     <string name="feed_price_tv">금액 : %s원</string>
     <string name="feed_end_date_tv">모집마감 : 9월 30일</string>
+
+    //mypage
+    <string name="my_page_tv">마이페이지</string>
+    <string name="profile_tv">프로필</string>
+    <string name="my_ad_tv">내 광고</string>
+    <string name="like_ad_tv">관심있는 광고</string>
+    <string name="change_pw_tv">비밀번호 변경</string>
+    <string name="info_tv">정보</string>
+    <string name="logout_tv">로그아웃</string>
 </resources>
