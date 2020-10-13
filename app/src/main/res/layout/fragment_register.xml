@@ -48,6 +48,34 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_email_verify_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:visibility="gone"
+        android:hint=" "
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+        app:layout_constraintStart_toStartOf="@+id/register_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_et_layout">
+
+        <com.add.ad.presentation.ui.customView.ClearEditText
+            android:id="@+id/register_email_verify_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_selector"
+            android:fontFamily="@font/notosanskr_thin"
+            android:hint="@string/verify_code_tv"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/colorWhite"
+            android:textCursorDrawable="@drawable/cursor_orange"
+            android:textSize="15sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_pw_et_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -57,7 +85,7 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
         app:layout_constraintStart_toStartOf="@+id/register_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_et_layout">
+        app:layout_constraintTop_toBottomOf="@+id/register_email_verify_layout">
 
         <com.add.ad.presentation.ui.customView.ClearEditText
             android:id="@+id/register_pw_et"
@@ -66,6 +94,34 @@
             android:background="@drawable/edittext_selector"
             android:fontFamily="@font/notosanskr_thin"
             android:hint="@string/pw_tv"
+            android:includeFontPadding="false"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/colorWhite"
+            android:textCursorDrawable="@drawable/cursor_orange"
+            android:textSize="15sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_pw_check_et_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:visibility="visible"
+        android:hint=" "
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+        app:layout_constraintStart_toStartOf="@+id/register_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/register_pw_et_layout">
+
+        <com.add.ad.presentation.ui.customView.ClearEditText
+            android:id="@+id/register_pw_check_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_selector"
+            android:fontFamily="@font/notosanskr_thin"
+            android:hint="@string/pw_check_tv"
             android:includeFontPadding="false"
             android:inputType="textPassword"
             android:singleLine="true"
@@ -85,7 +141,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
         app:layout_constraintStart_toStartOf="@+id/register_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/register_pw_et_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/register_pw_check_et_layout" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/register_gl_left"
