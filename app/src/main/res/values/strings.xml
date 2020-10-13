@@ -9,6 +9,10 @@
     <string name="email_tv">이메일</string>
     <string name="pw_tv">비밀번호</string>
 
+    //register
+    <string name="pw_check_tv">비밀번호 확인</string>
+    <string name="verify_code_tv">확인코드</string>
+
     //feed
     <string name="feed_price_tv">금액 : %s원</string>
     <string name="feed_end_date_tv">모집마감 : 9월 30일</string>
