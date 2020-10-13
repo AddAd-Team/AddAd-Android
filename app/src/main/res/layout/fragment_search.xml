@@ -7,59 +7,21 @@
     android:background="@color/colorTopBlack"
     tools:context=".presentation.ui.fragment.main.search.SearchFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <com.add.ad.presentation.ui.customView.CancelView
+        android:id="@+id/cancelView"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/colorMiddleBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/search_creator_et"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittext_gray_radius_view"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="12dp"
-            android:inputType="text"
-            android:fontFamily="@font/angmuburi"
-            android:includeFontPadding="false"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:textColor="@color/colorWhite"
-            android:textCursorDrawable="@drawable/cursor_orange"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/serach_bar_gl_right"
-            app:layout_constraintStart_toStartOf="@+id/serach_bar_gl_left"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/serach_bar_gl_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/serach_bar_gl_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/cancelView"
         tools:listitem="@layout/item_search_creator" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
