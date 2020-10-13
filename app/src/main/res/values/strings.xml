@@ -21,4 +21,7 @@
     <string name="change_pw_tv">비밀번호 변경</string>
     <string name="info_tv">정보</string>
     <string name="logout_tv">로그아웃</string>
+
+    //search
+    <string name="cancel_tv">취소</string>
 </resources>
