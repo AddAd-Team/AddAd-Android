@@ -33,4 +33,7 @@
     //change password
     <string name="change_password_tv">비밀번호 변경</string>
 
+    //my profile
+    <string name="edit_tv">편집</string>
+    
 </resources>
