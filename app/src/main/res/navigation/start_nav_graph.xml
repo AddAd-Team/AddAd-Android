@@ -9,7 +9,11 @@
         android:id="@+id/mainFragment"
         android:name="com.add.ad.presentation.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_MainFragment_to_ChangePasswordFragment"
+            app:destination="@id/changePasswordFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.add.ad.presentation.ui.fragment.login.LoginFragment"
@@ -66,5 +70,11 @@
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.change.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
     </fragment>
 </navigation>
