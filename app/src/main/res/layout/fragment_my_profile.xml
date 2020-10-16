@@ -69,7 +69,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView6"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="0dp"
         app:cardCornerRadius="100dp"
         app:layout_constraintBottom_toTopOf="@id/my_profile_user_name_tv"
