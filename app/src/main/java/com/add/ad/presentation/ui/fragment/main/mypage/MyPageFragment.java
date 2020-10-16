@@ -19,6 +19,7 @@ import com.add.ad.presentation.ui.activity.MainActivity;
 public class MyPageFragment extends Fragment {
 
     ConstraintLayout changePwView;
+    ConstraintLayout myProfileView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,6 +27,7 @@ public class MyPageFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_my_page, container, false);
         changePwView = v.findViewById(R.id.my_page_change_pw_view);
+        myProfileView = v.findViewById(R.id.my_page_profile_view);
         return v;
     }
 
@@ -37,6 +39,13 @@ public class MyPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment);
+            }
+        });
+
+        myProfileView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment);
             }
         });
     }
