@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_MainFragment_to_ChangePasswordFragment"
             app:destination="@id/changePasswordFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_MyProfileFragment"
+            app:destination="@+id/myProfileFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -77,4 +80,9 @@
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" >
     </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.profile.MyProfileFragment"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
 </navigation>
