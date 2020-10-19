@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">AddAd-Android</string>
 
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior
+    </string>
+
     <string name="next_tv">다음</string>
     <string name="start_tv">시작하기</string>
     <string name="main_tv">addad</string>
