@@ -85,4 +85,9 @@
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.profile.MyProfileFragment"
         android:label="fragment_my_profile"
         tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/visitProfileFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.visit.VisitProfileFragment"
+        android:label="fragment_visit_profile"
+        tools:layout="@layout/fragment_visit_profile" />
 </navigation>
