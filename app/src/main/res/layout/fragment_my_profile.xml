@@ -136,11 +136,11 @@
                 android:text="안녕하세요. it기기를 좋아하여 it기기에 리뷰에 경험과 지식을  많이 가지고 있는 마이클이라고 합니다!
 저에게 모든 it 관련 광고를 신청해주세요오오오 플리즈"
                 android:textColor="@color/colorWhite"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/view2"
                 app:layout_constraintEnd_toEndOf="@id/my_profile_gl_right"
                 app:layout_constraintStart_toStartOf="@+id/my_profile_gl_left"
-                app:layout_constraintTop_toBottomOf="@+id/my_profile_tag_tv"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/my_profile_tag_tv" />
 
             <View
                 android:id="@+id/view2"
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.4" />
+                app:layout_constraintGuide_percent="0.42" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/my_profile_gl_left"
