@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_MainFragment_to_MyProfileFragment"
             app:destination="@+id/myProfileFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_MyAdFragment"
+            app:destination="@id/myAdFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -90,4 +93,9 @@
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.visit.VisitProfileFragment"
         android:label="fragment_visit_profile"
         tools:layout="@layout/fragment_visit_profile" />
+    <fragment
+        android:id="@+id/myAdFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.MyAdFragment"
+        android:label="fragment_my_ad"
+        tools:layout="@layout/fragment_my_ad" />
 </navigation>
