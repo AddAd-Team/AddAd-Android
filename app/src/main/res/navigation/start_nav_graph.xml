@@ -97,5 +97,14 @@
         android:id="@+id/myAdFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.MyAdFragment"
         android:label="fragment_my_ad"
-        tools:layout="@layout/fragment_my_ad" />
+        tools:layout="@layout/fragment_my_ad" >
+        <action
+            android:id="@+id/action_myAdFragment_to_AdManageFragment"
+            app:destination="@id/adManageFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/adManageFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.AdManageFragment"
+        android:label="fragment_ad_manage"
+        tools:layout="@layout/fragment_ad_manage" />
 </navigation>
