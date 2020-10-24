@@ -34,7 +34,7 @@ public class LoginFragment extends Fragment {
         login_btn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_loginInFragment_to_MainFragment);
+                Navigation.findNavController(view).navigate(R.id.action_LoginInFragment_to_MainFragment);
             }
         });
     }
