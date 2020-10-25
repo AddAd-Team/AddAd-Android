@@ -11,6 +11,10 @@ import retrofit2.Response;
 public class LoginUseCase extends UseCase<Auth, Response<Token>> {
     AuthRepository authRepository;
 
+    public LoginUseCase(AuthRepository authRepository) {
+        this.authRepository = authRepository;
+    }
+
     @Override
     protected Single<Response<Token>> create(Auth data) {
         return authRepository.signIn(data);

@@ -10,6 +10,8 @@ import com.add.ad.domain.entity.Auth;
 import com.add.ad.domain.entity.Token;
 import com.add.ad.domain.repository.AuthRepository;
 
+import javax.inject.Inject;
+
 import io.reactivex.Single;
 import retrofit2.Response;
 
@@ -19,6 +21,7 @@ public class AuthRepositoryImpl implements AuthRepository {
     AuthDataMapper authDataMapper;
     TokenDataMapper tokenDataMapper;
 
+    @Inject
     public AuthRepositoryImpl(Api api, AuthDataMapper authDataMapper, TokenDataMapper tokenDataMapper){
         this.api = api;
         this.context = context;

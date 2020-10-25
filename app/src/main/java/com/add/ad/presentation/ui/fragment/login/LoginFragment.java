@@ -1,40 +1,48 @@
 package com.add.ad.presentation.ui.fragment.login;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.add.ad.R;
+import com.add.ad.databinding.FragmentLoginBinding;
+import com.add.ad.presentation.viewModel.LoginViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class LoginFragment extends Fragment {
 
-    Button login_btn;
+    private FragmentLoginBinding binding;
+    private LoginViewModel loginViewModel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
-        login_btn = (Button) v.findViewById(R.id.login_next_btn);
-        return v;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        binding = FragmentLoginBinding.inflate(inflater,container,false);
+        //binding.setLifecycleOwner(this);
+        //binding.setVm(loginViewModel);
+
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        login_btn.setOnClickListener(new Button.OnClickListener() {
+        loginViewModel.startMain.observe(this, new Observer<Void>() {
             @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_LoginInFragment_to_MainFragment);
+            public void onChanged(Void aVoid) {
+                Navigation.findNavController(getView()).navigate(R.id.action_LoginInFragment_to_MainFragment);
             }
         });
     }
