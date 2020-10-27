@@ -19,7 +19,7 @@ public class SharedPref {
 
     public String getToken(Boolean access){
         if(getPref(context).getString(getKey(access), "") != null) {
-            return "Bearer" + getPref(context).getString(getKey(access), "");
+            return "Bearer " + getPref(context).getString(getKey(access), "");
         } else return "";
     }
     private SharedPreferences getPref(Context context) {
