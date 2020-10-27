@@ -73,4 +73,9 @@ dependencies {
     annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
     annotationProcessor 'com.google.dagger:hilt-android-compiler:2.28-alpha'
 
+    //splitties
+    implementation "com.louiscad.splitties:splitties-views-dsl:3.0.0-alpha06"
+    implementation("com.louiscad.splitties:splitties-views-dsl-appcompat:3.0.0-alpha06")
+    implementation("com.louiscad.splitties:splitties-views-dsl-material:3.0.0-alpha06")
+    implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-alpha06")
 }
