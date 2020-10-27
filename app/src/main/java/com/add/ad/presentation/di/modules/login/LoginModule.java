@@ -1,4 +1,4 @@
-package com.add.ad.presentation.di;
+package com.add.ad.presentation.di.modules.login;
 
 import android.content.Context;
 
