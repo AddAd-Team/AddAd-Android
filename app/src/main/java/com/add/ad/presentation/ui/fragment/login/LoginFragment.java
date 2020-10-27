@@ -29,8 +29,8 @@ public class LoginFragment extends Fragment {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         binding = FragmentLoginBinding.inflate(inflater,container,false);
-        //binding.setLifecycleOwner(this);
-        //binding.setVm(loginViewModel);
+        binding.setLifecycleOwner(this);
+        binding.setVm(loginViewModel);
 
         return binding.getRoot();
     }

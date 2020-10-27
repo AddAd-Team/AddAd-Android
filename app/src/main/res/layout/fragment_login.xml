@@ -89,7 +89,7 @@
             android:id="@+id/login_next_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{()->vm.clickNext()}"
+            android:onClick="@{()->vm.login()}"
             android:layout_marginTop="40dp"
             android:background="@drawable/gray_radius_view"
             android:text="다음"

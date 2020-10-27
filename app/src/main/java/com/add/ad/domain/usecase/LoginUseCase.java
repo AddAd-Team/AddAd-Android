@@ -5,10 +5,12 @@ import com.add.ad.domain.entity.Auth;
 import com.add.ad.domain.entity.Token;
 import com.add.ad.domain.repository.AuthRepository;
 
+import javax.inject.Inject;
+
 import io.reactivex.Single;
 import retrofit2.Response;
 
-public class LoginUseCase extends UseCase<Auth, Response<Token>> {
+public class LoginUseCase extends UseCase<Auth,Response<Token>> {
     AuthRepository authRepository;
 
     public LoginUseCase(AuthRepository authRepository) {

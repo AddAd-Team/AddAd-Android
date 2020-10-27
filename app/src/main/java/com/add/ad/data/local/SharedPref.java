@@ -3,30 +3,31 @@ package com.add.ad.data.local;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import javax.inject.Inject;
+
 public class SharedPref {
-    private Context mContext;
-    private static SharedPreferences prefs;
-    private static SharedPreferences.Editor prefsEditor;
-    private static SharedPref instance;
+    Context context;
 
-    public static SharedPref init(Context context){
-        if(instance == null)
-            instance = new SharedPref(context);
-        return instance;
+    @Inject
+    public SharedPref(Context context){
+        this.context = context;
     }
 
-    private SharedPref(Context context) {
-        mContext = context;
-        prefs = mContext.getSharedPreferences("pref", Context.MODE_PRIVATE );
-        prefsEditor = prefs.edit();
+    public void saveToken(String token, Boolean access){
+        getPref(context).edit().putString(getKey(access),token).apply();
     }
 
-    public static String read(String key, String defValue) {
-        return prefs.getString(key, defValue);
+    public String getToken(Boolean access){
+        if(getPref(context).getString(getKey(access), "") != null) {
+            return "Bearer" + getPref(context).getString(getKey(access), "");
+        } else return "";
+    }
+    private SharedPreferences getPref(Context context) {
+        return context.getSharedPreferences("pref", Context.MODE_PRIVATE);
     }
 
-    public static void write(String key, String value) {
-        prefsEditor.putString(key, value);
-        prefsEditor.commit();
+    private String getKey(Boolean access) {
+        if (access) return "Access";
+        else return "Refresh";
     }
 }
