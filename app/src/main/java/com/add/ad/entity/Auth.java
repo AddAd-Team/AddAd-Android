@@ -1,28 +1,15 @@
 package com.add.ad.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Auth {
+    @SerializedName("email")
     private String userEmail;
+    @SerializedName("password")
     private String userPassword;
 
     public Auth(String userEmail, String userPassword){
         this.userEmail = userEmail;
-        this.userPassword = userPassword;
-    }
-
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 }
