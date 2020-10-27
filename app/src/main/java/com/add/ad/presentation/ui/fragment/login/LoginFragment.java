@@ -17,22 +17,24 @@ import com.add.ad.databinding.FragmentLoginBinding;
 import com.add.ad.presentation.viewModel.LoginViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.jetbrains.annotations.NotNull;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
+import static splitties.toast.ToastKt.createToast;
 import static splitties.toast.ToastKt.toast;
 
 @AndroidEntryPoint
 public class LoginFragment extends Fragment {
 
-    private FragmentLoginBinding binding;
     private LoginViewModel loginViewModel;
     private TextInputLayout loginEmailErrorLayout;
     private TextInputLayout loginPwErrorLayout;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        binding = FragmentLoginBinding.inflate(inflater,container,false);
+        FragmentLoginBinding binding = FragmentLoginBinding.inflate(inflater, container, false);
 
         loginPwErrorLayout = binding.loginPwEtLayout;
         loginEmailErrorLayout = binding.loginEmailEtLayout;
