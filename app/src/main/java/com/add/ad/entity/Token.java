@@ -1,10 +1,10 @@
-package com.add.ad.presentation.entity;
+package com.add.ad.entity;
 
-public class TokenModel {
+public class Token {
     private String accessToken;
     private String refreshToken;
 
-    public TokenModel(String accessToken, String refreshToken){
+    public Token(String accessToken, String refreshToken){
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }

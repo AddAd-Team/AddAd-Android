@@ -7,20 +7,18 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
-import com.add.ad.domain.entity.Token;
-import com.add.ad.domain.usecase.LoginUseCase;
+import com.add.ad.data.repository.AuthRepository;
+import com.add.ad.entity.Auth;
+import com.add.ad.entity.Token;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
-import com.add.ad.presentation.entity.AuthModel;
-import com.add.ad.presentation.mapper.AuthModelMapper;
 
-import io.reactivex.annotations.NonNull;
-import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
 public class LoginViewModel extends BaseViewModel {
-    LoginUseCase loginUseCase;
-    AuthModelMapper authModelMapper;
+    AuthRepository authRepository;
 
     public MutableLiveData<String> userId = new MutableLiveData<>();
     public MutableLiveData<String> userPassword = new MutableLiveData<>();
@@ -30,25 +28,23 @@ public class LoginViewModel extends BaseViewModel {
     public SingleLiveEvent<String> pwErrorEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
-    public LoginViewModel(LoginUseCase loginUseCase, AuthModelMapper authModelMapper, @Assisted SavedStateHandle savedStateHandle ) {
-        this.loginUseCase = loginUseCase;
-        this.authModelMapper = authModelMapper;
+    public LoginViewModel( AuthRepository authRepository, @Assisted SavedStateHandle savedStateHandle ) {
+        this.authRepository = authRepository;
         Log.d("dfd","dfs");
     }
 
     public void login(){
-        Log.d("sss",":aa");
-        AuthModel auth = new AuthModel(userId.getValue(), userPassword.getValue());
-        loginUseCase.execute(authModelMapper.mapFrom(auth), new DisposableSingleObserver<Response<Token>>() {
-            @Override
-            public void onSuccess(@NonNull Response<Token> data) {
-                Log.d("daata", String.valueOf(data.code()));
-            }
+        Auth auth = new Auth(userId.getValue(), userPassword.getValue());
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-                Log.e("fail",e.getMessage());
-            }
-        });
+        authRepository.signIn(auth)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> hi(it));
+    }
+
+
+
+    private void hi(Response<Token> data){
+        Log.d("dff", String.valueOf(data.code()));
     }
 }

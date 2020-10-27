@@ -1,10 +1,10 @@
-package com.add.ad.presentation.entity;
+package com.add.ad.entity;
 
-public class AuthModel {
+public class Auth {
     private String userEmail;
     private String userPassword;
 
-    public AuthModel(String userEmail, String userPassword){
+    public Auth(String userEmail, String userPassword){
         this.userEmail = userEmail;
         this.userPassword = userPassword;
     }

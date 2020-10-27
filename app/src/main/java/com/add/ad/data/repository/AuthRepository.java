@@ -1,7 +1,7 @@
-package com.add.ad.domain.repository;
+package com.add.ad.data.repository;
 
-import com.add.ad.domain.entity.Auth;
-import com.add.ad.domain.entity.Token;
+import com.add.ad.entity.Auth;
+import com.add.ad.entity.Token;
 
 import io.reactivex.Single;
 import retrofit2.Response;
