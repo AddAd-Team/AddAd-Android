@@ -15,20 +15,28 @@ import androidx.navigation.Navigation;
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentLoginBinding;
 import com.add.ad.presentation.viewModel.LoginViewModel;
+import com.google.android.material.textfield.TextInputLayout;
 
 import dagger.hilt.android.AndroidEntryPoint;
+
+import static splitties.toast.ToastKt.toast;
 
 @AndroidEntryPoint
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     private LoginViewModel loginViewModel;
+    private TextInputLayout loginEmailErrorLayout;
+    private TextInputLayout loginPwErrorLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-
         binding = FragmentLoginBinding.inflate(inflater,container,false);
+
+        loginPwErrorLayout = binding.loginPwEtLayout;
+        loginEmailErrorLayout = binding.loginEmailEtLayout;
+
         binding.setLifecycleOwner(this);
         binding.setVm(loginViewModel);
 
@@ -43,6 +51,26 @@ public class LoginFragment extends Fragment {
             @Override
             public void onChanged(Void aVoid) {
                 Navigation.findNavController(getView()).navigate(R.id.action_LoginInFragment_to_MainFragment);
+            }
+        });
+
+        loginViewModel.createToastEvent.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                toast(s);
+            }
+        });
+
+        loginViewModel.pwErrorEvent.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                loginPwErrorLayout.setError(s);
+            }
+        });
+        loginViewModel.idErrorEvent.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                loginEmailErrorLayout.setError(s);
             }
         });
     }
