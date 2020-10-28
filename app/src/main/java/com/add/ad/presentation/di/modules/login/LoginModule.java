@@ -1,23 +1,20 @@
 package com.add.ad.presentation.di.modules.login;
 
-import android.content.Context;
-
 import com.add.ad.data.api.Api;
 import com.add.ad.data.local.SharedPref;
-import com.add.ad.data.repository.AuthRepositoryImpl;
 import com.add.ad.data.repository.AuthRepository;
-
-import javax.inject.Singleton;
+import com.add.ad.data.repository.AuthRepositoryImpl;
 
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
-import dagger.hilt.android.qualifiers.ApplicationContext;
+import dagger.hilt.android.components.FragmentComponent;
+import dagger.hilt.android.scopes.FragmentScoped;
 import io.reactivex.disposables.CompositeDisposable;
 
 @Module
-@InstallIn(ApplicationComponent.class)
+@InstallIn(FragmentComponent.class)
 public class LoginModule {
 
     @Provides
@@ -27,12 +24,5 @@ public class LoginModule {
     ) {
         return new AuthRepositoryImpl(api, sharedPref);
     }
-
-    @Provides
-    @Singleton
-    public SharedPref provideSharedPref(@ApplicationContext Context context) { return new SharedPref(context); }
-
-    @Provides
-    public CompositeDisposable provideCompositeDisposable(){ return new CompositeDisposable();}
 
 }

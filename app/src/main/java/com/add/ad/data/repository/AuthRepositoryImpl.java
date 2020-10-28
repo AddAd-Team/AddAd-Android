@@ -4,6 +4,7 @@ import com.add.ad.data.api.Api;
 import com.add.ad.data.local.SharedPref;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
+import com.add.ad.entity.User;
 
 import javax.inject.Inject;
 
@@ -24,4 +25,10 @@ public class AuthRepositoryImpl implements AuthRepository {
     public Single<Response<Token>> signIn(Auth auth) {
         return api.signIn(auth);
     }
+
+    @Override
+    public Single<Response<Void>> signUp(User user) { return api.signUp(user); }
+
+    @Override
+    public Single<Response<Void>> requestVerifyCode(String userEmail) { return api.requestVerifyCode(userEmail); }
 }

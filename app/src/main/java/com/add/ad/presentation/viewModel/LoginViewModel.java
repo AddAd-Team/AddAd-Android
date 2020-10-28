@@ -18,6 +18,8 @@ import com.add.ad.entity.Token;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -34,6 +36,7 @@ public class LoginViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> startMain = new SingleLiveEvent<>();
     public SingleLiveEvent<String> idErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<String> pwErrorEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> startRegister = new SingleLiveEvent<>();
 
 //    public MediatorLiveData<Boolean> btnClickable = new MediatorLiveData<Boolean>();
 
@@ -69,6 +72,10 @@ public class LoginViewModel extends BaseViewModel {
 
         Log.d("access token",sharedPref.getToken(true));
         Log.d("refresh token", sharedPref.getToken(false));
+    }
+
+    public void goRegister(){
+        startRegister.call();
     }
 
     private void loginFail(Throwable t) {

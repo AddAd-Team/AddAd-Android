@@ -54,5 +54,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         loginViewModel.createToastEvent.observe(this, s -> toast(s));
         loginViewModel.pwErrorEvent.observe(this, s -> loginPwErrorLayout.setError(s));
         loginViewModel.idErrorEvent.observe(this, s -> loginEmailErrorLayout.setError(s));
+        loginViewModel.startRegister.observe(this, mVoid ->
+                Navigation.findNavController(requireView()).navigate(R.id.action_LoginInFragment_to_RegisterFragment));
     }
 }
