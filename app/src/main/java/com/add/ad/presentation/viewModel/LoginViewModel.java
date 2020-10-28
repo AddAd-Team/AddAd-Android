@@ -2,9 +2,13 @@ package com.add.ad.presentation.viewModel;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.local.SharedPref;
@@ -31,6 +35,8 @@ public class LoginViewModel extends BaseViewModel {
     public SingleLiveEvent<String> idErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<String> pwErrorEvent = new SingleLiveEvent<>();
 
+//    public MediatorLiveData<Boolean> btnClickable = new MediatorLiveData<Boolean>();
+
     @ViewModelInject
     public LoginViewModel(AuthRepository authRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref, @Assisted SavedStateHandle savedStateHandle) {
         this.authRepository = authRepository;
@@ -41,28 +47,31 @@ public class LoginViewModel extends BaseViewModel {
     public void login() {
         Auth auth = new Auth(userId.getValue(), userPassword.getValue());
 
-        Log.d("pw",userPassword.getValue());
         compositeDisposable.add(
                 authRepository.signIn(auth)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe(it -> hi(it), t -> repoFailure(t)));
+                        .subscribe(it -> loginSuccess(it), t -> loginFail(t)));
 
     }
 
 
-    private void hi(Response<Token> data) {
-        if(data.code()/2 == 100 ){
-            sharedPref.saveToken(data.body() != null ? data.body().getAccessToken() : null,true);
+    private void loginSuccess(Response<Token> data) {
+        if (data.code() / 2 == 100) {
+            sharedPref.saveToken(data.body() != null ? data.body().getAccessToken() : null, true);
+            sharedPref.saveToken(data.body() != null ? data.body().getRefreshToken() : null, false);
             startMain.call();
             createToastEvent.setValue("로그인 성공");
-        }else{
+        } else {
             idErrorEvent.setValue("아이디가 일치하지 않습니다.");
             pwErrorEvent.setValue("비밀번호가 일치하지 않습니다.");
         }
+
+        Log.d("access token",sharedPref.getToken(true));
+        Log.d("refresh token", sharedPref.getToken(false));
     }
 
-    private void repoFailure(Throwable t) {
+    private void loginFail(Throwable t) {
         createToastEvent.setValue(t.getMessage());
     }
 }
