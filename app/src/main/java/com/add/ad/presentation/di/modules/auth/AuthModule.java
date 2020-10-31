@@ -1,4 +1,4 @@
-package com.add.ad.presentation.di.modules.login;
+package com.add.ad.presentation.di.modules.auth;
 
 import com.add.ad.data.api.Api;
 import com.add.ad.data.local.SharedPref;
@@ -9,13 +9,10 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
-import dagger.hilt.android.components.FragmentComponent;
-import dagger.hilt.android.scopes.FragmentScoped;
-import io.reactivex.disposables.CompositeDisposable;
 
 @Module
-@InstallIn(FragmentComponent.class)
-public class LoginModule {
+@InstallIn(ApplicationComponent.class)
+public class AuthModule {
 
     @Provides
     public AuthRepository provideAuthRepo(
