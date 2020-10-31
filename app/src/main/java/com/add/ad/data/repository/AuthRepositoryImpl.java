@@ -31,4 +31,7 @@ public class AuthRepositoryImpl implements AuthRepository {
 
     @Override
     public Single<Response<Void>> requestVerifyCode(String userEmail) { return api.requestVerifyCode(userEmail); }
+
+    @Override
+    public Single<Response<Void>> sendVerifyCode(User user) { return api.sendVerifyCode(user); }
 }

@@ -17,6 +17,9 @@ public interface Api {
     @POST("/api/auth/signup")
     Single<Response<Void>> signUp(@Body User userData);
 
-    @POST("api/auth/signup/email")
+    @POST("/api/user/emailSender")
     Single<Response<Void>> requestVerifyCode(@Body String userEmail);
+
+    @POST("api/auth/signup/verify/email")
+    Single<Response<Void>> sendVerifyCode(@Body User userData);
 }

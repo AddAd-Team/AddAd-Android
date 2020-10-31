@@ -13,4 +13,6 @@ public interface AuthRepository {
     Single<Response<Void>> signUp(User user);
 
     Single<Response<Void>> requestVerifyCode(String userEmail);
+
+    Single<Response<Void>> sendVerifyCode(User user);
 }
