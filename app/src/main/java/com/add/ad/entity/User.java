@@ -7,18 +7,22 @@ public class User {
     private String userEmail;
     @SerializedName("password")
     private String userPassword;
-    @SerializedName("verify_code")
-    private String verifyCode;
     @SerializedName("nickname")
-    private String nickname;
+    private String nick;
+    @SerializedName("auth")
+    private String verifyCode;
     @SerializedName("tag")
     private String tag;
 
-    public User(String userEmail, String userPassword, String verifyCode, String nickname, String tag){
+    public User(String userEmail, String userPassword, String nick, String tag) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
-        this.verifyCode = verifyCode;
-        this.nickname = nickname;
+        this.nick = nick;
         this.tag = tag;
+    }
+
+    public User(String userEmail, String verifyCode) {
+        this.verifyCode = verifyCode;
+        this.userEmail = userEmail;
     }
 }
