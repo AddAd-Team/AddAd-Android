@@ -30,7 +30,7 @@ public class AuthRepositoryImpl implements AuthRepository {
     public Single<Response<Void>> signUp(User user) { return api.signUp(user); }
 
     @Override
-    public Single<Response<Void>> requestVerifyCode(String userEmail) { return api.requestVerifyCode(userEmail); }
+    public Single<Response<Void>> requestVerifyCode(User user) { return api.requestVerifyCode(user); }
 
     @Override
     public Single<Response<Void>> sendVerifyCode(User user) { return api.sendVerifyCode(user); }

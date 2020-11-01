@@ -9,6 +9,7 @@ import io.reactivex.Single;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface Api {
     @POST("/api/auth/signin")
@@ -18,8 +19,8 @@ public interface Api {
     Single<Response<Void>> signUp(@Body User userData);
 
     @POST("/api/user/emailSender")
-    Single<Response<Void>> requestVerifyCode(@Body String userEmail);
+    Single<Response<Void>> requestVerifyCode(@Body User userData);
 
-    @POST("api/auth/signup/verify/email")
+    @PUT("/api/user/emailAuth")
     Single<Response<Void>> sendVerifyCode(@Body User userData);
 }

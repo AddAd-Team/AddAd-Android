@@ -9,7 +9,7 @@ public class User {
     private String userPassword;
     @SerializedName("nickname")
     private String nick;
-    @SerializedName("auth")
+    @SerializedName("code")
     private String verifyCode;
     @SerializedName("tag")
     private String tag;
@@ -23,6 +23,10 @@ public class User {
 
     public User(String userEmail, String verifyCode) {
         this.verifyCode = verifyCode;
+        this.userEmail = userEmail;
+    }
+
+    public User(String userEmail){
         this.userEmail = userEmail;
     }
 }
