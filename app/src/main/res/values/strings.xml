@@ -45,6 +45,8 @@
     <string name="my_ad_apply_tv">내가 신청한 광고</string>
     <string name="my_ad_upload_tv">내가 올린 광고</string>
     <string name="my_ad_finish_tv">종료된 광고</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //write
+    <string name="write_tv">글쓰기</string>
+    <string name="complete_tv">완료</string>
 </resources>
