@@ -1,29 +1,46 @@
 package com.add.ad.presentation.ui.fragment.login;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.add.ad.R;
+import com.add.ad.databinding.FragmentLoginBinding;
+import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.viewModel.LoginViewModel;
+import com.google.android.material.textfield.TextInputLayout;
 
-public class LoginFragment extends Fragment {
+import org.jetbrains.annotations.NotNull;
 
-    Button login_btn;
+import dagger.hilt.android.AndroidEntryPoint;
+
+import static splitties.toast.ToastKt.createToast;
+import static splitties.toast.ToastKt.toast;
+
+@AndroidEntryPoint
+public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
+
+    private LoginViewModel loginViewModel;
+    private TextInputLayout loginEmailErrorLayout;
+    private TextInputLayout loginPwErrorLayout;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
-        login_btn = (Button) v.findViewById(R.id.login_next_btn);
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setLayout(R.layout.fragment_login);
+        View v = super.onCreateView(inflater, container, savedInstanceState);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        loginPwErrorLayout = binding.loginPwEtLayout;
+        loginEmailErrorLayout = binding.loginEmailEtLayout;
+
+        binding.setVm(loginViewModel);
+
         return v;
     }
 
@@ -31,11 +48,13 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        login_btn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_LoginInFragment_to_MainFragment);
-            }
-        });
+        loginViewModel.startMain.observe(this, mVoid ->
+                Navigation.findNavController(requireView()).navigate(R.id.action_LoginInFragment_to_MainFragment));
+
+        loginViewModel.createToastEvent.observe(this, s -> toast(s));
+        loginViewModel.pwErrorEvent.observe(this, s -> loginPwErrorLayout.setError(s));
+        loginViewModel.idErrorEvent.observe(this, s -> loginEmailErrorLayout.setError(s));
+        loginViewModel.startRegister.observe(this, mVoid ->
+                Navigation.findNavController(requireView()).navigate(R.id.action_LoginInFragment_to_RegisterFragment));
     }
 }

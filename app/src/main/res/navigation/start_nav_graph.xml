@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_MainFragment_to_MyAdFragment"
             app:destination="@id/myAdFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_SecondWriteFragment"
+            app:destination="@id/secondWriteFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -35,9 +38,13 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.add.ad.presentation.ui.fragment.register.RegisterFragment"
+        android:name="com.add.ad.presentation.ui.fragment.register.FirstRegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_first_register" >
+        <action
+            android:id="@+id/action_FirstRegisterFragment_to_SecondRegisterFragment"
+            app:destination="@id/secondRegisterFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/firstLandingFragment"
         android:name="com.add.ad.presentation.ui.fragment.landing.FirstLandingFragment"
@@ -107,4 +114,14 @@
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.AdManageFragment"
         android:label="fragment_ad_manage"
         tools:layout="@layout/fragment_ad_manage" />
+    <fragment
+        android:id="@+id/secondRegisterFragment"
+        android:name="com.add.ad.presentation.ui.fragment.register.SecondRegisterFragment"
+        android:label="fragment_second_register"
+        tools:layout="@layout/fragment_second_register" />
+    <fragment
+        android:id="@+id/secondWriteFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
+        android:label="fragment_second_write"
+        tools:layout="@layout/fragment_second_write" />
 </navigation>
