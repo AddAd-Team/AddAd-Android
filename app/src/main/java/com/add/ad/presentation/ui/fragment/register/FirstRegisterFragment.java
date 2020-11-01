@@ -79,5 +79,6 @@ public class FirstRegisterFragment extends BaseFragment<FragmentFirstRegisterBin
         });
 
         registerViewModel.createToastEvent.observe(this, s -> toast(s));
+        registerViewModel.verifyErrorEvent.observe(this, s -> binding.registerEmailVerifyLayout.setError(s));
     }
 }

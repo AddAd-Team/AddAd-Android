@@ -8,12 +8,14 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.repository.AuthRepository;
+import com.add.ad.entity.User;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -29,11 +31,11 @@ public class RegisterViewModel extends BaseViewModel {
     public MutableLiveData<String> userNickname = new MutableLiveData<>();
     public MutableLiveData<String> userTag = new MutableLiveData<>();
 
-    public SingleLiveEvent<Void> viewVerifyCode = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> confirmVerifyCode = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> clearErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> startLogin = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> startNextRegister = new SingleLiveEvent<>();
+    public SingleLiveEvent<String> viewVerifyCode = new SingleLiveEvent<>();
     public SingleLiveEvent<String> emailErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<String> pwErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<String> verifyErrorEvent = new SingleLiveEvent<>();
@@ -67,17 +69,33 @@ public class RegisterViewModel extends BaseViewModel {
     }
 
     public void confirmCode() {
-        confirmVerifyCode.call();
-    }
-
-    private void apiVerifyCode() {
+        User user = new User(userEmail.getValue(), emailVerifyCode.getValue());
         compositeDisposable.add(
-                authRepository.requestVerifyCode(userEmail.getValue())
+                authRepository.sendVerifyCode(user)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe(it -> {
-                                    if (it.code() / 2 == 2) viewVerifyCode.call();
-                                    else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                                    Log.d("code", String.valueOf(it.code()));
+                                    if (it.code() == 200) {
+                                        confirmVerifyCode.call();
+                                        createToastEvent.setValue("인증 성공");
+                                    } else verifyErrorEvent.setValue("확인코드가 일치하지 않습니다.");
+                                },
+                                it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다."))
+        );
+    }
+
+    private void apiVerifyCode() {
+        User user = new User(userEmail.getValue());
+        compositeDisposable.add(
+                authRepository.requestVerifyCode(user)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe(it -> {
+                                    Log.d("code", String.valueOf(it.code()));
+                                    if (it.code() == 200) {
+                                        viewVerifyCode.call();
+                                    } else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
                                 },
                                 it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
     }
