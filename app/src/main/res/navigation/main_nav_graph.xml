@@ -27,8 +27,8 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/writeFragment"
-        android:name="com.add.ad.presentation.ui.fragment.main.write.WriteFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.write.FirstWriteFragment"
         android:label="fragment_write"
-        tools:layout="@layout/fragment_write" />
+        tools:layout="@layout/fragment_first_write" />
 
 </navigation>

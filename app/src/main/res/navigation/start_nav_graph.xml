@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_MainFragment_to_MyAdFragment"
             app:destination="@id/myAdFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_SecondWriteFragment"
+            app:destination="@id/secondWriteFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -116,4 +119,9 @@
         android:name="com.add.ad.presentation.ui.fragment.register.SecondRegisterFragment"
         android:label="fragment_second_register"
         tools:layout="@layout/fragment_second_register" />
+    <fragment
+        android:id="@+id/secondWriteFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
+        android:label="fragment_second_write"
+        tools:layout="@layout/fragment_second_write" />
 </navigation>
