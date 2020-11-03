@@ -118,7 +118,11 @@
         android:id="@+id/secondRegisterFragment"
         android:name="com.add.ad.presentation.ui.fragment.register.SecondRegisterFragment"
         android:label="fragment_second_register"
-        tools:layout="@layout/fragment_second_register" />
+        tools:layout="@layout/fragment_second_register" >
+        <action
+            android:id="@+id/action_SecondRegisterFragment_to_LoginFragment"
+            app:destination="@id/loginFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/secondWriteFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
