@@ -22,6 +22,11 @@
         <action
             android:id="@+id/action_MainFragment_to_SecondWriteFragment"
             app:destination="@id/secondWriteFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_LoginFragment"
+            app:popUpTo="@id/firstLandingFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/loginFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

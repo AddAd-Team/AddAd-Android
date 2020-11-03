@@ -27,7 +27,6 @@ import static splitties.toast.ToastKt.toast;
 public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
 
     private LoginViewModel loginViewModel;
-    private TextInputLayout loginEmailErrorLayout;
     private TextInputLayout loginPwErrorLayout;
 
     @Override
@@ -37,7 +36,6 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         loginPwErrorLayout = binding.loginPwEtLayout;
-        loginEmailErrorLayout = binding.loginEmailEtLayout;
 
         binding.setVm(loginViewModel);
 
@@ -53,7 +51,6 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
 
         loginViewModel.createToastEvent.observe(this, s -> toast(s));
         loginViewModel.pwErrorEvent.observe(this, s -> loginPwErrorLayout.setError(s));
-        loginViewModel.idErrorEvent.observe(this, s -> loginEmailErrorLayout.setError(s));
         loginViewModel.startRegister.observe(this, mVoid ->
                 Navigation.findNavController(requireView()).navigate(R.id.action_LoginInFragment_to_RegisterFragment));
     }
