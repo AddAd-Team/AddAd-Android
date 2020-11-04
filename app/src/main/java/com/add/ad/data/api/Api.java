@@ -1,21 +1,25 @@
 package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
+import com.add.ad.entity.Post;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 
 public interface Api {
     @POST("/api/auth/signin")
     Single<Response<Token>> signIn(@Body Auth authData);
 
-    @POST("/api/auth/signup")
+    @POST("/api/user/signup")
     Single<Response<Void>> signUp(@Body User userData);
 
     @POST("/api/user/emailSender")
@@ -23,4 +27,11 @@ public interface Api {
 
     @PUT("/api/user/emailAuth")
     Single<Response<Void>> sendVerifyCode(@Body User userData);
+
+    @Multipart
+    @POST("/api/post")
+    Single<Response<Void>> postWrite(@Part MultipartBody.Part file, @Body Post post);
+
+    @PUT("/api/mypage/passwordChange")
+    Single<Response<Void>> changePassword(@Body String password);
 }
