@@ -8,6 +8,7 @@ import com.add.ad.entity.User;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.Multipart;
@@ -30,7 +31,13 @@ public interface Api {
 
     @Multipart
     @POST("/api/post")
-    Single<Response<Void>> postWrite(@Part MultipartBody.Part file, @Body Post post);
+    Single<Response<Void>> postWrite(@Part MultipartBody.Part file,
+                                     @Part("title") RequestBody postTitle,
+                                     @Part("hashtag") RequestBody postTag,
+                                     @Part("description") RequestBody postContent,
+                                     @Part("price") RequestBody postPrice,
+                                     @Part("postTime") RequestBody postEndDate,
+                                     @Part("deadline") RequestBody adEndDate);
 
     @PUT("/api/mypage/passwordChange")
     Single<Response<Void>> changePassword(@Body String password);

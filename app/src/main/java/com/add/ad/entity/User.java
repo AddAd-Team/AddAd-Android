@@ -9,7 +9,7 @@ public class User {
     private String userEmail;
     @SerializedName("password")
     private String userPassword;
-    @SerializedName("nickname")
+    @SerializedName("name")
     private String nick;
     @SerializedName("code")
     private String verifyCode;

@@ -94,6 +94,9 @@
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.change.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_mainFragment"
+            app:destination="@id/mainFragment"/>
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"

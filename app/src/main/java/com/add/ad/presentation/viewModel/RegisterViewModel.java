@@ -1,7 +1,5 @@
 package com.add.ad.presentation.viewModel;
 
-import android.util.Log;
-
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
@@ -15,7 +13,6 @@ import com.add.ad.presentation.base.SingleLiveEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -24,6 +21,7 @@ public class RegisterViewModel extends BaseViewModel {
     CompositeDisposable compositeDisposable;
     AuthRepository authRepository;
 
+    public MutableLiveData<String> userType = new MutableLiveData<>();
     public MutableLiveData<String> userEmail = new MutableLiveData<>();
     public MutableLiveData<String> userPassword = new MutableLiveData<>();
     public MutableLiveData<String> userPasswordCheck = new MutableLiveData<>();
@@ -70,34 +68,53 @@ public class RegisterViewModel extends BaseViewModel {
 
     public void confirmCode() {
         User user = new User(userEmail.getValue(), emailVerifyCode.getValue());
-        compositeDisposable.add(
-                authRepository.sendVerifyCode(user)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(it -> {
-                                    Log.d("code", String.valueOf(it.code()));
-                                    if (it.code() == 200) {
-                                        confirmVerifyCode.call();
-                                        createToastEvent.setValue("인증 성공");
-                                    } else verifyErrorEvent.setValue("확인코드가 일치하지 않습니다.");
-                                },
-                                it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다."))
+        compositeDisposable.add(authRepository.sendVerifyCode(user)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                            if (it.code() == 200) {
+                                confirmVerifyCode.call();
+                                createToastEvent.setValue("인증 성공");
+                            } else verifyErrorEvent.setValue("확인코드가 일치하지 않습니다.");
+                        },
+                        it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다."))
         );
     }
 
     private void apiVerifyCode() {
         User user = new User(userEmail.getValue());
-        compositeDisposable.add(
-                authRepository.requestVerifyCode(user)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(it -> {
-                                    Log.d("code", String.valueOf(it.code()));
-                                    if (it.code() == 200) {
-                                        viewVerifyCode.call();
-                                    } else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
-                                },
-                                it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
+        compositeDisposable.add(authRepository.requestVerifyCode(user)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                            if (it.code() == 200) {
+                                viewVerifyCode.call();
+                            } else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                        },
+                        it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
     }
 
+    public void onSplitTypeChanged(int num) {
+        switch (num) {
+            case 1:
+                userType.setValue("creator");
+                break;
+            case 2:
+                userType.setValue("advertiser");
+                break;
+        }
+    }
+
+    public void signUp() {
+        User user = new User(userType.getValue(), userEmail.getValue(), userPassword.getValue(), userNickname.getValue(), userTag.getValue());
+
+        compositeDisposable.add(authRepository.signUp(user)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    if (it.code() == 200) {
+                        startLogin.call();
+                    } else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
+    }
 }

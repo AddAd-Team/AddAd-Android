@@ -9,24 +9,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.add.ad.R;
+import com.add.ad.databinding.FragmentMyPageBinding;
+import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
+import com.add.ad.presentation.viewModel.MyPageViewModel;
+import com.add.ad.presentation.viewModel.WriteViewModel;
 
-public class MyPageFragment extends Fragment {
+import dagger.hilt.android.AndroidEntryPoint;
 
-    ConstraintLayout changePwView;
-    ConstraintLayout myProfileView;
-    ConstraintLayout myAdView;
+@AndroidEntryPoint
+public class MyPageFragment extends BaseFragment<FragmentMyPageBinding> {
+    private MyPageViewModel myPageViewModel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_my_page, container, false);
-        changePwView = v.findViewById(R.id.my_page_change_pw_view);
-        myProfileView = v.findViewById(R.id.my_page_profile_view);
-        myAdView = v.findViewById(R.id.my_page_ad_view);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setLayout(R.layout.fragment_my_page);
+        View v = super.onCreateView(inflater, container, savedInstanceState);
+        myPageViewModel = new ViewModelProvider(requireActivity()).get(MyPageViewModel.class);
+
+        binding.setVm(myPageViewModel);
 
         return v;
     }
@@ -35,25 +40,12 @@ public class MyPageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        changePwView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment);
-            }
-        });
-
-        myProfileView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment);
-            }
-        });
-
-        myAdView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment);
-            }
+        myPageViewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
+        myPageViewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
+        myPageViewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
+        myPageViewModel.logoutEvent.observe(this, mVoid ->{
+            LogoutDialogFragment logoutDialogFragment = new LogoutDialogFragment();
+            logoutDialogFragment.show(requireActivity().getSupportFragmentManager(), "LogoutDialogFragment");
         });
     }
 }
