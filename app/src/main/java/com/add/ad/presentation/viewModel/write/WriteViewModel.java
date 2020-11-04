@@ -80,6 +80,10 @@ public class WriteViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
+                    if(it.code() == 200){
+                        clickComplete.call();
+                        createToastEvent.setValue("글 올리기 성공");
+                    }
                     Log.d("sasdfasdfa", String.valueOf(it.code()));
                 }, it -> Log.e("sadfas", String.valueOf(it.getCause()))));
 

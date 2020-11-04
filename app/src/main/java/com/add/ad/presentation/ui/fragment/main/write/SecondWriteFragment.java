@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,8 +46,11 @@ public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding
 
         writeViewModel.selectImageEvent.observe(this, mVoid -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
-            intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
             startActivityForResult(intent, 200);
+        });
+        writeViewModel.clickComplete.observe(this, mVoid -> {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_secondWriteFragment_to_MainFragment);
         });
     }
 

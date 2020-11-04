@@ -135,5 +135,11 @@
         android:id="@+id/secondWriteFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
         android:label="fragment_second_write"
-        tools:layout="@layout/fragment_second_write" />
+        tools:layout="@layout/fragment_second_write" >
+        <action
+            android:id="@+id/action_secondWriteFragment_to_MainFragment"
+            app:popUpTo="@id/firstLandingFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/mainFragment"/>
+    </fragment>
 </navigation>
