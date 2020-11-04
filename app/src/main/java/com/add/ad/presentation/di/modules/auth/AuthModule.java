@@ -4,6 +4,7 @@ import com.add.ad.data.api.Api;
 import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.data.repository.auth.AuthRepositoryImpl;
+import com.add.ad.entity.builder.UserBuilder;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,4 +23,8 @@ public class AuthModule {
         return new AuthRepositoryImpl(api, sharedPref);
     }
 
+    @Provides
+    public UserBuilder provideUserBuilder(){
+        return new UserBuilder();
+    }
 }

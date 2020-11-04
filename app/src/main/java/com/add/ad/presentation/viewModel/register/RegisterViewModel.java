@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.entity.User;
+import com.add.ad.entity.builder.UserBuilder;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 
@@ -20,6 +21,7 @@ import io.reactivex.schedulers.Schedulers;
 public class RegisterViewModel extends BaseViewModel {
     CompositeDisposable compositeDisposable;
     AuthRepository authRepository;
+    UserBuilder userBuilder;
 
     public MutableLiveData<String> userType = new MutableLiveData<>();
     public MutableLiveData<String> userEmail = new MutableLiveData<>();
@@ -39,9 +41,10 @@ public class RegisterViewModel extends BaseViewModel {
     public SingleLiveEvent<String> verifyErrorEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
-    public RegisterViewModel(AuthRepository authRepository, CompositeDisposable compositeDisposable, @Assisted SavedStateHandle savedStateHandle) {
+    public RegisterViewModel(AuthRepository authRepository, CompositeDisposable compositeDisposable, UserBuilder userBuilder, @Assisted SavedStateHandle savedStateHandle) {
         this.authRepository = authRepository;
         this.compositeDisposable = compositeDisposable;
+        this.userBuilder = userBuilder;
     }
 
     public void clickSignUpNext() {
@@ -67,7 +70,11 @@ public class RegisterViewModel extends BaseViewModel {
     }
 
     public void confirmCode() {
-        User user = new User(userEmail.getValue(), emailVerifyCode.getValue());
+        User user = userBuilder
+                .setUserEmail(userEmail.getValue())
+                .setVerifyCode(emailVerifyCode.getValue())
+                .build();
+
         compositeDisposable.add(authRepository.sendVerifyCode(user)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -82,7 +89,11 @@ public class RegisterViewModel extends BaseViewModel {
     }
 
     private void apiVerifyCode() {
-        User user = new User(userEmail.getValue());
+
+        User user = userBuilder
+                .setUserEmail(userEmail.getValue())
+                .build();
+
         compositeDisposable.add(authRepository.requestVerifyCode(user)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -106,7 +117,13 @@ public class RegisterViewModel extends BaseViewModel {
     }
 
     public void signUp() {
-        User user = new User(userType.getValue(), userEmail.getValue(), userPassword.getValue(), userNickname.getValue(), userTag.getValue());
+        User user = userBuilder
+                .setUserType(userType.getValue())
+                .setUserEmail(userEmail.getValue())
+                .setUserPassword(userPassword.getValue())
+                .setNick(userNickname.getValue())
+                .setTag(userTag.getValue())
+                .build();
 
         compositeDisposable.add(authRepository.signUp(user)
                 .observeOn(AndroidSchedulers.mainThread())

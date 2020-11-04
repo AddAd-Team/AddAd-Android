@@ -16,20 +16,13 @@ public class User {
     @SerializedName("tag")
     private String tag;
 
-    public User(String userType, String userEmail, String userPassword, String nick, String tag) {
+    public User(String userType, String userEmail, String userPassword, String nick, String verifyCode, String tag) {
         this.userType = userType;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.nick = nick;
+        this.verifyCode = verifyCode;
         this.tag = tag;
     }
 
-    public User(String userEmail, String verifyCode) {
-        this.verifyCode = verifyCode;
-        this.userEmail = userEmail;
-    }
-
-    public User(String userEmail){
-        this.userEmail = userEmail;
-    }
 }
