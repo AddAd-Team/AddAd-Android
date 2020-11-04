@@ -1,6 +1,4 @@
-package com.add.ad.presentation.viewModel;
-
-import android.util.Log;
+package com.add.ad.presentation.viewModel.write;
 
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
@@ -8,16 +6,16 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.repository.WriteRepository;
-import com.add.ad.entity.Post;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 import com.add.ad.presentation.util.FileUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
-import javax.inject.Inject;
-
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -35,16 +33,21 @@ public class WriteViewModel extends BaseViewModel {
         this.compositeDisposable = compositeDisposable;
     }
 
+    Date currentTime = Calendar.getInstance().getTime();
+    SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+    SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
+    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+
     public MutableLiveData<String> adTitle = new MutableLiveData<>();
     public MutableLiveData<String> adTag = new MutableLiveData<>();
     public MutableLiveData<String> adContent = new MutableLiveData<>();
     public MutableLiveData<String> adPrice = new MutableLiveData<>("0");
-    public MutableLiveData<String> postEndYear = new MutableLiveData<>("2020");
-    public MutableLiveData<String> postEndMonth = new MutableLiveData<>("11");
-    public MutableLiveData<String> postEndDay = new MutableLiveData<>("06");
-    public MutableLiveData<String> adEndYear = new MutableLiveData<>("2020");
-    public MutableLiveData<String> adEndMonth = new MutableLiveData<>("11");
-    public MutableLiveData<String> adEndDay = new MutableLiveData<>("06");
+    public MutableLiveData<String> postEndYear = new MutableLiveData<>(yearFormat.format(currentTime));
+    public MutableLiveData<String> postEndMonth = new MutableLiveData<>(monthFormat.format(currentTime));
+    public MutableLiveData<String> postEndDay = new MutableLiveData<>(dayFormat.format(currentTime));
+    public MutableLiveData<String> adEndYear = new MutableLiveData<>(yearFormat.format(currentTime));
+    public MutableLiveData<String> adEndMonth = new MutableLiveData<>(monthFormat.format(currentTime));
+    public MutableLiveData<String> adEndDay = new MutableLiveData<>(dayFormat.format(currentTime));
     public MutableLiveData<String> adImageUri = new MutableLiveData<>();
 
     public SingleLiveEvent<Void> clickComplete = new SingleLiveEvent<>();

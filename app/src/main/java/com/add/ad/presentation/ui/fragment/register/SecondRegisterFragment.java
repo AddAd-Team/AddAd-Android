@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -15,9 +14,8 @@ import android.view.ViewGroup;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentSecondRegisterBinding;
-import com.add.ad.entity.User;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.viewModel.RegisterViewModel;
+import com.add.ad.presentation.viewModel.register.RegisterViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

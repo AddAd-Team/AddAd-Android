@@ -8,18 +8,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentFirstRegisterBinding;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.viewModel.LoginViewModel;
-import com.add.ad.presentation.viewModel.RegisterViewModel;
-import com.google.android.material.textfield.TextInputLayout;
+import com.add.ad.presentation.viewModel.register.RegisterViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.add.ad.presentation.viewModel.RegisterViewModel" />
+            type="com.add.ad.presentation.viewModel.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

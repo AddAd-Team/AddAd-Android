@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,7 @@ import com.add.ad.R;
 import com.add.ad.databinding.FragmentSecondWriteBinding;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.util.FileUtil;
-import com.add.ad.presentation.viewModel.WriteViewModel;
-
-import java.io.File;
+import com.add.ad.presentation.viewModel.write.WriteViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

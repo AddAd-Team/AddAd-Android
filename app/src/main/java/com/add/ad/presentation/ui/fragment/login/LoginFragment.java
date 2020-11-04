@@ -13,7 +13,7 @@ import androidx.navigation.Navigation;
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentLoginBinding;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.viewModel.LoginViewModel;
+import com.add.ad.presentation.viewModel.login.LoginViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;

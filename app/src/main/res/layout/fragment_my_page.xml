@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.add.ad.presentation.viewModel.MyPageViewModel" />
+            type="com.add.ad.presentation.viewModel.mypage.MyPageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

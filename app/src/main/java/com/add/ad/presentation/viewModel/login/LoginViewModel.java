@@ -1,4 +1,4 @@
-package com.add.ad.presentation.viewModel;
+package com.add.ad.presentation.viewModel.login;
 
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;

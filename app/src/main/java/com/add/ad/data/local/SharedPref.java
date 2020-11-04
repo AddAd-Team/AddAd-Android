@@ -22,6 +22,10 @@ public class SharedPref {
             return "";
         } else return "Bearer " + getPref(context).getString(getKey(access), "");
     }
+
+    public void removeToken(Boolean bool){
+        getPref(context).edit().remove(getKey(bool)).apply();
+    }
     private SharedPreferences getPref(Context context) {
         return context.getSharedPreferences("pref", Context.MODE_PRIVATE);
     }

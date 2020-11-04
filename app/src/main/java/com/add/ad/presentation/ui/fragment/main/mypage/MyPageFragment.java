@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -16,8 +14,7 @@ import com.add.ad.R;
 import com.add.ad.databinding.FragmentMyPageBinding;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
-import com.add.ad.presentation.viewModel.MyPageViewModel;
-import com.add.ad.presentation.viewModel.WriteViewModel;
+import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

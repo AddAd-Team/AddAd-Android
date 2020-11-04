@@ -1,4 +1,4 @@
-package com.add.ad.presentation.viewModel;
+package com.add.ad.presentation.viewModel.mypage.change;
 
 import android.util.Log;
 

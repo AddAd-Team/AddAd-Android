@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentLogoutDialogBinding;
 import com.add.ad.presentation.base.BaseDialogFragment;
-import com.add.ad.presentation.viewModel.MyPageViewModel;
+import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

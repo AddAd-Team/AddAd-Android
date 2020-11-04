@@ -4,23 +4,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentChangePasswordBinding;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.viewModel.ChangePasswordViewModel;
-import com.add.ad.presentation.viewModel.MyPageViewModel;
+import com.add.ad.presentation.viewModel.mypage.change.ChangePasswordViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
