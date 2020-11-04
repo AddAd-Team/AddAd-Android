@@ -1,11 +1,13 @@
 package com.add.ad.presentation.viewModel.write;
 
+import android.util.Log;
+
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
-import com.add.ad.data.repository.WriteRepository;
+import com.add.ad.data.repository.write.WriteRepository;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 import com.add.ad.presentation.util.FileUtil;
@@ -66,7 +68,7 @@ public class WriteViewModel extends BaseViewModel {
         String postEndDate = postEndYear.getValue() + postEndMonth.getValue() + postEndDay.getValue();
         String adEndDate = adEndYear.getValue() + adEndMonth.getValue() + adEndDay.getValue();
 
-        MultipartBody.Part file = FileUtil.createMultiPart(adTitle.getValue());
+        MultipartBody.Part file = FileUtil.createMultiPart(adImageUri.getValue());
         RequestBody requestAdTitle = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adTitle.getValue()));
         RequestBody requestAdTag = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adTag.getValue()));
         RequestBody requestAdContent = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adContent.getValue()));
@@ -78,8 +80,8 @@ public class WriteViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-
-                }));
+                    Log.d("sasdfasdfa", String.valueOf(it.code()));
+                }, it -> Log.e("sadfas", String.valueOf(it.getCause()))));
 
     }
 }

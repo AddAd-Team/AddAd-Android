@@ -1,4 +1,4 @@
-package com.add.ad.data.repository;
+package com.add.ad.data.repository.auth;
 
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;

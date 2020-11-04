@@ -21,28 +21,19 @@ public class MyPageViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> confirmLogoutEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> cancelLogoutEvent = new SingleLiveEvent<>();
 
+
     public void clickConfirm() {
         sharedPref.removeToken(true);
         confirmLogoutEvent.call();
     }
 
-    public void clickCancel() {
-        cancelLogoutEvent.call();
-    }
+    public void clickCancel() { cancelLogoutEvent.call(); }
 
-    public void clickChangePw() {
-        changePwEvent.call();
-    }
+    public void clickChangePw() { changePwEvent.call(); }
 
-    public void clickMyProfile() {
-        myProfileEvent.call();
-    }
+    public void clickMyProfile() { myProfileEvent.call(); }
 
-    public void clickMyAd() {
-        myAdEvent.call();
-    }
+    public void clickMyAd() { myAdEvent.call(); }
 
-    public void setLogoutEvent() {
-        logoutEvent.call();
-    }
+    public void setLogoutEvent() { logoutEvent.call(); }
 }

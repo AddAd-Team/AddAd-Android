@@ -1,7 +1,7 @@
-package com.add.ad.data.repository;
+package com.add.ad.data.repository.write;
 
 import com.add.ad.data.api.Api;
-import com.add.ad.entity.Post;
+import com.add.ad.data.repository.write.WriteRepository;
 
 import javax.inject.Inject;
 
@@ -10,7 +10,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Response;
 
-public class WriteRepositoryImpl implements WriteRepository{
+public class WriteRepositoryImpl implements WriteRepository {
     Api api;
 
     @Inject

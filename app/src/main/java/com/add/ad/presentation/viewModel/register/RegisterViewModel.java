@@ -5,7 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
-import com.add.ad.data.repository.AuthRepository;
+import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.entity.User;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;

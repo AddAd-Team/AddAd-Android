@@ -30,7 +30,7 @@ public interface Api {
     Single<Response<Void>> sendVerifyCode(@Body User userData);
 
     @Multipart
-    @POST("/api/post")
+    @POST("/api/post/write")
     Single<Response<Void>> postWrite(@Part MultipartBody.Part file,
                                      @Part("title") RequestBody postTitle,
                                      @Part("hashtag") RequestBody postTag,

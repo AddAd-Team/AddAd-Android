@@ -2,8 +2,8 @@ package com.add.ad.presentation.di.modules.auth;
 
 import com.add.ad.data.api.Api;
 import com.add.ad.data.local.SharedPref;
-import com.add.ad.data.repository.AuthRepository;
-import com.add.ad.data.repository.AuthRepositoryImpl;
+import com.add.ad.data.repository.auth.AuthRepository;
+import com.add.ad.data.repository.auth.AuthRepositoryImpl;
 
 import dagger.Module;
 import dagger.Provides;

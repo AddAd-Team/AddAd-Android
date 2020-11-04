@@ -1,8 +1,8 @@
 package com.add.ad.presentation.di.modules.main.write;
 
 import com.add.ad.data.api.Api;
-import com.add.ad.data.repository.WriteRepository;
-import com.add.ad.data.repository.WriteRepositoryImpl;
+import com.add.ad.data.repository.write.WriteRepository;
+import com.add.ad.data.repository.write.WriteRepositoryImpl;
 
 import dagger.Module;
 import dagger.Provides;

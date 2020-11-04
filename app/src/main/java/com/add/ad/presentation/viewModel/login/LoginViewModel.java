@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.local.SharedPref;
-import com.add.ad.data.repository.AuthRepository;
+import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
 import com.add.ad.presentation.base.BaseViewModel;
@@ -64,6 +64,6 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     private void loginFail(Throwable t) {
-        createToastEvent.setValue(t.getMessage());
+        createToastEvent.setValue(t.getLocalizedMessage());
     }
 }

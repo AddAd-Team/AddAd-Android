@@ -1,7 +1,8 @@
-package com.add.ad.data.repository;
+package com.add.ad.data.repository.auth;
 
 import com.add.ad.data.api.Api;
 import com.add.ad.data.local.SharedPref;
+import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;

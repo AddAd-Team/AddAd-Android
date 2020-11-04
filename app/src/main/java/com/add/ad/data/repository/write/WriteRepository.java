@@ -1,4 +1,4 @@
-package com.add.ad.data.repository;
+package com.add.ad.data.repository.write;
 
 import com.add.ad.entity.Post;
 
