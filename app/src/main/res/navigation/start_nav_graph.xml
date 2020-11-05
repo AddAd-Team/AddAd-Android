@@ -3,29 +3,143 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/start_nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/firstLandingFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.add.ad.presentation.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_MainFragment_to_ChangePasswordFragment"
+            app:destination="@id/changePasswordFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_MyProfileFragment"
+            app:destination="@+id/myProfileFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_MyAdFragment"
+            app:destination="@id/myAdFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_SecondWriteFragment"
+            app:destination="@id/secondWriteFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_LoginFragment"
+            app:popUpTo="@id/firstLandingFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/loginFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.add.ad.presentation.ui.fragment.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginInFragment_to_MainFragment"
+            android:id="@+id/action_LoginInFragment_to_MainFragment"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/action_loginInFragment_to_RegisterFragment"
+            android:id="@+id/action_LoginInFragment_to_RegisterFragment"
             app:destination="@id/registerFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.add.ad.presentation.ui.fragment.register.RegisterFragment"
+        android:name="com.add.ad.presentation.ui.fragment.register.FirstRegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_first_register" >
+        <action
+            android:id="@+id/action_FirstRegisterFragment_to_SecondRegisterFragment"
+            app:destination="@id/secondRegisterFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/firstLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.FirstLandingFragment"
+        android:label="FirstLandingFragment"
+        tools:layout="@layout/fragment_first_landing">
+        <action
+            android:id="@+id/action_FirstLandingFragment_to_SecondLandingFragment"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:destination="@id/secondLandingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.SecondLandingFragment"
+        android:label="fragment_second_landing"
+        tools:layout="@layout/fragment_second_landing">
+        <action
+            android:id="@+id/action_SecondLandingFragment_to_ThirdLandingFragment"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:destination="@id/thirdLandingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.ThirdLandingFragment"
+        android:label="ThirdLandingFragment"
+        tools:layout="@layout/fragment_third_landing">
+        <action
+            android:id="@+id/action_ThirdLandingFragment_to_LoginFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.change.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_mainFragment"
+            app:destination="@id/mainFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.profile.MyProfileFragment"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/visitProfileFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.visit.VisitProfileFragment"
+        android:label="fragment_visit_profile"
+        tools:layout="@layout/fragment_visit_profile" />
+    <fragment
+        android:id="@+id/myAdFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.MyAdFragment"
+        android:label="fragment_my_ad"
+        tools:layout="@layout/fragment_my_ad" >
+        <action
+            android:id="@+id/action_myAdFragment_to_AdManageFragment"
+            app:destination="@id/adManageFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/adManageFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.AdManageFragment"
+        android:label="fragment_ad_manage"
+        tools:layout="@layout/fragment_ad_manage" />
+    <fragment
+        android:id="@+id/secondRegisterFragment"
+        android:name="com.add.ad.presentation.ui.fragment.register.SecondRegisterFragment"
+        android:label="fragment_second_register"
+        tools:layout="@layout/fragment_second_register" >
+        <action
+            android:id="@+id/action_SecondRegisterFragment_to_LoginFragment"
+            app:destination="@id/loginFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/secondWriteFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
+        android:label="fragment_second_write"
+        tools:layout="@layout/fragment_second_write" >
+        <action
+            android:id="@+id/action_secondWriteFragment_to_MainFragment"
+            app:popUpTo="@id/firstLandingFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/mainFragment"/>
+    </fragment>
 </navigation>
