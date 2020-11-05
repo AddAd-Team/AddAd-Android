@@ -50,6 +50,7 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <ImageView
+                app:setImages="@{vm.profileImageUrl}"
                 android:id="@+id/my_page_user_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -64,7 +65,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:text="마이클의 it 세상"
+            android:text="@={vm.profileName}"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/my_page_user_tag_tv"
@@ -80,7 +81,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:text="#it #숙련자 #apple #유튜브 #블로그 #트위터"
+            android:text="@={vm.profileTag}"
             android:textColor="@color/colorGray"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/my_page_gl_top"

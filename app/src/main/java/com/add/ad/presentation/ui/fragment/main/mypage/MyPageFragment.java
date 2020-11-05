@@ -1,6 +1,7 @@
 package com.add.ad.presentation.ui.fragment.main.mypage;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.add.ad.databinding.FragmentMyPageBinding;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
 import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -29,6 +32,7 @@ public class MyPageFragment extends BaseFragment<FragmentMyPageBinding> {
         myPageViewModel = new ViewModelProvider(requireActivity()).get(MyPageViewModel.class);
 
         binding.setVm(myPageViewModel);
+        myPageViewModel.getProfile();
 
         return v;
     }
@@ -37,10 +41,10 @@ public class MyPageFragment extends BaseFragment<FragmentMyPageBinding> {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        myPageViewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
-        myPageViewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
-        myPageViewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
-        myPageViewModel.logoutEvent.observe(this, mVoid ->{
+        myPageViewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
+        myPageViewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
+        myPageViewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
+        myPageViewModel.logoutEvent.observe(this, mVoid -> {
             LogoutDialogFragment logoutDialogFragment = new LogoutDialogFragment();
             logoutDialogFragment.show(requireActivity().getSupportFragmentManager(), "LogoutDialogFragment");
         });
