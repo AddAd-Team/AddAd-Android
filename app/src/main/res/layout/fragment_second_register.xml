@@ -1,110 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorTopBlack"
-    tools:context=".presentation.ui.fragment.register.SecondRegisterFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/angmuburi"
-        android:text="@string/main_tv"
-        android:textColor="@color/colorWhite"
-        android:textSize="60sp"
-        app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/register_gl_left"
-        app:layout_constraintTop_toTopOf="@+id/register_gl_top" />
+    <data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_nickname_et_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@null"
-        android:hint=" "
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/register_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        <variable
+            name="vm"
+            type="com.add.ad.presentation.viewModel.register.RegisterViewModel" />
+    </data>
 
-        <com.add.ad.presentation.ui.customView.ClearEditText
-            android:id="@+id/register_nickname_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/edittext_selector"
-            android:fontFamily="@font/notosanskr_thin"
-            android:hint="닉네임"
-            android:includeFontPadding="false"
-            android:inputType="text"
-            android:singleLine="true"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTopBlack"
+        tools:context=".presentation.ui.fragment.register.SecondRegisterFragment">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/angmuburi"
+            android:text="@string/main_tv"
             android:textColor="@color/colorWhite"
-            android:textCursorDrawable="@drawable/cursor_orange"
-            android:textSize="15sp" />
+            android:textSize="60sp"
+            app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/register_gl_left"
+            app:layout_constraintTop_toTopOf="@+id/register_gl_top" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <RadioGroup
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/register_gl_middle"
+            app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/register_gl_left">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_tag_et_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:hint=" "
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/register_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/register_nickname_et_layout">
+                <RadioButton
+                    android:id="@+id/register_is_creator_radio_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:onClick="@{()->vm.onSplitTypeChanged(1)}"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:text="Creator"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/register_is_advertiser_radio_btn"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
-        <com.add.ad.presentation.ui.customView.ClearEditText
-            android:id="@+id/register_tag_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/edittext_selector"
-            android:fontFamily="@font/notosanskr_thin"
-            android:hint="#먹방 #it #미용 #운동 ..."
-            android:includeFontPadding="false"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textColor="@color/colorWhite"
-            android:textCursorDrawable="@drawable/cursor_orange"
-            android:textSize="15sp" />
+                <RadioButton
+                    android:id="@+id/register_is_advertiser_radio_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:onClick="@{()->vm.onSplitTypeChanged(2)}"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:text="Advertiser"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/register_is_creator_radio_btn"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </RadioGroup>
 
-    <Button
-        android:id="@+id/login_next_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/gray_radius_view"
-        android:text="다음"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/register_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/register_tag_et_layout" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_nickname_et_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@null"
+            android:hint=" "
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/register_gl_left"
+            app:layout_constraintTop_toTopOf="@+id/register_gl_middle">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/register_gl_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.14" />
+            <com.add.ad.presentation.ui.customView.ClearEditText
+                android:id="@+id/register_nickname_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edittext_selector"
+                android:fontFamily="@font/notosanskr_thin"
+                android:hint="닉네임"
+                android:text="@={vm.userNickname}"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/colorWhite"
+                android:textCursorDrawable="@drawable/cursor_orange"
+                android:textSize="15sp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/register_gl_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.86" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/register_gl_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_tag_et_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint=" "
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/register_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/register_nickname_et_layout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.add.ad.presentation.ui.customView.ClearEditText
+                android:id="@+id/register_tag_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edittext_selector"
+                android:fontFamily="@font/notosanskr_thin"
+                android:hint="#먹방 #it #미용 #운동 ..."
+                android:text="@={vm.userTag}"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/colorWhite"
+                android:textCursorDrawable="@drawable/cursor_orange"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/login_next_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/gray_radius_view"
+            android:text="다음"
+            android:onClick="@{()->vm.signUp()}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/register_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/register_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/register_tag_et_layout" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/register_gl_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/register_gl_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.86" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/register_gl_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/register_gl_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

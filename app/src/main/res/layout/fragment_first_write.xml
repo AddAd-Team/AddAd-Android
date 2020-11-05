@@ -1,143 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorTopBlack"
-    tools:context=".presentation.ui.fragment.main.write.FirstWriteFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.add.ad.presentation.viewModel.write.WriteViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/colorMiddleBlack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorTopBlack"
+        tools:context=".presentation.ui.fragment.main.write.FirstWriteFragment">
 
-        <ImageView
-            android:id="@+id/first_write_back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_back_arrow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/first_write_back_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            android:text="@string/back_tv"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/first_write_back_btn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/first_write_next_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="22dp"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            android:text="@string/next_tv"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/colorMiddleBlack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/first_write_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/first_write_back_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:text="@string/back_tv"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/first_write_back_btn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/first_write_next_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="22dp"
+                android:onClick="@{()->vm.clickNext()}"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:text="@string/next_tv"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="글쓰기"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="글쓰기"
+            android:layout_marginTop="24dp"
+            android:background="@null"
+            android:hint="광고제목"
+            android:text="@={vm.adTitle}"
+            android:padding="12dp"
             android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/first_write_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
+            app:layout_constraintStart_toEndOf="@id/first_write_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+        <EditText
+            android:id="@+id/first_write_tag_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@null"
+            android:hint="#태그를 입력하세요"
+            android:text="@={vm.adTag}"
+            android:padding="8dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/first_write_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <EditText
+            android:id="@+id/first_write_content_et"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="내용을 작성하세요"
+            android:text="@={vm.adContent}"
+            android:inputType="textMultiLine"
+            android:padding="8dp"
+            android:scrollHorizontally="false"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/first_write_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/first_write_tag_et" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/first_write_gl_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/first_write_gl_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.94" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:hint="광고제목"
-        android:padding="12dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorGray"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/first_write_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-    <View
-        android:id="@+id/view4"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/colorWhite"
-        app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
-        app:layout_constraintStart_toEndOf="@id/first_write_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <EditText
-        android:id="@+id/first_write_tag_et"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@null"
-        android:hint="#태그를 입력하세요"
-        android:padding="8dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorGray"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/first_write_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/view4" />
-
-    <EditText
-        android:id="@+id/first_write_content_et"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        android:gravity="start"
-        android:hint="내용을 작성하세요"
-        android:inputType="textMultiLine"
-        android:padding="8dp"
-        android:scrollHorizontally="false"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorGray"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/first_write_gl_right"
-        app:layout_constraintStart_toStartOf="@+id/first_write_gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/first_write_tag_et" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/first_write_gl_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/first_write_gl_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.94" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

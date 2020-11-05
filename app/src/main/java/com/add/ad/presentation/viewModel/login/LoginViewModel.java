@@ -1,24 +1,16 @@
-package com.add.ad.presentation.viewModel;
+package com.add.ad.presentation.viewModel.login;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.local.SharedPref;
-import com.add.ad.data.repository.AuthRepository;
+import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
-
-import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -34,11 +26,8 @@ public class LoginViewModel extends BaseViewModel {
     public MutableLiveData<String> userPassword = new MutableLiveData<>();
 
     public SingleLiveEvent<Void> startMain = new SingleLiveEvent<>();
-    public SingleLiveEvent<String> idErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<String> pwErrorEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> startRegister = new SingleLiveEvent<>();
-
-//    public MediatorLiveData<Boolean> btnClickable = new MediatorLiveData<Boolean>();
 
     @ViewModelInject
     public LoginViewModel(AuthRepository authRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref, @Assisted SavedStateHandle savedStateHandle) {
@@ -66,12 +55,8 @@ public class LoginViewModel extends BaseViewModel {
             startMain.call();
             createToastEvent.setValue("로그인 성공");
         } else {
-            idErrorEvent.setValue("아이디가 일치하지 않습니다.");
             pwErrorEvent.setValue("비밀번호가 일치하지 않습니다.");
         }
-
-        Log.d("access token",sharedPref.getToken(true));
-        Log.d("refresh token", sharedPref.getToken(false));
     }
 
     public void goRegister(){
@@ -79,6 +64,6 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     private void loginFail(Throwable t) {
-        createToastEvent.setValue(t.getMessage());
+        createToastEvent.setValue(t.getLocalizedMessage());
     }
 }

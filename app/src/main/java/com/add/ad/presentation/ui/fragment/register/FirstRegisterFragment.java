@@ -11,14 +11,11 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentFirstRegisterBinding;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.viewModel.LoginViewModel;
-import com.add.ad.presentation.viewModel.RegisterViewModel;
-import com.google.android.material.textfield.TextInputLayout;
+import com.add.ad.presentation.viewModel.register.RegisterViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -33,7 +30,7 @@ public class FirstRegisterFragment extends BaseFragment<FragmentFirstRegisterBin
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_first_register);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        registerViewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
 
         binding.setVm(registerViewModel);
 
@@ -50,9 +47,12 @@ public class FirstRegisterFragment extends BaseFragment<FragmentFirstRegisterBin
             binding.registerPwEtLayout.setError("");
         });
         registerViewModel.startNextRegister.observe(this, mVoid -> {
+                    Fragment firstRegisterFragment = new FirstRegisterFragment();
+
                     Bundle bundle = new Bundle();
                     bundle.putString("userEmail", registerViewModel.userEmail.getValue());
                     bundle.putString("userPw", registerViewModel.userPassword.getValue());
+                    firstRegisterFragment.setArguments(bundle);
 
                     Navigation.findNavController(requireView()).navigate(R.id.action_FirstRegisterFragment_to_SecondRegisterFragment);
                 }

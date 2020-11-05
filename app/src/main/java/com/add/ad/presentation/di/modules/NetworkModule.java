@@ -36,7 +36,7 @@ public class NetworkModule {
     @Provides
     public static Api provideApiService(AuthorizationInterceptor authorizationInterceptor, HttpLoggingInterceptor httpLoggingInterceptor) {
         return new Retrofit.Builder()
-                .baseUrl("http://192.168.137.185:8080")
+                .baseUrl("http://192.168.43.212:8080")
                 .client(new OkHttpClient.Builder()
                         .addInterceptor(authorizationInterceptor)
                         .addInterceptor(httpLoggingInterceptor)

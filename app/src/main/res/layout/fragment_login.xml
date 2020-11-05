@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.add.ad.presentation.viewModel.LoginViewModel" />
+            type="com.add.ad.presentation.viewModel.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

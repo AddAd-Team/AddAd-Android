@@ -18,9 +18,13 @@ public class SharedPref {
     }
 
     public String getToken(Boolean access){
-        if(getPref(context).getString(getKey(access), "") != null) {
-            return "Bearer " + getPref(context).getString(getKey(access), "");
-        } else return "";
+        if(getPref(context).getString(getKey(access), "").isEmpty()) {
+            return "";
+        } else return "Bearer " + getPref(context).getString(getKey(access), "");
+    }
+
+    public void removeToken(Boolean bool){
+        getPref(context).edit().remove(getKey(bool)).apply();
     }
     private SharedPreferences getPref(Context context) {
         return context.getSharedPreferences("pref", Context.MODE_PRIVATE);
