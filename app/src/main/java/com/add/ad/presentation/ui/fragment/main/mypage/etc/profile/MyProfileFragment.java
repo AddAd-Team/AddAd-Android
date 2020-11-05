@@ -13,15 +13,27 @@ import android.view.ViewGroup;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentMyPageBinding;
+import com.add.ad.databinding.FragmentMyProfileBinding;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
+import com.add.ad.presentation.viewModel.mypage.profile.ProfileViewModel;
 import com.add.ad.presentation.viewModel.write.WriteViewModel;
 
-public class MyProfileFragment extends Fragment {
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
+public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
+    private ProfileViewModel profileViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_my_profile, container, false);
+        setLayout(R.layout.fragment_my_profile);
+        View v = super.onCreateView(inflater, container, savedInstanceState);
+        profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
+
+        binding.setVm(profileViewModel);
+        profileViewModel.getMyProfile();
+
         return v;
     }
 
