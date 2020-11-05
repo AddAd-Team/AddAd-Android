@@ -34,7 +34,6 @@ public class MyPageViewModel extends BaseViewModel {
     public MutableLiveData<String> profileTag = new MutableLiveData<>();
     public MutableLiveData<String> profileImageUrl = new MutableLiveData<>();
 
-    public SingleLiveEvent<String> profileImageEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> logoutEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> myAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> myProfileEvent = new SingleLiveEvent<>();
