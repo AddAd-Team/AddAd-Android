@@ -25,10 +25,6 @@ public class ResponseUserInfo {
         return userImage;
     }
 
-    public void setUserImage(String userImage){
-        this.userImage = userImage;
-    }
-
     public String getUserName() {
         return userName;
     }
