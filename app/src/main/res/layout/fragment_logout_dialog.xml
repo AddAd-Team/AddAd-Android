@@ -16,8 +16,8 @@
         tools:context=".presentation.ui.dialog.LogoutDialogFragment">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="300dp"
-            android:layout_height="160dp"
+            android:layout_width="240dp"
+            android:layout_height="140dp"
             android:backgroundTint="@color/colorMiddleBlack"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
                     android:includeFontPadding="false"
                     android:text="로그아웃 하시겠습니까?"
                     android:textColor="@color/colorWhite"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/logout_gl_top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                     android:padding="10dp"
                     android:text="취소"
                     android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/logout_gl_middle"
                     app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
                     android:padding="10dp"
                     android:text="확인"
                     android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/logout_gl_middle"
