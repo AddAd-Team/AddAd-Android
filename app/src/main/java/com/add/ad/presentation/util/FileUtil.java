@@ -29,7 +29,6 @@ public class FileUtil {
     public static MultipartBody.Part createMultiPart(String filePath) {
         File file = new File(filePath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-        Log.d("file", String.valueOf(file));
         return MultipartBody.Part.createFormData("image", file.getName(), requestBody);
     }
 }
