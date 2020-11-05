@@ -1,7 +1,7 @@
 package com.add.ad.data.repository.mypage;
 
 import com.add.ad.data.api.Api;
-import com.add.ad.entity.ResponseUserInfo;
+import com.add.ad.entity.response.ResponseUserInfo;
 
 import javax.inject.Inject;
 

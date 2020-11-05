@@ -1,6 +1,6 @@
 package com.add.ad.data.repository.mypage;
 
-import com.add.ad.entity.ResponseUserInfo;
+import com.add.ad.entity.response.ResponseUserInfo;
 
 import io.reactivex.Single;
 import retrofit2.Response;

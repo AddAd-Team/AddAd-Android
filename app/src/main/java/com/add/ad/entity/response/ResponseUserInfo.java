@@ -1,4 +1,4 @@
-package com.add.ad.entity;
+package com.add.ad.entity.response;
 
 import android.util.Log;
 
