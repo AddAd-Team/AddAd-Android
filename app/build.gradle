@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     // okHttp3, logger
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     // rxJava2
@@ -54,7 +55,11 @@ dependencies {
     // rxbinding3
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
     // glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation ('com.github.bumptech.glide:glide:4.11.0'){
+        exclude group: "com.android.support"
+    }
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     // navigation ui
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.1"
