@@ -1,12 +1,11 @@
 package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
-import com.add.ad.entity.Post;
-import com.add.ad.entity.ResponseUserInfo;
+import com.add.ad.entity.response.ResponseFeedInfo;
+import com.add.ad.entity.response.ResponseUserInfo;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -47,4 +46,7 @@ public interface Api {
 
     @GET("/api/mypage/profile")
     Single<Response<ResponseUserInfo>> getUserProfile();
+
+    @GET("/api/test/post")
+    Single<Response<ResponseFeedInfo>> getFeed();
 }
