@@ -24,6 +24,7 @@ import com.add.ad.presentation.viewModel.write.WriteViewModel;
 import dagger.hilt.android.AndroidEntryPoint;
 
 import static android.app.Activity.RESULT_OK;
+import static splitties.toast.ToastKt.toast;
 
 @AndroidEntryPoint
 public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding> {
@@ -52,6 +53,7 @@ public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding
         writeViewModel.clickComplete.observe(this, mVoid -> {
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_secondWriteFragment_to_MainFragment);
         });
+        writeViewModel.createToastEvent.observe(this, s -> toast(s));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

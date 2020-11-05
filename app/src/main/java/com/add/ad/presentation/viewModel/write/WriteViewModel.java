@@ -65,10 +65,10 @@ public class WriteViewModel extends BaseViewModel {
     }
 
     public void selectComplete() {
+        Log.d("sfsd","colick");
         String postEndDate = postEndYear.getValue() + postEndMonth.getValue() + postEndDay.getValue();
         String adEndDate = adEndYear.getValue() + adEndMonth.getValue() + adEndDay.getValue();
 
-        MultipartBody.Part file = FileUtil.createMultiPart(adImageUri.getValue());
         RequestBody requestAdTitle = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adTitle.getValue()));
         RequestBody requestAdTag = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adTag.getValue()));
         RequestBody requestAdContent = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adContent.getValue()));
@@ -76,16 +76,25 @@ public class WriteViewModel extends BaseViewModel {
         RequestBody requestAdPostEndDate = RequestBody.create(MediaType.parse("multipart/form-data"), postEndDate);
         RequestBody requestAdEndDate = RequestBody.create(MediaType.parse("multipart/form-data"), adEndDate);
 
-        compositeDisposable.add(writeRepository.postWrite(file, requestAdTitle, requestAdTag, requestAdContent, requestAdPrice, requestAdPostEndDate, requestAdEndDate)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(it -> {
-                    if(it.code() == 200){
-                        clickComplete.call();
-                        createToastEvent.setValue("글 올리기 성공");
-                    }
-                    Log.d("sasdfasdfa", String.valueOf(it.code()));
-                }, it -> Log.e("sadfas", String.valueOf(it.getCause()))));
+        if (adImageUri.getValue() != null) {
+            Log.d("sfds","sdfs");
+            MultipartBody.Part file = FileUtil.createMultiPart(adImageUri.getValue());
+
+            compositeDisposable.add(writeRepository.postWrite(file, requestAdTitle, requestAdTag, requestAdContent, requestAdPrice, requestAdPostEndDate, requestAdEndDate)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(it -> {
+                        if (it.code() == 200) {
+                            clickComplete.call();
+                            createToastEvent.setValue("글 올리기 성공");
+                        }
+                        Log.d("sasdfasdfa", String.valueOf(it.code()));
+                    }, it -> Log.e("sadfas", String.valueOf(it.getCause()))));
+        }else {
+            Log.d("sfsd","sfsd");
+            createToastEvent.setValue("이미지를 선택해주세요.");
+        }
+
 
     }
 }
