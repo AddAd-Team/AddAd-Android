@@ -49,4 +49,11 @@ public interface Api {
 
     @GET("/api/test/post")
     Single<Response<ResponseFeedInfo>> getFeed();
+
+    @Multipart
+    @PUT("/api/mypage/modifyProfile")
+    Single<Response<Void>> editProfile(@Part MultipartBody.Part file,
+                                       @Part("name") RequestBody profileName,
+                                       @Part("description") RequestBody profileDescription,
+                                       @Part("hashtag") RequestBody profileTag);
 }
