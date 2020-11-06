@@ -1,7 +1,5 @@
 package com.add.ad.entity.response;
 
-import android.util.Log;
-
 import com.google.gson.annotations.SerializedName;
 
 public class ResponseUserInfo {
