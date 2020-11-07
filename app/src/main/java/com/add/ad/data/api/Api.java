@@ -6,6 +6,9 @@ import com.add.ad.entity.response.ResponseUserInfo;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -47,8 +50,8 @@ public interface Api {
     @GET("/api/mypage/profile")
     Single<Response<ResponseUserInfo>> getUserProfile();
 
-    @GET("/api/test/post")
-    Single<Response<ResponseFeedInfo>> getFeed();
+    @GET("/api/feed")
+    Single<Response<ArrayList<ResponseFeedInfo>>> getFeed();
 
     @Multipart
     @PUT("/api/mypage/modifyProfile")
