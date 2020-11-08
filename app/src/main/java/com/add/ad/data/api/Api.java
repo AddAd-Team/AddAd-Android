@@ -50,7 +50,7 @@ public interface Api {
     @GET("/api/mypage/profile")
     Single<Response<ResponseUserInfo>> getUserProfile();
 
-    @GET("/api/feed")
+    @GET("/api/post/feed")
     Single<Response<ArrayList<ResponseFeedInfo>>> getFeed();
 
     @Multipart
