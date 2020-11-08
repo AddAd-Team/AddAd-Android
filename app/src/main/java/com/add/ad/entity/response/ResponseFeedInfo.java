@@ -3,7 +3,7 @@ package com.add.ad.entity.response;
 import com.google.gson.annotations.SerializedName;
 
 public class ResponseFeedInfo {
-    @SerializedName("id")
+    @SerializedName("postId")
     private int feedId;
     @SerializedName("userId")
     private int userId;
@@ -15,9 +15,9 @@ public class ResponseFeedInfo {
     private String feedTitle;
     @SerializedName("price")
     private String feedPrice;
-    @SerializedName("deadline")
+    @SerializedName("postTime")
     private String feedCloseRecruitment;
-    @SerializedName("addline")
+    @SerializedName("deadline")
     private String feedCloseAd;
     @SerializedName("hashtag")
     private String feedTag;
@@ -35,5 +35,45 @@ public class ResponseFeedInfo {
         this.feedCloseAd = feedCloseAd;
         this.feedTag = feedTag;
         this.feedDescription = feedDescription;
+    }
+
+    public int getFeedId() {
+        return feedId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public String getFeedImage() {
+        return feedImage;
+    }
+
+    public String getFeedTitle() {
+        return feedTitle;
+    }
+
+    public String getFeedPrice() {
+        return feedPrice;
+    }
+
+    public String getFeedCloseRecruitment() {
+        return feedCloseRecruitment.substring(4,6) + "월 " + feedCloseRecruitment.substring(6,8) + "일";
+    }
+
+    public String getFeedCloseAd() {
+        return feedCloseAd;
+    }
+
+    public String getFeedTag() {
+        return feedTag;
+    }
+
+    public String getFeedDescription() {
+        return feedDescription;
     }
 }
