@@ -12,13 +12,6 @@ public class ResponseUserInfo {
     @SerializedName("description")
     private  String userDescription;
 
-    public ResponseUserInfo(String userImage, String userName, String userTag, String userDescription){
-        this.userImage = userImage;
-        this.userName = userName;
-        this.userTag = userTag;
-        this.userDescription = userDescription;
-    }
-
     public String getUserImage() {
         return userImage;
     }
