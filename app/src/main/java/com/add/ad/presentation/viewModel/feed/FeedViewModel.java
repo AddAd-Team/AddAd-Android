@@ -24,6 +24,9 @@ public class FeedViewModel extends BaseViewModel {
     CompositeDisposable compositeDisposable;
 
     public MutableLiveData<ArrayList<ResponseFeedInfo>> feedList = new MutableLiveData<>();
+    public MutableLiveData<ResponseFeedInfo> detailFeed = new MutableLiveData<>();
+
+    public SingleLiveEvent<Void> feedDetailEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
@@ -33,21 +36,33 @@ public class FeedViewModel extends BaseViewModel {
     }
 
     public void getFeed() {
-        Log.d("getFeed", String.valueOf(feedList));
         compositeDisposable.add(feedRepository.getFeed()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-                    Log.d("itcode", String.valueOf(it.code()));
-                    if(it.code() == 200){
+                    if (it.code() == 200) {
                         if (it.body() != null) {
                             feedList.setValue(new ArrayList<>(it.body()));
                             feedListEvent.call();
                         }
-                        Log.d("feedList", String.valueOf(feedList.getValue().size()));
                     }
                 }, it -> {
-                    Log.e("errorFeed",it.getMessage());
+                    Log.e("errorFeed", it.getMessage());
+                }));
+    }
+
+    public void getDetailFeed(int position) {
+        Log.d("post", String.valueOf(feedList.getValue().get(position).getFeedId()));
+
+        compositeDisposable.add(feedRepository.getDetailFeed(feedList.getValue().get(position).getFeedId())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    if(it.code() == 200){
+                        detailFeed.setValue(it.body());
+                    }
+                }, it -> {
+                    Log.e("errer", it.getMessage());
                 }));
     }
 }
