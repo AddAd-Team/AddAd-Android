@@ -9,7 +9,6 @@ import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.mypage.MyPageRepository;
-import com.add.ad.entity.ResponseUserInfo;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 

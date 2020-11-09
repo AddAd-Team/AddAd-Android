@@ -1,12 +1,14 @@
 package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
-import com.add.ad.entity.Post;
-import com.add.ad.entity.ResponseUserInfo;
+import com.add.ad.entity.response.ResponseFeedInfo;
+import com.add.ad.entity.response.ResponseUserInfo;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
 
-import io.reactivex.Completable;
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -17,6 +19,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api {
@@ -47,4 +50,17 @@ public interface Api {
 
     @GET("/api/mypage/profile")
     Single<Response<ResponseUserInfo>> getUserProfile();
+
+    @GET("/api/post/feed")
+    Single<Response<ArrayList<ResponseFeedInfo>>> getFeed();
+
+    @Multipart
+    @PUT("/api/mypage/modifyProfile")
+    Single<Response<Void>> editProfile(@Part MultipartBody.Part file,
+                                       @Part("name") RequestBody profileName,
+                                       @Part("description") RequestBody profileDescription,
+                                       @Part("hashtag") RequestBody profileTag);
+
+    @GET("api/post/feed/{postId}")
+    Single<Response<ResponseFeedInfo>> getDetailFeed(@Path("postId") int postId);
 }
