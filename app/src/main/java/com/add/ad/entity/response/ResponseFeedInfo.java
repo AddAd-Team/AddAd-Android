@@ -66,7 +66,7 @@ public class ResponseFeedInfo {
     }
 
     public String getFeedCloseAd() {
-        return feedCloseAd;
+        return feedCloseAd.substring(4,6) + "월 " + feedCloseRecruitment.substring(6,8) + "일";
     }
 
     public String getFeedTag() {
