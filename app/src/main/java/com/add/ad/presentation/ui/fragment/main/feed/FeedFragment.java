@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.add.ad.R;
@@ -45,9 +46,12 @@ public class FeedFragment extends BaseFragment<FragmentFeedBinding> {
         super.onViewCreated(view, savedInstanceState);
 
         feedViewModel.feedListEvent.observe(this, mVoid -> {
-            binding.feedRecyclerView.setAdapter(new FeedAdapter(feedViewModel.feedList.getValue()));
+            binding.feedRecyclerView.setAdapter(new FeedAdapter(feedViewModel.feedList.getValue(),feedViewModel));
             binding.feedRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         });
 
+        feedViewModel.feedDetailEvent.observe(this, mVoid -> {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_FeedDetailFragment);
+        });
     }
 }
