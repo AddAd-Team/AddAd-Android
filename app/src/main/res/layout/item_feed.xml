@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="feedItem"
             type="com.add.ad.entity.response.ResponseFeedInfo" />
+
+        <variable
+            name="vh"
+            type="com.add.ad.presentation.adapter.FeedAdapter.FeedViewHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,11 +30,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                app:setImages="@{feedItem.profileImage}"
                 android:id="@+id/feed_user_profile_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_launcher"
+                app:setImages="@{feedItem.profileImage}" />
 
         </androidx.cardview.widget.CardView>
 
@@ -51,12 +56,15 @@
             android:id="@+id/feed_image"
             android:layout_width="match_parent"
             android:layout_height="280dp"
-            app:setImages="@{feedItem.feedImage}"
-            android:background="@drawable/ic_sample_feed"
+            android:background="@color/colorMiddleBlack"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(v)->vh.clickImage(v)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_feed_gl_top" />
+            app:layout_constraintTop_toTopOf="@+id/item_feed_gl_top"
+            app:setImages="@{feedItem.feedImage}" />
 
         <TextView
             android:id="@+id/feed_price_tv"
@@ -122,11 +130,11 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="16dp"
             android:background="@color/colorDarkGray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/feed_hashtag_tv" />
 
         <androidx.constraintlayout.widget.Guideline
