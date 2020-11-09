@@ -22,4 +22,9 @@ public class FeedRepositoryImpl implements FeedRepository{
     public Single<Response<ArrayList<ResponseFeedInfo>>> getFeed() {
         return api.getFeed();
     }
+
+    @Override
+    public Single<Response<ResponseFeedInfo>> getDetailFeed(int postId) {
+        return api.getDetailFeed(postId);
+    }
 }

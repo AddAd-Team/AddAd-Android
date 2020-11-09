@@ -11,4 +11,6 @@ import retrofit2.Response;
 
 public interface FeedRepository {
     Single<Response<ArrayList<ResponseFeedInfo>>> getFeed();
+
+    Single<Response<ResponseFeedInfo>> getDetailFeed(int postId);
 }
