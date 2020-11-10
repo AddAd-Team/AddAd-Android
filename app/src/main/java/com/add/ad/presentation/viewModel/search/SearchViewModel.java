@@ -1,0 +1,44 @@
+package com.add.ad.presentation.viewModel.search;
+
+import android.util.Log;
+
+import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.MutableLiveData;
+
+import com.add.ad.data.repository.search.SearchRepository;
+import com.add.ad.entity.response.ResponseSearchInfo;
+import com.add.ad.presentation.base.BaseViewModel;
+import com.add.ad.presentation.base.SingleLiveEvent;
+
+import java.util.ArrayList;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+
+public class SearchViewModel extends BaseViewModel {
+    CompositeDisposable compositeDisposable;
+    SearchRepository searchRepository;
+
+    @ViewModelInject
+    public SearchViewModel(CompositeDisposable compositeDisposable, SearchRepository searchRepository) {
+        this.compositeDisposable = compositeDisposable;
+        this.searchRepository = searchRepository;
+    }
+
+    public MutableLiveData<ArrayList<ResponseSearchInfo>> searchList = new MutableLiveData<>();
+    public SingleLiveEvent<Void> searchListEvent = new SingleLiveEvent<>();
+
+    public void getCreatorList() {
+        compositeDisposable.add(searchRepository.getCreators(0)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    Log.d("code", String.valueOf(it.code()));
+                    searchList.setValue(it.body());
+                    searchListEvent.call();
+                }, it -> {
+                    Log.e("error", it.getMessage());
+                }));
+    }
+}
