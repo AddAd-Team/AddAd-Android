@@ -70,6 +70,6 @@ public interface Api {
     Single<Response<ArrayList<ResponseSearchInfo>>> getCreator(@Query("page") int pageId);
 
     @GET("api/search/name")
-    Single<Response<ResponseSearchInfo>> searchCreator(@Query("page") int pageId,
+    Single<Response<ArrayList<ResponseSearchInfo>>> searchCreator(@Query("page") int pageId,
                                                        @Query("name") String searchName);
 }
