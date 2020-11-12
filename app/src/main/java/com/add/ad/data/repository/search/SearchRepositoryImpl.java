@@ -22,4 +22,9 @@ public class SearchRepositoryImpl implements SearchRepository{
     public Single<Response<ArrayList<ResponseSearchInfo>>> getCreators(int pageId) {
         return api.getCreator(pageId);
     }
+
+    @Override
+    public Single<Response<ArrayList<ResponseSearchInfo>>> searchCreator(int pageId, String searchName) {
+        return api.searchCreator(pageId, searchName);
+    }
 }

@@ -9,4 +9,6 @@ import retrofit2.Response;
 
 public interface SearchRepository {
     Single<Response<ArrayList<ResponseSearchInfo>>> getCreators(int pageId);
+
+    Single<Response<ArrayList<ResponseSearchInfo>>> searchCreator(int pageId, String searchName);
 }
