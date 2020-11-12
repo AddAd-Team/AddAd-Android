@@ -26,6 +26,7 @@ public class SearchViewModel extends BaseViewModel {
         this.searchRepository = searchRepository;
     }
 
+    public MutableLiveData<String> searchEt = new MutableLiveData<>(" ");
     public MutableLiveData<ArrayList<ResponseSearchInfo>> searchList = new MutableLiveData<>();
     public SingleLiveEvent<Void> searchListEvent = new SingleLiveEvent<>();
 
@@ -37,6 +38,20 @@ public class SearchViewModel extends BaseViewModel {
                     Log.d("code", String.valueOf(it.code()));
                     searchList.setValue(it.body());
                     searchListEvent.call();
+                }, it -> {
+                    Log.e("error", it.getMessage());
+                }));
+    }
+
+    public void searchCreator() {
+        compositeDisposable.add(searchRepository.searchCreator(0, searchEt.getValue())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    if(it.code() == 200){
+                        searchList.setValue(it.body());
+                        searchListEvent.call();
+                    }
                 }, it -> {
                     Log.e("error", it.getMessage());
                 }));
