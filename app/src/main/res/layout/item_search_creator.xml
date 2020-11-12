@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="searchItem"
             type="com.add.ad.entity.response.ResponseSearchInfo" />
@@ -27,11 +28,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                app:setImages="@{searchItem.profileImage}"
                 android:id="@+id/search_creator_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_launcher"
+                app:setImages="@{searchItem.profileImage}" />
 
         </androidx.cardview.widget.CardView>
 
@@ -39,8 +40,8 @@
             android:id="@+id/search_creator_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanskr_regular"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
             android:text="@{searchItem.userName}"
             android:textColor="@color/colorWhite"
@@ -54,12 +55,12 @@
             android:id="@+id/search_creator_tag_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
             android:text="@{searchItem.userTag}"
             android:textColor="@color/colorGray"
             android:textSize="15sp"
-            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView4"
             app:layout_constraintTop_toBottomOf="@+id/search_creator_name_tv" />
@@ -68,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorDarkGray"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/search_creator_gl_left"
