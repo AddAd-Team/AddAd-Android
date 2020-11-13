@@ -27,7 +27,7 @@ public class ProfileViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> isEdit = new MutableLiveData<>(false);
 
     public MutableLiveData<ResponseUserInfo> userProfile = new MutableLiveData<>();
-    public MutableLiveData<String> profileImageUri = new MutableLiveData<>();
+    public MutableLiveData<String> profileImageUri = new MutableLiveData<>(" ");
     public MutableLiveData<String> profileNameEt = new MutableLiveData<>();
     public MutableLiveData<String> profileTagEt = new MutableLiveData<>();
     public MutableLiveData<String> profileDescriptionEt = new MutableLiveData<>();
