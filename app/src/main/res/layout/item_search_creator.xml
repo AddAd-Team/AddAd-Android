@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="vh"
+            type="com.add.ad.presentation.adapter.SearchAdapter.SearchViewHolder" />
+
+        <variable
             name="searchItem"
             type="com.add.ad.entity.response.ResponseSearchInfo" />
     </data>
@@ -13,7 +17,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTopBlack">
+        android:background="@color/colorTopBlack"
+        android:onClick="@{(v)->vh.clickCreator(v)}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
