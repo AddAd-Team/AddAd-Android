@@ -10,6 +10,8 @@
 
         <item name="colorAccent">@color/colorOrange</item>
         <item name="colorControlNormal">@color/colorWhite</item>
+
+        <item name="android:colorControlHighlight">@color/colorGray</item>
     </style>
 
 </resources>
