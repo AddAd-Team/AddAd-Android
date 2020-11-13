@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.add.ad.R;
@@ -51,6 +52,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
             binding.searchCreatorRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
             LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
             binding.searchCreatorTagRecyclerView.setAdapter(new SearchTagAdapter(TagList.getTagList(),searchViewModel));
             binding.searchCreatorTagRecyclerView.setLayoutManager(horizontalLayoutManager);
         });
@@ -63,6 +65,10 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
                 searchViewModel.searchCreator();
             }
             return false;
+        });
+
+        searchViewModel.searchDetailEvent.observe(this, mVoid -> {
+            Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_VisitProfileFragment);
         });
     }
 }
