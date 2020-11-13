@@ -1,6 +1,7 @@
 package com.add.ad.presentation.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -56,8 +57,13 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         void bind(ResponseSearchInfo item, int position) {
             this.position = position;
             this.item = item;
+            binding.setVh(this);
             binding.setSearchItem(item);
         }
 
+        public void clickCreator(View v){
+            searchViewModel.searchDetailCreator(position);
+            searchViewModel.searchDetailEvent.call();
+        }
     }
 }
