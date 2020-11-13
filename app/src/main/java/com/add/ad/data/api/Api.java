@@ -2,10 +2,12 @@ package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.response.ResponseFeedInfo;
+import com.add.ad.entity.response.ResponseSearchInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,4 +65,18 @@ public interface Api {
 
     @GET("api/post/feed/{postId}")
     Single<Response<ResponseFeedInfo>> getDetailFeed(@Path("postId") int postId);
+
+    @GET("api/search/basic/")
+    Single<Response<ArrayList<ResponseSearchInfo>>> getCreator(@Query("page") int pageId);
+
+    @GET("api/search/name")
+    Single<Response<ArrayList<ResponseSearchInfo>>> searchCreator(@Query("page") int pageId,
+                                                       @Query("name") String searchName);
+
+    @GET("api/search/tag")
+    Single<Response<ArrayList<ResponseSearchInfo>>> searchTag(@Query("page") int pageId,
+                                                              @Query("tag") String searchTag);
+
+    @GET("/api/search/user")
+    Single<Response<ResponseSearchInfo>> getDetailCreator(@Query("id") int userId);
 }

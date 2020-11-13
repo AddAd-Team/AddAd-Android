@@ -39,7 +39,9 @@ public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
         binding.setVm(profileViewModel);
+
         profileViewModel.getMyProfile();
+        profileViewModel.isEdit.setValue(false);
 
         return v;
     }
@@ -58,9 +60,9 @@ public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
             binding.myProfileIntroduceTv.setVisibility(View.INVISIBLE);
             binding.myProfileEditTv.setText("완료");
 
-            binding.myProfileUserNameEt.setText(profileViewModel.profileName.getValue());
-            binding.myProfileIntroduceEt.setText(profileViewModel.profileDescription.getValue());
-            binding.myProfileTagEt.setText(profileViewModel.profileTag.getValue());
+            binding.myProfileUserNameEt.setText(profileViewModel.userProfile.getValue().getUserName());
+            binding.myProfileIntroduceEt.setText(profileViewModel.userProfile.getValue().getUserDescription());
+            binding.myProfileTagEt.setText(profileViewModel.userProfile.getValue().getUserTag());
         });
 
         profileViewModel.profileEditCompleteEvent.observe(this, mVoid ->{
