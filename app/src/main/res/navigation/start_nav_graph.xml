@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_MainFragment_to_FeedDetailFragment"
             app:destination="@id/feedDetailFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_VisitProfileFragment"
+            app:destination="@id/visitProfileFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
