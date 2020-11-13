@@ -13,7 +13,7 @@ public class BasicBindingAdapter {
     public static void setImage(ImageView image, String url){
         try{
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.color.colorGray);
+            requestOptions.placeholder(R.drawable.ic_profile);
 
             Glide.with(image.getContext())
                     .setDefaultRequestOptions(requestOptions)
