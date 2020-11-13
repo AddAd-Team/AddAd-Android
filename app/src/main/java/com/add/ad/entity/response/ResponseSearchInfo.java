@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 public class ResponseSearchInfo {
     @SerializedName("id")
     private int userId;
+    @SerializedName("email")
+    private String userEmail;
+    @SerializedName("description")
+    private String userDescription;
     @SerializedName("profileImg")
     private String profileImage;
     @SerializedName("name")
@@ -12,10 +16,18 @@ public class ResponseSearchInfo {
     @SerializedName("hashtag")
     private String userTag;
 
-    public ResponseSearchInfo(int userId) {
-        this.userId = userId;
+    public int getUserId() {
+        return userId;
     }
-    
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getUserDescription() {
+        return userDescription;
+    }
+
     public String getProfileImage() {
         return profileImage;
     }
