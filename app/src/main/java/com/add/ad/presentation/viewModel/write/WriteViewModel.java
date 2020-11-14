@@ -57,7 +57,7 @@ public class WriteViewModel extends BaseViewModel {
     public void clickNext() {
         if (adTitle.getValue() != null && adTag.getValue() != null && adContent.getValue() != null) {
             clickNextEvent.call();
-        }else createToastEvent.setValue("빈칸을 모두 채워주세요");
+        } else createToastEvent.setValue("빈칸을 모두 채워주세요");
     }
 
     public void selectImage() {
@@ -65,6 +65,7 @@ public class WriteViewModel extends BaseViewModel {
     }
 
     public void selectComplete() {
+        createProgressEvent.call();
         String postEndDate = postEndYear.getValue() + postEndMonth.getValue() + postEndDay.getValue();
         String adEndDate = adEndYear.getValue() + adEndMonth.getValue() + adEndDay.getValue();
 
@@ -83,10 +84,14 @@ public class WriteViewModel extends BaseViewModel {
                     .subscribeOn(Schedulers.io())
                     .subscribe(it -> {
                         if (it.code() == 200) {
+                            dismissProgressEvent.call();
                             clickComplete.call();
                             createToastEvent.setValue("글 올리기 성공");
                         }
-                    }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
+                    }, it -> {
+                        dismissProgressEvent.call();
+                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                    }));
         } else {
             createToastEvent.setValue("이미지를 선택해주세요.");
         }
