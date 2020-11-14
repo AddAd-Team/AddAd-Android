@@ -37,13 +37,15 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     public void login() {
+        createProgressEvent.call();
         Auth auth = new Auth(userId.getValue(), userPassword.getValue());
 
         compositeDisposable.add(
                 authRepository.signIn(auth)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe(it -> loginSuccess(it), t -> loginFail(t)));
+                        .subscribe(it -> loginSuccess(it)
+                                , t -> loginFail(t)));
 
     }
 
@@ -53,17 +55,19 @@ public class LoginViewModel extends BaseViewModel {
             sharedPref.saveToken(data.body() != null ? data.body().getAccessToken() : null, true);
             sharedPref.saveToken(data.body() != null ? data.body().getRefreshToken() : null, false);
             startMain.call();
+            dismissProgressEvent.call();
             createToastEvent.setValue("로그인 성공");
         } else {
             pwErrorEvent.setValue("비밀번호가 일치하지 않습니다.");
         }
     }
 
-    public void goRegister(){
+    public void goRegister() {
         startRegister.call();
     }
 
     private void loginFail(Throwable t) {
+        dismissProgressEvent.call();
         createToastEvent.setValue(t.getLocalizedMessage());
     }
 }
