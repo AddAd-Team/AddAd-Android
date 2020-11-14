@@ -42,9 +42,7 @@ public class SearchViewModel extends BaseViewModel {
                 .subscribe(it -> {
                     searchList.setValue(it.body());
                     searchListEvent.call();
-                }, it -> {
-                    createToastEvent.setValue("알 수 없는 오류가 발생했습니다.");
-                }));
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
     }
 
     public void searchCreator() {
@@ -56,9 +54,7 @@ public class SearchViewModel extends BaseViewModel {
                         searchList.setValue(it.body());
                         searchListEvent.call();
                     }
-                }, it -> {
-                    createToastEvent.setValue("알 수 없는 오류가 발생했습니다.");
-                }));
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
     }
 
     public void searchTag(int position) {
@@ -72,9 +68,7 @@ public class SearchViewModel extends BaseViewModel {
                             searchListEvent.call();
                         }
                     }
-                }, it -> {
-                    createToastEvent.setValue(it.getLocalizedMessage());
-                }));
+                }, it -> createToastEvent.setValue(it.getLocalizedMessage())));
     }
 
     public void searchDetailCreator(int position) {
@@ -85,8 +79,10 @@ public class SearchViewModel extends BaseViewModel {
                     if(it.code() == 200){
                         detailSearch.setValue(it.body());
                     }
-                }, it -> {
-                    createToastEvent.setValue("알 수 없는 오류가 발생했습니다.");
-                }));
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
+    }
+
+    public void clickBack(){
+        backEvent.call();
     }
 }
