@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
-                app:setImages="@{feedItem.profileImage}" />
+                app:setFeedImages="@{feedItem.profileImage}" />
 
         </androidx.cardview.widget.CardView>
 
@@ -64,7 +64,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/item_feed_gl_top"
-            app:setImages="@{feedItem.feedImage}" />
+            app:setFeedImages="@{feedItem.feedImage}" />
 
         <TextView
             android:id="@+id/feed_price_tv"
