@@ -6,4 +6,5 @@ public abstract class BaseViewModel extends ViewModel {
     public SingleLiveEvent<String> createToastEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> createProgressEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> dismissProgressEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> backEvent = new SingleLiveEvent<>();
 }
