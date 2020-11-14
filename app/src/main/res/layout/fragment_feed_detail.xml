@@ -57,6 +57,8 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:text="@string/back_tv"
+                android:onClick="@{()->vm.clickBack()}"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
