@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.add.ad.presentation.viewModel.search.SearchViewModel" />
@@ -39,8 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
+                android:onClick="@{()->vm.clickBack()}"
                 android:text="@string/back_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
@@ -57,20 +60,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/visit_profile_chat_iamge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:src="@drawable/ic_chat"
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,11 +91,11 @@
                     app:layout_constraintVertical_chainStyle="packed">
 
                     <ImageView
-                        app:setImages="@{vm.detailSearch.profileImage}"
                         android:id="@+id/visit_page_profile_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_sample_profile" />
+                        android:src="@drawable/ic_sample_profile"
+                        app:setImages="@{vm.detailSearch.profileImage}" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -142,9 +131,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="@{vm.detailSearch.userDescription}"
-                    android:layout_marginBottom="8dp"
                     android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toTopOf="@+id/view2"
                     app:layout_constraintEnd_toEndOf="@id/visit_profile_gl_right"
@@ -183,6 +172,7 @@
                     android:id="@+id/visit_profile_email_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:background="@drawable/dark_gray_radius_view"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
@@ -190,7 +180,6 @@
                     android:text="@{@string/visit_email_tv(vm.detailSearch.userEmail)}"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp"
-                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/view3"
                     app:layout_constraintEnd_toStartOf="@+id/visit_profile_gl_right"
                     app:layout_constraintStart_toStartOf="@+id/visit_profile_gl_left"
@@ -215,11 +204,11 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
-                    tools:listitem="@layout/item_visit_profile_feed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/visit_profile_gl_right"
                     app:layout_constraintStart_toStartOf="@+id/visit_profile_gl_left"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView7"
+                    tools:listitem="@layout/item_visit_profile_feed" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/visit_profile_gl_middle1"
