@@ -13,6 +13,7 @@ import androidx.databinding.library.baseAdapters.BR;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.navigation.Navigation;
 
 import com.add.ad.presentation.util.ProgressDialogUtil;
 
@@ -47,6 +48,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, E extends BaseView
         viewModel.createToastEvent.observe(this, it -> toast(it));
         viewModel.createProgressEvent.observe(this, mVoid -> progressDialogUtil.show());
         viewModel.dismissProgressEvent.observe(this, mVoid -> progressDialogUtil.dismiss());
+        viewModel.backEvent.observe(this, mVoid -> Navigation.findNavController(requireView()).popBackStack());
     }
 
     public void setLayout(int layoutId) {
