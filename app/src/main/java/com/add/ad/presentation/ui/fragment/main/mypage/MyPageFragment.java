@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentMyPageBinding;
 import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
 import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
 import com.bumptech.glide.Glide;
@@ -22,29 +24,35 @@ import com.bumptech.glide.request.RequestOptions;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class MyPageFragment extends BaseFragment<FragmentMyPageBinding> {
-    private MyPageViewModel myPageViewModel;
+public class MyPageFragment extends BaseFragment<FragmentMyPageBinding, MyPageViewModel> {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_my_page);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        myPageViewModel = new ViewModelProvider(requireActivity()).get(MyPageViewModel.class);
 
-        binding.setVm(myPageViewModel);
-        myPageViewModel.getProfile();
+        binding.setVm(viewModel);
+        viewModel.getProfile();
 
         return v;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected Class<MyPageViewModel> getViewModelClass() {
+        return MyPageViewModel.class;
+    }
 
-        myPageViewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
-        myPageViewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
-        myPageViewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
-        myPageViewModel.logoutEvent.observe(this, mVoid -> {
+    @Override
+    protected ViewModelStoreOwner getVmOwner() {
+        return requireActivity();
+    }
+
+    @Override
+    protected void observeEvent() {
+        viewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
+        viewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
+        viewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
+        viewModel.logoutEvent.observe(this, mVoid -> {
             LogoutDialogFragment logoutDialogFragment = new LogoutDialogFragment();
             logoutDialogFragment.show(requireActivity().getSupportFragmentManager(), "LogoutDialogFragment");
         });
