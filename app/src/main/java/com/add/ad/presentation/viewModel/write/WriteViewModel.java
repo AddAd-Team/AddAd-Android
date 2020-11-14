@@ -55,7 +55,9 @@ public class WriteViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> selectImageEvent = new SingleLiveEvent<>();
 
     public void clickNext() {
-        clickNextEvent.call();
+        if (adTitle.getValue() != null && adTag.getValue() != null && adContent.getValue() != null) {
+            clickNextEvent.call();
+        }else createToastEvent.setValue("빈칸을 모두 채워주세요");
     }
 
     public void selectImage() {
@@ -90,7 +92,7 @@ public class WriteViewModel extends BaseViewModel {
         }
     }
 
-    public void clickBack(){
+    public void clickBack() {
         backEvent.call();
     }
 }
