@@ -57,6 +57,8 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:text="@string/back_tv"
+                android:onClick="@{()->vm.clickBack()}"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +122,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/feed_detail_gl_top"
-                    app:setImages="@{vm.detailFeed.feedImage}" />
+                    app:setFeedImages="@{vm.detailFeed.feedImage}" />
 
                 <TextView
                     android:id="@+id/feed_detail_tag_tv"

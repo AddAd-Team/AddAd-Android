@@ -63,6 +63,7 @@ public class ProfileViewModel extends BaseViewModel {
     }
 
     public void  editProfile() {
+        createProgressEvent.call();
         RequestBody requestProfileName = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(profileNameEt.getValue()));
         RequestBody requestProfileTag = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(profileTagEt.getValue()));
         RequestBody requestProfileDescription = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(profileDescriptionEt.getValue()));
@@ -74,14 +75,22 @@ public class ProfileViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
                     if (it.code() == 200) {
+                        dismissProgressEvent.call();
                         profileEditCompleteEvent.call();
                         createToastEvent.setValue("변경 성공");
                         isEdit.setValue(false);
                     }
-                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
+                }, it -> {
+                    dismissProgressEvent.call();
+                    createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                }));
     }
 
     public void clickImageEdit() {
         profileImageEditEvent.call();
+    }
+
+    public void clickBack() {
+        backEvent.call();
     }
 }

@@ -51,5 +51,5 @@
     //write
     <string name="write_tv">글쓰기</string>
     <string name="complete_tv">완료</string>
-    <string name="visit_email_tv">Email : underline_studio@naver.com</string>
+    <string name="visit_email_tv">Email : %s</string>
 </resources>

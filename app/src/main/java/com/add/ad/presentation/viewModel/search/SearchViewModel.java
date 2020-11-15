@@ -40,12 +40,9 @@ public class SearchViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-                    Log.d("code", String.valueOf(it.code()));
                     searchList.setValue(it.body());
                     searchListEvent.call();
-                }, it -> {
-                    Log.e("error", it.getMessage());
-                }));
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
     }
 
     public void searchCreator() {
@@ -57,13 +54,10 @@ public class SearchViewModel extends BaseViewModel {
                         searchList.setValue(it.body());
                         searchListEvent.call();
                     }
-                }, it -> {
-                    Log.e("error", it.getMessage());
-                }));
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
     }
 
     public void searchTag(int position) {
-        Log.d("position", TagList.getTagList().get(position));
         compositeDisposable.add(searchRepository.searchTag(0, TagList.getTagList().get(position))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -74,9 +68,7 @@ public class SearchViewModel extends BaseViewModel {
                             searchListEvent.call();
                         }
                     }
-                }, it -> {
-                    createToastEvent.setValue(it.getLocalizedMessage());
-                }));
+                }, it -> createToastEvent.setValue(it.getLocalizedMessage())));
     }
 
     public void searchDetailCreator(int position) {
@@ -84,13 +76,13 @@ public class SearchViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-                    Log.d("detailCode", String.valueOf(it.code()));
                     if(it.code() == 200){
                         detailSearch.setValue(it.body());
-                        Log.d("detailCodeasdfasdfasdf", detailSearch.getValue().getUserEmail() + "dfadfa");
                     }
-                }, it -> {
-                    Log.e("detailError", it.getMessage());
-                }));
+                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
+    }
+
+    public void clickBack(){
+        backEvent.call();
     }
 }

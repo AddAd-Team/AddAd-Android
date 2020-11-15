@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -18,6 +19,7 @@ import com.add.ad.entity.response.ResponseFeedInfo;
 // import com.add.ad.presentation.adapter.FeedAdapter;
 import com.add.ad.presentation.adapter.FeedAdapter;
 import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.viewModel.feed.FeedViewModel;
 
 import java.util.ArrayList;
@@ -25,33 +27,38 @@ import java.util.ArrayList;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class FeedFragment extends BaseFragment<FragmentFeedBinding> {
-    private FeedViewModel feedViewModel;
+public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedViewModel> {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_feed);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        feedViewModel = new ViewModelProvider(requireActivity()).get(FeedViewModel.class);
 
-        binding.setVm(feedViewModel);
-        feedViewModel.getFeed();
-
+        viewModel.getFeed();
 
         return v;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected Class<FeedViewModel> getViewModelClass() {
+        return FeedViewModel.class;
+    }
 
-        feedViewModel.feedListEvent.observe(this, mVoid -> {
-            binding.feedRecyclerView.setAdapter(new FeedAdapter(feedViewModel.feedList.getValue(),feedViewModel));
+    @Override
+    protected ViewModelStoreOwner getVmOwner() {
+        return this;
+    }
+
+    @Override
+    protected void observeEvent() {
+        viewModel.feedListEvent.observe(this, mVoid -> {
+            binding.feedRecyclerView.setAdapter(new FeedAdapter(viewModel.feedList.getValue(),viewModel));
             binding.feedRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         });
 
-        feedViewModel.feedDetailEvent.observe(this, mVoid -> {
+        viewModel.feedDetailEvent.observe(this, mVoid -> {
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_FeedDetailFragment);
         });
     }
+
 }
