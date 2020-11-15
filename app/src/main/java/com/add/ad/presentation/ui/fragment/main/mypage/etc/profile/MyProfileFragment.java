@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.add.ad.R;
 import com.add.ad.databinding.FragmentMyPageBinding;
 import com.add.ad.databinding.FragmentMyProfileBinding;
 import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.util.FileUtil;
 import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
 import com.add.ad.presentation.viewModel.mypage.profile.ProfileViewModel;
@@ -30,24 +32,34 @@ import static android.app.Activity.RESULT_OK;
 import static splitties.toast.ToastKt.toast;
 
 @AndroidEntryPoint
-public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
-    private ProfileViewModel profileViewModel;
+public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding, ProfileViewModel> {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_my_profile);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
-        binding.setVm(profileViewModel);
-        profileViewModel.getMyProfile();
+
+        binding.setVm(viewModel);
+
+        viewModel.getMyProfile();
+        viewModel.isEdit.setValue(false);
 
         return v;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        profileViewModel.profileEditEvent.observe(this, mVoid -> {
+    protected Class<ProfileViewModel> getViewModelClass() {
+        return ProfileViewModel.class;
+    }
+
+    @Override
+    protected ViewModelStoreOwner getVmOwner() {
+        return this;
+    }
+
+    @Override
+    protected void observeEvent() {
+        viewModel.profileEditEvent.observe(this, mVoid -> {
             binding.constraintLayout4.setVisibility(View.VISIBLE);
             binding.textView24.setVisibility(View.VISIBLE);
             binding.myProfileUserNameEt.setVisibility(View.VISIBLE);
@@ -58,12 +70,12 @@ public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
             binding.myProfileIntroduceTv.setVisibility(View.INVISIBLE);
             binding.myProfileEditTv.setText("완료");
 
-            binding.myProfileUserNameEt.setText(profileViewModel.profileName.getValue());
-            binding.myProfileIntroduceEt.setText(profileViewModel.profileDescription.getValue());
-            binding.myProfileTagEt.setText(profileViewModel.profileTag.getValue());
+            binding.myProfileUserNameEt.setText(viewModel.userProfile.getValue().getUserName());
+            binding.myProfileIntroduceEt.setText(viewModel.userProfile.getValue().getUserDescription());
+            binding.myProfileTagEt.setText(viewModel.userProfile.getValue().getUserTag());
         });
 
-        profileViewModel.profileEditCompleteEvent.observe(this, mVoid ->{
+        viewModel.profileEditCompleteEvent.observe(this, mVoid ->{
             binding.constraintLayout4.setVisibility(View.INVISIBLE);
             binding.textView24.setVisibility(View.INVISIBLE);
             binding.myProfileUserNameEt.setVisibility(View.INVISIBLE);
@@ -74,16 +86,15 @@ public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
             binding.myProfileIntroduceTv.setVisibility(View.VISIBLE);
             binding.myProfileEditTv.setText("다음");
 
-            profileViewModel.getMyProfile();
+            viewModel.getMyProfile();
         });
 
-        profileViewModel.profileImageEditEvent.observe(this, mVoid -> {
+        viewModel.profileImageEditEvent.observe(this, mVoid -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
             startActivityForResult(intent, 200);
         });
 
-        profileViewModel.createToastEvent.observe(this, it -> toast(it));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -94,7 +105,7 @@ public class MyProfileFragment extends BaseFragment<FragmentMyProfileBinding> {
 
             binding.myPageProfileImage.setImageURI(selectedImageUri);
 
-            profileViewModel.profileImageUri.setValue(FileUtil.uriToFile(selectedImageUri, requireContext()));
+            viewModel.profileImageUri.setValue(FileUtil.uriToFile(selectedImageUri, requireContext()));
         }
     }
 }

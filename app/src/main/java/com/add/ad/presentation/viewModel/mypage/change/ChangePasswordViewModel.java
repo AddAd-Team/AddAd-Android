@@ -1,7 +1,5 @@
 package com.add.ad.presentation.viewModel.mypage.change;
 
-import android.util.Log;
-
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
@@ -31,7 +29,6 @@ public class ChangePasswordViewModel extends BaseViewModel {
     }
 
     public void sendNewPassword() {
-        Log.d("sdf","sdfsdf");
         if(newPassword.getValue() != null && newPasswordCheck.getValue() != null){
             if (newPassword.getValue().equals(newPasswordCheck.getValue())) {
                 compositeDisposable.add(myPageRepository.changePassword(newPassword.getValue())
@@ -46,5 +43,9 @@ public class ChangePasswordViewModel extends BaseViewModel {
 
             } else createToastEvent.setValue("비밀번호가 일치하지 않습니다.");
         } else createToastEvent.setValue("빈칸을 채워주세요.");
+    }
+
+    public void clickBack() {
+        backEvent.call();
     }
 }

@@ -13,7 +13,7 @@ public class BasicBindingAdapter {
     public static void setImage(ImageView image, String url){
         try{
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.color.colorGray);
+            requestOptions.placeholder(R.drawable.ic_profile);
 
             Glide.with(image.getContext())
                     .setDefaultRequestOptions(requestOptions)
@@ -22,6 +22,20 @@ public class BasicBindingAdapter {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
 
+    @BindingAdapter("setFeedImages")
+    public static void setFeedImage(ImageView image, String url){
+        try{
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.color.colorDarkGray);
+
+            Glide.with(image.getContext())
+                    .setDefaultRequestOptions(requestOptions)
+                    .load(url)
+                    .into(image);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
