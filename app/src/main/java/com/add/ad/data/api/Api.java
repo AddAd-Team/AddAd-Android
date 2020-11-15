@@ -16,6 +16,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -79,4 +80,10 @@ public interface Api {
 
     @GET("/api/search/user")
     Single<Response<ResponseSearchInfo>> getDetailCreator(@Query("id") int userId);
+
+    @POST("/api/like/{postId}")
+    Single<Void> postLike(@Path("postId") int postId);
+
+    @DELETE("/api/like/{postId}")
+    Single<Void> deleteLike(@Path("postId") int postId);
 }
