@@ -60,6 +60,7 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="@{(v)->vh.clickImage(v)}"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -118,14 +119,15 @@
 
         <CheckBox
             android:id="@+id/feed_like_btn"
-            android:layout_width="24dp"
-            android:layout_height="20dp"
-            android:background="@drawable/ic_heart"
+            android:layout_width="22dp"
+            android:layout_height="19dp"
+            android:background="@drawable/custom_checkbox"
             android:button="@null"
-            android:checked="false"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:checked="@{feedItem.feedLikes}"
+            android:onClick="@{(v)->vh.clickLike(v)}"
+            app:layout_constraintBottom_toBottomOf="@id/feed_price_tv"
             app:layout_constraintEnd_toStartOf="@+id/item_feed_gl_right"
-            app:layout_constraintTop_toBottomOf="@+id/feed_image" />
+            app:layout_constraintTop_toBottomOf="@+id/feed_price_tv" />
 
         <View
             android:layout_width="match_parent"

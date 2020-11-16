@@ -27,4 +27,24 @@ public class FeedRepositoryImpl implements FeedRepository{
     public Single<Response<ResponseFeedInfo>> getDetailFeed(int postId) {
         return api.getDetailFeed(postId);
     }
+
+    @Override
+    public Single<Response<Void>> postLike(int postId) {
+        return api.postLike(postId);
+    }
+
+    @Override
+    public Single<Response<Void>> deleteLike(int postId) {
+        return api.deleteLike(postId);
+    }
+
+    @Override
+    public Single<Response<Void>> postApply(int postId) {
+        return api.postApply(postId);
+    }
+
+    @Override
+    public Single<Response<Void>> deleteApply(int postId) {
+        return api.deleteApply(postId);
+    }
 }

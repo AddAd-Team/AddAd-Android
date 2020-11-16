@@ -1,5 +1,7 @@
 package com.add.ad.presentation.viewModel.feed;
 
+import android.util.Log;
+
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
@@ -22,6 +24,8 @@ public class FeedViewModel extends BaseViewModel {
 
     public MutableLiveData<ArrayList<ResponseFeedInfo>> feedList = new MutableLiveData<>();
     public MutableLiveData<ResponseFeedInfo> detailFeed = new MutableLiveData<>();
+    public MutableLiveData<Boolean> likeClickable = new MutableLiveData<>(false);
+    public MutableLiveData<Boolean> application = new MutableLiveData<>(false);
 
     public SingleLiveEvent<Void> feedDetailEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
@@ -53,11 +57,63 @@ public class FeedViewModel extends BaseViewModel {
                 .subscribe(it -> {
                     if (it.code() == 200) {
                         detailFeed.setValue(it.body());
+                        application.setValue(detailFeed.getValue().getApplied());
                     }
                 }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
     }
 
-    public void clickBack(){
+    public void clickBack() {
         backEvent.call();
+    }
+
+    public void postLikes(int position) {
+        compositeDisposable.add(feedRepository.postLike(feedList.getValue().get(position).getFeedId())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    Log.d("success Post", String.valueOf(it.code()));
+                }, it -> {
+                    createToastEvent.setValue(it.getMessage());
+                }));
+    }
+
+    public void deleteLikes(int position) {
+        compositeDisposable.add(feedRepository.deleteLike(feedList.getValue().get(position).getFeedId())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    Log.d("success DELETE", String.valueOf(it.code()));
+                }, it -> {
+                    createToastEvent.setValue(it.getMessage());
+                }));
+    }
+
+    public void clickApplyBtn() {
+        application.setValue(!application.getValue());
+
+        Log.d("success Apply", String.valueOf(application.getValue()));
+
+        if (application.getValue()) {
+            compositeDisposable.add(feedRepository.postApply(detailFeed.getValue().getFeedId())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(it -> {
+                        Log.d("success Apply", String.valueOf(it.code()));
+                    }, it -> {
+                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                        application.setValue(!application.getValue());
+                    }));
+        } else {
+            Log.d("cancel", "asfsadfas");
+            compositeDisposable.add(feedRepository.deleteApply(detailFeed.getValue().getFeedId())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(it -> {
+                        Log.d("delete Apply", String.valueOf(it.code()));
+                    }, it -> {
+                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                        application.setValue(!application.getValue());
+                    }));
+        }
     }
 }

@@ -16,8 +16,8 @@ import com.add.ad.presentation.viewModel.search.SearchViewModel;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private ArrayList<ResponseSearchInfo> searchItems;
+public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private final ArrayList<ResponseSearchInfo> searchItems;
     SearchViewModel searchViewModel;
 
     public SearchAdapter(ArrayList<ResponseSearchInfo> searchItems, SearchViewModel searchViewModel) {
@@ -28,19 +28,20 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemSearchCreatorBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_search_creator ,parent,false);
+        ItemSearchCreatorBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_search_creator, parent, false);
         return new SearchAdapter.SearchViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(holder instanceof SearchAdapter.SearchViewHolder) {
+        if (holder instanceof SearchAdapter.SearchViewHolder) {
             ((SearchAdapter.SearchViewHolder) holder).bind(searchItems.get(position), position);
         }
     }
 
     @Override
     public int getItemCount() {
+        searchViewModel.searchResult.setValue(searchItems.size() != 0);
         return Objects.requireNonNull(searchItems).size();
     }
 
@@ -61,7 +62,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             binding.setSearchItem(item);
         }
 
-        public void clickCreator(View v){
+        public void clickCreator(View v) {
             searchViewModel.searchDetailCreator(position);
             searchViewModel.searchDetailEvent.call();
         }

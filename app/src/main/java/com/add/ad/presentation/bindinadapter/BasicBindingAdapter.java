@@ -1,6 +1,8 @@
 package com.add.ad.presentation.bindinadapter;
 
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
@@ -36,6 +38,15 @@ public class BasicBindingAdapter {
                     .into(image);
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    @BindingAdapter("setItemVisibility")
+    public static void setItemVisibility(TextView textView, Boolean bool){
+        if(bool){
+            textView.setVisibility(View.GONE);
+        }else {
+            textView.setVisibility(View.VISIBLE);
         }
     }
 }

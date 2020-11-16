@@ -46,7 +46,7 @@ public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedViewMode
 
     @Override
     protected ViewModelStoreOwner getVmOwner() {
-        return this;
+        return requireActivity();
     }
 
     @Override
