@@ -42,4 +42,9 @@ public class FeedRepositoryImpl implements FeedRepository{
     public Single<Response<Void>> postApply(int postId) {
         return api.postApply(postId);
     }
+
+    @Override
+    public Single<Response<Void>> deleteApply(int postId) {
+        return api.deleteApply(postId);
+    }
 }

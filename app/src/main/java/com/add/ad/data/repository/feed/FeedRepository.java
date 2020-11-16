@@ -22,4 +22,6 @@ public interface FeedRepository {
     Single<Response<Void>> deleteLike(int postId);
 
     Single<Response<Void>> postApply(int postId);
+
+    Single<Response<Void>> deleteApply(int postId);
 }
