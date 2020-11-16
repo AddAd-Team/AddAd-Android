@@ -89,4 +89,7 @@ public interface Api {
 
     @POST("/api/application/apply/{postId}")
     Single<Response<Void>> postApply(@Path("postId") int postId);
+
+    @DELETE("/api/application/apply/{postId}")
+    Single<Response<Void>> deleteApply(@Path("postId") int postId);
 }
