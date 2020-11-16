@@ -23,18 +23,17 @@ public class ResponseFeedInfo {
     private String feedTag;
     @SerializedName("description")
     private String feedDescription;
+    @SerializedName("likes")
+    private Boolean feedLikes;
+    @SerializedName("application")
+    private Boolean isApplied;
 
-    public ResponseFeedInfo(int feedId, int userId, String profileImage, String feedImage, String feedTitle, String feedPrice, String feedCloseRecruitment, String feedCloseAd, String feedTag, String feedDescription) {
-        this.feedId = feedId;
-        this.userId = userId;
-        this.profileImage = profileImage;
-        this.feedImage = feedImage;
-        this.feedTitle = feedTitle;
-        this.feedPrice = feedPrice;
-        this.feedCloseRecruitment = feedCloseRecruitment;
-        this.feedCloseAd = feedCloseAd;
-        this.feedTag = feedTag;
-        this.feedDescription = feedDescription;
+    public Boolean getFeedLikes() {
+        return feedLikes;
+    }
+
+    public Boolean getApplied() {
+        return isApplied;
     }
 
     public int getFeedId() {
@@ -66,7 +65,7 @@ public class ResponseFeedInfo {
     }
 
     public String getFeedCloseAd() {
-        return feedCloseAd.substring(4,6) + "월 " + feedCloseRecruitment.substring(6,8) + "일";
+        return feedCloseAd.substring(4,6) + "월 " + feedCloseAd.substring(6,8) + "일";
     }
 
     public String getFeedTag() {
