@@ -5,17 +5,27 @@
     android:layout_height="140dp"
     android:background="@color/colorTopBlack">
 
-        <ImageView
-            android:id="@+id/item_visit_profile_feed_image"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/item_visit_profile_feed_card"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/item_visit_profile_feed_gl_middle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/colorTopBlack"
-            android:src="@drawable/ic_sample_feed" />
+            android:backgroundTint="@color/colorMiddleBlack">
+
+            <ImageView
+                android:id="@+id/item_visit_profile_feed_image"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_sample_feed"
+                android:layout_height="match_parent"/>
+
+        </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/item_visit_profile_feed_title_tv"
