@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_MainFragment_to_VisitProfileFragment"
             app:destination="@id/visitProfileFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_AdLikeFragment"
+            app:destination="@id/adLikeFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -155,4 +158,9 @@
         android:name="com.add.ad.presentation.ui.fragment.main.feed.FeedDetailFragment"
         android:label="fragment_feed_detail"
         tools:layout="@layout/fragment_feed_detail" />
+    <fragment
+        android:id="@+id/adLikeFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.like.AdLikeFragment"
+        android:label="fragment_ad_like"
+        tools:layout="@layout/fragment_ad_like" />
 </navigation>
