@@ -41,6 +41,7 @@
 
     //my profile
     <string name="edit_tv">편집</string>
+    <string name="visit_email_tv">Email : %s</string>
 
     //my ad
     <string name="my_ad_manage_tv">관리</string>
@@ -51,5 +52,8 @@
     //write
     <string name="write_tv">글쓰기</string>
     <string name="complete_tv">완료</string>
-    <string name="visit_email_tv">Email : %s</string>
+
+    //detail feed
+    <string name="apply_tv">신청하기</string>
+    <string name="cancel_apply_tv">신청취소</string>
 </resources>
