@@ -82,8 +82,11 @@ public interface Api {
     Single<Response<ResponseSearchInfo>> getDetailCreator(@Query("id") int userId);
 
     @POST("/api/like/{postId}")
-    Single<Void> postLike(@Path("postId") int postId);
+    Single<Response<Void>> postLike(@Path("postId") int postId);
 
     @DELETE("/api/like/{postId}")
-    Single<Void> deleteLike(@Path("postId") int postId);
+    Single<Response<Void>> deleteLike(@Path("postId") int postId);
+
+    @POST("/api/application/apply/{postId}")
+    Single<Response<Void>> postApply(@Path("postId") int postId);
 }
