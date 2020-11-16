@@ -49,6 +49,7 @@ public class MyPageFragment extends BaseFragment<FragmentMyPageBinding, MyPageVi
 
     @Override
     protected void observeEvent() {
+        viewModel.adLikeEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_AdLikeFragment));
         viewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
         viewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
         viewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
