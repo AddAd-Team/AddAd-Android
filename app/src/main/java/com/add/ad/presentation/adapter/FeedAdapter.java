@@ -1,14 +1,11 @@
 package com.add.ad.presentation.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.MutableLiveData;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.add.ad.R;
@@ -31,13 +28,13 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemFeedBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_feed ,parent,false);
+        ItemFeedBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_feed, parent, false);
         return new FeedViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(holder instanceof FeedViewHolder) {
+        if (holder instanceof FeedViewHolder) {
             ((FeedViewHolder) holder).bind(feedItems.get(position), position);
         }
     }
@@ -65,9 +62,20 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding.executePendingBindings();
         }
 
-        public void clickImage(View v){
+        public void clickImage(View v) {
             feedViewModel.feedDetailEvent.call();
             feedViewModel.getDetailFeed(position);
         }
+
+        public void clickLike(View v) {
+            if (binding.feedLikeBtn.isChecked()) {
+                feedViewModel.postLikes(position);
+                feedViewModel.likeClickable.setValue(true);
+            } else {
+                feedViewModel.deleteLikes(position);
+                feedViewModel.likeClickable.setValue(false);
+            }
+        }
+
     }
 }
