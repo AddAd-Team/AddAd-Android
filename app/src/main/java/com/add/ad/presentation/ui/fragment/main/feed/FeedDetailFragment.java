@@ -23,10 +23,8 @@ public class FeedDetailFragment extends BaseFragment<FragmentFeedDetailBinding, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_feed_detail);
-        View v = super.onCreateView(inflater, container, savedInstanceState);
-        viewModel.getFeed();
 
-        return v;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
