@@ -162,5 +162,9 @@
         android:id="@+id/adLikeFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.like.AdLikeFragment"
         android:label="fragment_ad_like"
-        tools:layout="@layout/fragment_ad_like" />
+        tools:layout="@layout/fragment_ad_like" >
+        <action
+            android:id="@+id/action_AdLikeFragment_to_FeedDetailFragment"
+            app:destination="@id/feedDetailFragment"/>
+    </fragment>
 </navigation>
