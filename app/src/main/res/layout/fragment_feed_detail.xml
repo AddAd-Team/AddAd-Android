@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
 
         <variable
             name="vm"
@@ -59,6 +60,7 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:onClick="@{()->vm.clickBack()}"
+                android:padding="4dp"
                 android:text="@string/back_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
@@ -171,10 +173,10 @@
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
-                    android:visibility="@{vm.detailFeed.feedCloseRecruitmentDate > 0 ? View.VISIBLE : View.GONE}"
                     android:text="@{@string/remain_date_tv(vm.detailFeed.feedCloseRecruitmentDate)}"
                     android:textColor="@color/colorOrange"
                     android:textSize="15sp"
+                    android:visibility="@{vm.detailFeed.feedCloseRecruitmentDate > 0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toTopOf="@id/feed_detail_ad_end_date_tv"
                     app:layout_constraintStart_toEndOf="@id/feed_detail_recruit_end_date_tv"
                     app:layout_constraintTop_toBottomOf="@+id/view6" />
@@ -199,10 +201,10 @@
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
-                    android:visibility="@{vm.detailFeed.feedCloseAdDate > 0 ? View.VISIBLE : View.GONE}"
                     android:text="@{@string/remain_date_tv(vm.detailFeed.feedCloseAdDate)}"
                     android:textColor="@color/colorOrange"
                     android:textSize="15sp"
+                    android:visibility="@{vm.detailFeed.feedCloseAdDate > 0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toTopOf="@+id/feed_detail_gl_middle2"
                     app:layout_constraintStart_toEndOf="@+id/feed_detail_ad_end_date_tv"
                     app:layout_constraintTop_toBottomOf="@+id/feed_detail_recruit_end_date_tv" />

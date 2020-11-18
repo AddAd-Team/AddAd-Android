@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.add.ad.presentation.viewModel.write.WriteViewModel" />
@@ -39,10 +40,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:onClick="@{()->vm.clickBack()}"
+                android:padding="4dp"
                 android:text="@string/back_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
@@ -55,10 +57,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="22dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:onClick="@{()-> vm.selectComplete()}"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/complete_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"

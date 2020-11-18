@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.add.ad.presentation.viewModel.mypage.myad.LikeAdViewModel" />
@@ -40,10 +41,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:text="@string/back_tv"
                 android:onClick="@{()->vm.clickBack()}"
+                android:padding="4dp"
+                android:text="@string/back_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -101,36 +104,36 @@
                     android:layout_height="match_parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:listitem="@layout/item_like_ad"
-                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    tools:listitem="@layout/item_like_ad" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView26"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@color/colorDarkGray"-->
-<!--                    android:fontFamily="@font/notosanskr_regular"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:paddingStart="16dp"-->
-<!--                    android:paddingTop="4dp"-->
-<!--                    android:paddingBottom="4dp"-->
-<!--                    android:text="@string/my_ad_finish_tv"-->
-<!--                    android:textColor="@color/colorWhite"-->
-<!--                    android:textSize="14sp"-->
-<!--                    app:layout_constraintBottom_toTopOf="@id/ad_like_finish_recycler_view"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/ad_like_recycler_view" />-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/textView26"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="@color/colorDarkGray"-->
+                <!--                    android:fontFamily="@font/notosanskr_regular"-->
+                <!--                    android:includeFontPadding="false"-->
+                <!--                    android:paddingStart="16dp"-->
+                <!--                    android:paddingTop="4dp"-->
+                <!--                    android:paddingBottom="4dp"-->
+                <!--                    android:text="@string/my_ad_finish_tv"-->
+                <!--                    android:textColor="@color/colorWhite"-->
+                <!--                    android:textSize="14sp"-->
+                <!--                    app:layout_constraintBottom_toTopOf="@id/ad_like_finish_recycler_view"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/ad_like_recycler_view" />-->
 
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:id="@+id/ad_like_finish_recycler_view"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView26"-->
-<!--                    tools:listitem="@layout/item_visit_profile_feed" />-->
+                <!--                <androidx.recyclerview.widget.RecyclerView-->
+                <!--                    android:id="@+id/ad_like_finish_recycler_view"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="0dp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/textView26"-->
+                <!--                    tools:listitem="@layout/item_visit_profile_feed" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
