@@ -37,8 +37,13 @@ public class MyPageRepositoryImpl implements MyPageRepository{
     }
 
     @Override
-    public Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAd() {
-        return api.getLikeAd();
+    public Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAdList() {
+        return api.getLikeAdList();
+    }
+
+    @Override
+    public Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList() {
+        return api.getMyAdList();
     }
 
 }

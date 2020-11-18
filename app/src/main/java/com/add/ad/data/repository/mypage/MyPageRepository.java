@@ -17,5 +17,7 @@ public interface MyPageRepository {
 
     Single<Response<Void>> editProfile(MultipartBody.Part file, RequestBody profileName, RequestBody profileDescription, RequestBody profileTag);
 
-    Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAd();
+    Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAdList();
+
+    Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList();
 }
