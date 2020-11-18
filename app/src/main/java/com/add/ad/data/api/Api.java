@@ -1,6 +1,7 @@
 package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
+import com.add.ad.entity.response.ResponseContactInfo;
 import com.add.ad.entity.response.ResponseFeedInfo;
 import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseSearchInfo;
@@ -96,4 +97,7 @@ public interface Api {
 
     @GET("/api/mypage/likeAd")
     Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAd();
+
+    @GET("/api/contact")
+    Single<Response<ArrayList<ResponseContactInfo>>> getContactList();
 }
