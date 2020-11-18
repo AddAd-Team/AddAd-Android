@@ -61,4 +61,7 @@
     //like ad
     <string name="interest_ad_tv">관심있는 광고</string>
     <string name="remain_date_tv">( %s일 )</string>
+
+    //my ad
+    <string name="apply_list_tv">신청자 목록</string>
 </resources>
