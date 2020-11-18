@@ -2,6 +2,7 @@ package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.response.ResponseFeedInfo;
+import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseSearchInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
 import com.add.ad.entity.Token;
@@ -92,4 +93,7 @@ public interface Api {
 
     @DELETE("/api/application/apply/{postId}")
     Single<Response<Void>> deleteApply(@Path("postId") int postId);
+
+    @GET("/api/mypage/likeAd")
+    Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAd();
 }
