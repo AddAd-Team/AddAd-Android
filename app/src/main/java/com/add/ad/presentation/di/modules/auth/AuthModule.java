@@ -17,10 +17,9 @@ public class AuthModule {
 
     @Provides
     public AuthRepository provideAuthRepo(
-            Api api,
-            SharedPref sharedPref
+            Api api
     ) {
-        return new AuthRepositoryImpl(api, sharedPref);
+        return new AuthRepositoryImpl(api);
     }
 
     @Provides
