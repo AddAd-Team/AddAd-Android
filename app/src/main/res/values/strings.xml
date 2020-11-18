@@ -22,6 +22,7 @@
     <string name="feed_price_tv">금액 : %s만원</string>
     <string name="price_tv">%s 만원</string>
     <string name="feed_end_date_tv">모집마감 : %s</string>
+    <string name="end_date_tv">마감일 : %s</string>
     <string name="ad_end_date_tv">광고마감 : %s</string>
 
     //mypage
