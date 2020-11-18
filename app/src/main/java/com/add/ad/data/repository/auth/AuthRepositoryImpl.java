@@ -1,8 +1,6 @@
 package com.add.ad.data.repository.auth;
 
 import com.add.ad.data.api.Api;
-import com.add.ad.data.local.SharedPref;
-import com.add.ad.data.repository.auth.AuthRepository;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
@@ -14,12 +12,10 @@ import retrofit2.Response;
 
 public class AuthRepositoryImpl implements AuthRepository {
     Api api;
-    SharedPref sharedPref;
 
     @Inject
-    public AuthRepositoryImpl(Api api, SharedPref sharedPref) {
+    public AuthRepositoryImpl(Api api) {
         this.api = api;
-        this.sharedPref = sharedPref;
     }
 
     @Override
