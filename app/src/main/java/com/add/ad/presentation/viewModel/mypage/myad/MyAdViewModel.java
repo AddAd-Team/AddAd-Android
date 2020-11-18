@@ -65,4 +65,8 @@ public class MyAdViewModel extends BaseViewModel {
         }
         return false;
     }
+
+    public void clickBack() {
+        backEvent.call();
+    }
 }
