@@ -53,11 +53,12 @@ public class LoginViewModel extends BaseViewModel {
     private void loginSuccess(Response<Token> data) {
         if (data.code() / 2 == 100) {
             sharedPref.saveToken(data.body() != null ? data.body().getAccessToken() : null, true);
-            sharedPref.saveToken(data.body() != null ? data.body().getRefreshToken() : null, false);
+            sharedPref.saveInfo(data.body() != null ? data.body().getUserInfo() : null, false);
             startMain.call();
             dismissProgressEvent.call();
             createToastEvent.setValue("로그인 성공");
         } else {
+            dismissProgressEvent.call();
             pwErrorEvent.setValue("비밀번호가 일치하지 않습니다.");
         }
     }
