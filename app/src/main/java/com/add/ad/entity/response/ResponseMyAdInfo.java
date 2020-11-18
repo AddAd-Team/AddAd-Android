@@ -3,18 +3,16 @@ package com.add.ad.entity.response;
 import com.google.gson.annotations.SerializedName;
 
 public class ResponseMyAdInfo {
-    private int userId;
+    private int postId;
     private String title;
     private String postImg;
     private String postTime;
     private String recruitmentClosing;
     @SerializedName("hashtag")
     private String hashTag;
-    @SerializedName("userinfo")
-    private String userInfo;
 
     public int getUserId() {
-        return userId;
+        return postId;
     }
 
     public String getTitle() {
@@ -37,7 +35,7 @@ public class ResponseMyAdInfo {
         return hashTag;
     }
 
-    public String getUserInfo() {
-        return userInfo;
+    public int getPostId() {
+        return postId;
     }
 }
