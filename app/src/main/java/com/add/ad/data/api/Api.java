@@ -96,8 +96,11 @@ public interface Api {
     Single<Response<Void>> deleteApply(@Path("postId") int postId);
 
     @GET("/api/mypage/likeAd")
-    Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAd();
+    Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAdList();
 
     @GET("/api/contact")
     Single<Response<ArrayList<ResponseContactInfo>>> getContactList();
+
+    @GET("/api/mypage/adlist")
+    Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList();
 }
