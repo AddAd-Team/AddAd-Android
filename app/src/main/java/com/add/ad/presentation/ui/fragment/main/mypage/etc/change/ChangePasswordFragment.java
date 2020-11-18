@@ -28,11 +28,8 @@ public class ChangePasswordFragment extends BaseFragment<FragmentChangePasswordB
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_change_password);
-        View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        binding.setVm(viewModel);
-
-        return v;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
