@@ -1,11 +1,8 @@
 package com.add.ad.presentation.viewModel.mypage.myad;
 
-import android.util.Log;
-
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 
-import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.mypage.MyPageRepository;
 import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.presentation.base.BaseViewModel;
@@ -32,7 +29,7 @@ public class LikeAdViewModel extends BaseViewModel {
     }
 
     public void getLikeAdList() {
-        compositeDisposable.add(myPageRepository.getLikeAd()
+        compositeDisposable.add(myPageRepository.getLikeAdList()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
