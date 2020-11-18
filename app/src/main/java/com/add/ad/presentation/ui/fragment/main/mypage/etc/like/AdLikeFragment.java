@@ -1,19 +1,16 @@
 package com.add.ad.presentation.ui.fragment.main.mypage.etc.like;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelStoreOwner;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentAdLikeBinding;
 import com.add.ad.presentation.adapter.LikeAdAdapter;
-import com.add.ad.presentation.adapter.SearchAdapter;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.viewModel.mypage.myad.LikeAdViewModel;
 
