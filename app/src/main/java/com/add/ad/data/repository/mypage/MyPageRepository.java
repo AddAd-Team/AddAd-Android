@@ -1,6 +1,9 @@
 package com.add.ad.data.repository.mypage;
 
+import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
+
+import java.util.ArrayList;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -13,4 +16,6 @@ public interface MyPageRepository {
     Single<Response<ResponseUserInfo>> getUserProfile();
 
     Single<Response<Void>> editProfile(MultipartBody.Part file, RequestBody profileName, RequestBody profileDescription, RequestBody profileTag);
+
+    Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAd();
 }
