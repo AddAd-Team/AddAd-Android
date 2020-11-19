@@ -3,15 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="myAdItem"
             type="com.add.ad.entity.response.ResponseMyAdInfo" />
+
+        <variable
+            name="vh"
+            type="com.add.ad.presentation.adapter.MyAdAdapter.MyAdViewHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="@color/colorTopBlack">
+        android:background="@color/colorTopBlack"
+        android:onClick="@{(v)->vh.clickAd(v)}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/item_my_ad_card"
@@ -27,10 +33,10 @@
 
             <ImageView
                 android:id="@+id/item_my_ad_image"
+                setImages="@{myAdItem.postImg}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                setImages="@{myAdItem.postImg}"
                 android:src="@drawable/ic_sample_feed" />
 
         </androidx.cardview.widget.CardView>
