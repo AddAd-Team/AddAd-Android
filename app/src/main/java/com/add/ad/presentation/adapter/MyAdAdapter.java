@@ -1,6 +1,8 @@
 package com.add.ad.presentation.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -55,8 +57,19 @@ public class MyAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         void bind(ResponseMyAdInfo item, int position) {
             this.position = position;
             this.item = item;
+            binding.setVh(this);
             binding.setMyAdItem(item);
         }
 
+        public void clickAd(View v) {
+            Log.d("userINFOFOFOF", String.valueOf(myAdViewModel.userInfo.getValue()));
+//            feedViewModel.feedDetailEvent.call();
+//            feedViewModel.getDetailFeed(position);
+            if(myAdViewModel.userInfo.getValue()){
+                //creator 일 때
+            }else {
+                myAdViewModel.clickSelectEvent.call();
+            }
+        }
     }
 }
