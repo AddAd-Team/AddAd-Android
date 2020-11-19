@@ -20,6 +20,8 @@ import com.add.ad.databinding.FragmentMyAdBinding;
 import com.add.ad.presentation.adapter.LikeAdAdapter;
 import com.add.ad.presentation.adapter.MyAdAdapter;
 import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
+import com.add.ad.presentation.ui.dialog.SelectDialogFragment;
 import com.add.ad.presentation.viewModel.mypage.myad.MyAdViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -56,6 +58,10 @@ public class MyAdFragment extends BaseFragment<FragmentMyAdBinding, MyAdViewMode
         viewModel.advertiserAdEvent.observe(this, mVoid -> {
             binding.myAdUploadRecyclerView.setAdapter(new MyAdAdapter(viewModel.advertiserAdList.getValue(), viewModel));
             binding.myAdUploadRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        });
+        viewModel.clickSelectEvent.observe(this, mVoid -> {
+            SelectDialogFragment selectDialogFragment = new SelectDialogFragment();
+            selectDialogFragment.show(requireActivity().getSupportFragmentManager(), "SelectDialogFragment");
         });
     }
 }
