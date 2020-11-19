@@ -13,6 +13,7 @@ import com.add.ad.presentation.base.SingleLiveEvent;
 
 import java.util.ArrayList;
 
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -26,8 +27,11 @@ public class MyAdViewModel extends BaseViewModel {
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> creatorAdList = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> advertiserAdList = new MutableLiveData<>();
 
+    public SingleLiveEvent<Void> clickSelectEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> creatorAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> advertiserAdEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> clickApplyListEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> clickEditEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
     public MyAdViewModel(CompositeDisposable compositeDisposable, MyPageRepository myPageRepository, SharedPref sharedPref) {
@@ -68,5 +72,13 @@ public class MyAdViewModel extends BaseViewModel {
 
     public void clickBack() {
         backEvent.call();
+    }
+
+    public void clickApplyList(){
+        clickApplyListEvent.call();
+    }
+
+    public void clickEdit(){
+        clickEditEvent.call();
     }
 }
