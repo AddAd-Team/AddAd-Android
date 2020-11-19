@@ -64,4 +64,5 @@
 
     //my ad
     <string name="apply_list_tv">신청자 목록</string>
+    <string name="access_tv">수락</string>
 </resources>
