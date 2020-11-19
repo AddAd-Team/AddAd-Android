@@ -9,33 +9,33 @@
         android:id="@+id/mainFragment"
         android:name="com.add.ad.presentation.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_MainFragment_to_ChangePasswordFragment"
-            app:destination="@id/changePasswordFragment"/>
+            app:destination="@id/changePasswordFragment" />
         <action
             android:id="@+id/action_MainFragment_to_MyProfileFragment"
-            app:destination="@+id/myProfileFragment"/>
+            app:destination="@+id/myProfileFragment" />
         <action
             android:id="@+id/action_MainFragment_to_MyAdFragment"
-            app:destination="@id/myAdFragment"/>
+            app:destination="@id/myAdFragment" />
         <action
             android:id="@+id/action_MainFragment_to_SecondWriteFragment"
-            app:destination="@id/secondWriteFragment"/>
+            app:destination="@id/secondWriteFragment" />
         <action
             android:id="@+id/action_MainFragment_to_LoginFragment"
+            app:destination="@id/loginFragment"
             app:popUpTo="@id/firstLandingFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/loginFragment"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_MainFragment_to_FeedDetailFragment"
-            app:destination="@id/feedDetailFragment"/>
+            app:destination="@id/feedDetailFragment" />
         <action
             android:id="@+id/action_MainFragment_to_VisitProfileFragment"
-            app:destination="@id/visitProfileFragment"/>
+            app:destination="@id/visitProfileFragment" />
         <action
             android:id="@+id/action_MainFragment_to_AdLikeFragment"
-            app:destination="@id/adLikeFragment"/>
+            app:destination="@id/adLikeFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -44,9 +44,9 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_LoginInFragment_to_MainFragment"
+            app:destination="@id/mainFragment"
             app:popUpTo="@id/firstLandingFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/mainFragment" />
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_LoginInFragment_to_RegisterFragment"
             app:destination="@id/registerFragment" />
@@ -56,10 +56,10 @@
         android:id="@+id/registerFragment"
         android:name="com.add.ad.presentation.ui.fragment.register.FirstRegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_first_register" >
+        tools:layout="@layout/fragment_first_register">
         <action
             android:id="@+id/action_FirstRegisterFragment_to_SecondRegisterFragment"
-            app:destination="@id/secondRegisterFragment"/>
+            app:destination="@id/secondRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/firstLandingFragment"
@@ -68,11 +68,11 @@
         tools:layout="@layout/fragment_first_landing">
         <action
             android:id="@+id/action_FirstLandingFragment_to_SecondLandingFragment"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"
+            app:destination="@id/secondLandingFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
-            app:destination="@id/secondLandingFragment" />
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/secondLandingFragment"
@@ -81,11 +81,11 @@
         tools:layout="@layout/fragment_second_landing">
         <action
             android:id="@+id/action_SecondLandingFragment_to_ThirdLandingFragment"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"
+            app:destination="@id/thirdLandingFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
-            app:destination="@id/thirdLandingFragment" />
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/thirdLandingFragment"
@@ -94,20 +94,20 @@
         tools:layout="@layout/fragment_third_landing">
         <action
             android:id="@+id/action_ThirdLandingFragment_to_LoginFragment"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out"
+            app:destination="@id/loginFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out"
-            app:destination="@id/loginFragment" />
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.change.ChangePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" >
+        tools:layout="@layout/fragment_change_password">
         <action
             android:id="@+id/action_changePasswordFragment_to_mainFragment"
-            app:destination="@id/mainFragment"/>
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
@@ -123,35 +123,35 @@
         android:id="@+id/myAdFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.MyAdFragment"
         android:label="fragment_my_ad"
-        tools:layout="@layout/fragment_my_ad" >
+        tools:layout="@layout/fragment_my_ad">
         <action
-            android:id="@+id/action_myAdFragment_to_AdManageFragment"
-            app:destination="@id/adManageFragment"/>
+            android:id="@+id/action_myAdFragment_to_AdApplyFragment"
+            app:destination="@id/adApplyFragment" />
     </fragment>
     <fragment
-        android:id="@+id/adManageFragment"
-        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.AdManageFragment"
+        android:id="@+id/adApplyFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.ApplyAdFragment"
         android:label="fragment_ad_manage"
-        tools:layout="@layout/fragment_ad_manage" />
+        tools:layout="@layout/fragment_ad_apply" />
     <fragment
         android:id="@+id/secondRegisterFragment"
         android:name="com.add.ad.presentation.ui.fragment.register.SecondRegisterFragment"
         android:label="fragment_second_register"
-        tools:layout="@layout/fragment_second_register" >
+        tools:layout="@layout/fragment_second_register">
         <action
             android:id="@+id/action_SecondRegisterFragment_to_LoginFragment"
-            app:destination="@id/loginFragment"/>
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondWriteFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
         android:label="fragment_second_write"
-        tools:layout="@layout/fragment_second_write" >
+        tools:layout="@layout/fragment_second_write">
         <action
             android:id="@+id/action_secondWriteFragment_to_MainFragment"
+            app:destination="@id/mainFragment"
             app:popUpTo="@id/firstLandingFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/mainFragment"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/feedDetailFragment"
@@ -162,9 +162,9 @@
         android:id="@+id/adLikeFragment"
         android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.like.AdLikeFragment"
         android:label="fragment_ad_like"
-        tools:layout="@layout/fragment_ad_like" >
+        tools:layout="@layout/fragment_ad_like">
         <action
             android:id="@+id/action_AdLikeFragment_to_FeedDetailFragment"
-            app:destination="@id/feedDetailFragment"/>
+            app:destination="@id/feedDetailFragment" />
     </fragment>
 </navigation>
