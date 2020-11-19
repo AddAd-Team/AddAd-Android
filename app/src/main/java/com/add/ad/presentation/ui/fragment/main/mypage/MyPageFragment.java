@@ -1,25 +1,18 @@
 package com.add.ad.presentation.ui.fragment.main.mypage;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentMyPageBinding;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
 import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
