@@ -2,6 +2,8 @@ package com.add.ad.entity.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class ResponseSearchInfo {
     @SerializedName("id")
     private int userId;
@@ -15,6 +17,7 @@ public class ResponseSearchInfo {
     private String userName;
     @SerializedName("hashtag")
     private String userTag;
+    private ArrayList<ResponseDetailContactAdInfo> contactAd;
 
     public int getUserId() {
         return userId;
@@ -38,5 +41,9 @@ public class ResponseSearchInfo {
 
     public String getUserTag() {
         return userTag;
+    }
+
+    public ArrayList<ResponseDetailContactAdInfo> getContactAd() {
+        return contactAd;
     }
 }
