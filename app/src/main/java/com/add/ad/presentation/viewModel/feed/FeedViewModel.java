@@ -2,11 +2,10 @@ package com.add.ad.presentation.viewModel.feed;
 
 import android.util.Log;
 
-import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.SavedStateHandle;
 
+import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.feed.FeedRepository;
 import com.add.ad.entity.response.ResponseFeedInfo;
 import com.add.ad.presentation.base.BaseViewModel;
@@ -21,6 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 public class FeedViewModel extends BaseViewModel {
     FeedRepository feedRepository;
     CompositeDisposable compositeDisposable;
+    SharedPref sharedPref;
 
     public MutableLiveData<ArrayList<ResponseFeedInfo>> feedList = new MutableLiveData<>();
     public MutableLiveData<ResponseFeedInfo> detailFeed = new MutableLiveData<>();
@@ -31,9 +31,10 @@ public class FeedViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
-    public FeedViewModel(FeedRepository feedRepository, CompositeDisposable compositeDisposable, @Assisted SavedStateHandle savedStateHandle) {
+    public FeedViewModel(FeedRepository feedRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref) {
         this.feedRepository = feedRepository;
         this.compositeDisposable = compositeDisposable;
+        this.sharedPref = sharedPref;
     }
 
     public void getFeed() {
@@ -89,31 +90,32 @@ public class FeedViewModel extends BaseViewModel {
     }
 
     public void clickApplyBtn() {
-        application.setValue(!application.getValue());
+        if (sharedPref.getInfo(false).equals("creator")) {
+            application.setValue(!application.getValue());
 
-        Log.d("success Apply", String.valueOf(application.getValue()));
-
-        if (application.getValue()) {
-            compositeDisposable.add(feedRepository.postApply(detailFeed.getValue().getFeedId())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeOn(Schedulers.io())
-                    .subscribe(it -> {
-                        Log.d("success Apply", String.valueOf(it.code()));
-                    }, it -> {
-                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
-                        application.setValue(!application.getValue());
-                    }));
+            if (application.getValue()) {
+                compositeDisposable.add(feedRepository.postApply(detailFeed.getValue().getFeedId())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe(it -> {
+                            Log.d("success Apply", String.valueOf(it.code()));
+                        }, it -> {
+                            createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                            application.setValue(!application.getValue());
+                        }));
+            } else {
+                compositeDisposable.add(feedRepository.deleteApply(detailFeed.getValue().getFeedId())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe(it -> {
+                            Log.d("delete Apply", String.valueOf(it.code()));
+                        }, it -> {
+                            createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                            application.setValue(!application.getValue());
+                        }));
+            }
         } else {
-            Log.d("cancel", "asfsadfas");
-            compositeDisposable.add(feedRepository.deleteApply(detailFeed.getValue().getFeedId())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeOn(Schedulers.io())
-                    .subscribe(it -> {
-                        Log.d("delete Apply", String.valueOf(it.code()));
-                    }, it -> {
-                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
-                        application.setValue(!application.getValue());
-                    }));
+            createToastEvent.setValue("광고주는 신청이 불가능합니다.");
         }
     }
 }
