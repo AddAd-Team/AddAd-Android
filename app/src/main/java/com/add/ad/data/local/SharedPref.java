@@ -32,7 +32,7 @@ public class SharedPref {
     }
 
     public void removeToken(Boolean bool){
-        getPref(context, true).edit().remove(getKey(bool)).apply();
+        getPref(context, bool).edit().remove(getKey(bool)).apply();
     }
 
     private SharedPreferences getPref(Context context, Boolean bool) {
