@@ -79,6 +79,9 @@ public class ProfileViewModel extends BaseViewModel {
                         profileEditCompleteEvent.call();
                         createToastEvent.setValue("변경 성공");
                         isEdit.setValue(false);
+                    }else{
+                        dismissProgressEvent.call();
+                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
                     }
                 }, it -> {
                     dismissProgressEvent.call();

@@ -311,6 +311,7 @@
             android:id="@+id/my_page_like_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:onClick="@{()->vm.clickAdLike()}"
             app:layout_constraintBottom_toTopOf="@id/my_page_change_pw_view"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
             app:layout_constraintStart_toStartOf="@+id/my_page_gl_left"

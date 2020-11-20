@@ -1,11 +1,11 @@
 package com.add.ad.presentation.viewModel.search;
 
-import android.util.Log;
-
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 
 import com.add.ad.data.repository.search.SearchRepository;
+import com.add.ad.entity.response.ResponseDetailContactAdInfo;
+import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseSearchInfo;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
@@ -28,10 +28,12 @@ public class SearchViewModel extends BaseViewModel {
     }
 
     public MutableLiveData<String> searchEt = new MutableLiveData<>(" ");
+    public MutableLiveData<ArrayList<ResponseDetailContactAdInfo>> contactAdList = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseSearchInfo>> searchList = new MutableLiveData<>();
     public MutableLiveData<ResponseSearchInfo> detailSearch = new MutableLiveData<>();
     public MutableLiveData<Boolean> searchResult = new MutableLiveData<>(true);
 
+    public SingleLiveEvent<Void> contactAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> searchListEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> searchDetailEvent = new SingleLiveEvent<>();
 
@@ -76,13 +78,15 @@ public class SearchViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-                    if(it.code() == 200){
+                    if (it.code() == 200) {
                         detailSearch.setValue(it.body());
+                        contactAdList.setValue(it.body().getContactAd());
+                        contactAdEvent.call();
                     }
                 }, it -> createToastEvent.setValue("알 수 없는 오류가 발생했습니다.")));
     }
 
-    public void clickBack(){
+    public void clickBack() {
         backEvent.call();
     }
 }

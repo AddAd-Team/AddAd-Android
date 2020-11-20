@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.add.ad.presentation.viewModel.feed.FeedViewModel" />
@@ -58,6 +60,7 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:onClick="@{()->vm.clickBack()}"
+                android:padding="4dp"
                 android:text="@string/back_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
@@ -155,7 +158,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
-                    android:text="@{@string/feed_end_date_tv(vm.detailFeed.feedCloseRecruitment)}"
+                    android:text="@{@string/feed_end_date_tv(vm.detailFeed.postTime)}"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@id/feed_detail_ad_end_date_tv"
@@ -164,16 +167,46 @@
                     app:layout_constraintVertical_chainStyle="spread" />
 
                 <TextView
+                    android:id="@+id/feed_detail_recruit_remain_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@{@string/remain_date_tv(vm.detailFeed.feedCloseRecruitmentDate)}"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="15sp"
+                    android:visibility="@{vm.detailFeed.feedCloseRecruitmentDate > 0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toTopOf="@id/feed_detail_ad_end_date_tv"
+                    app:layout_constraintStart_toEndOf="@id/feed_detail_recruit_end_date_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+                <TextView
                     android:id="@+id/feed_detail_ad_end_date_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
-                    android:text="@{@string/ad_end_date_tv(vm.detailFeed.feedCloseAd)}"
+                    android:text="@{@string/ad_end_date_tv(vm.detailFeed.deadline)}"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toTopOf="@+id/feed_detail_gl_middle2"
                     app:layout_constraintStart_toStartOf="@+id/feed_detail_gl_left"
+                    app:layout_constraintTop_toBottomOf="@+id/feed_detail_recruit_end_date_tv" />
+
+                <TextView
+                    android:id="@+id/feed_detail_ad_remain_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@{@string/remain_date_tv(vm.detailFeed.feedCloseAdDate)}"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="15sp"
+                    android:visibility="@{vm.detailFeed.feedCloseAdDate > 0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toTopOf="@+id/feed_detail_gl_middle2"
+                    app:layout_constraintStart_toEndOf="@+id/feed_detail_ad_end_date_tv"
                     app:layout_constraintTop_toBottomOf="@+id/feed_detail_recruit_end_date_tv" />
 
                 <TextView
@@ -198,9 +231,9 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="32dp"
+                    android:inputType="textMultiLine"
                     android:text="@{vm.detailFeed.feedDescription}"
                     android:textColor="@color/colorWhite"
-                    android:inputType="textMultiLine"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/feed_detail_gl_right"
                     app:layout_constraintStart_toStartOf="@+id/feed_detail_gl_left"
@@ -249,7 +282,6 @@
                     app:layout_constraintGuide_percent="0.1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </ScrollView>
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.add.ad.presentation.viewModel.login.LoginViewModel" />
@@ -41,7 +42,6 @@
             <com.add.ad.presentation.ui.customView.ClearEditText
                 android:id="@+id/login_email_et"
                 android:layout_width="match_parent"
-                android:text="@={vm.userId}"
                 android:layout_height="match_parent"
                 android:background="@drawable/edittext_selector"
                 android:fontFamily="@font/notosanskr_thin"
@@ -50,6 +50,7 @@
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/login_pw_et"
                 android:singleLine="true"
+                android:text="@={vm.userId}"
                 android:textColor="@color/colorWhite"
                 android:textCursorDrawable="@drawable/cursor_orange"
                 android:textSize="15sp" />
@@ -70,7 +71,6 @@
             <com.add.ad.presentation.ui.customView.ClearEditText
                 android:id="@+id/login_pw_et"
                 android:layout_width="match_parent"
-                android:text="@={vm.userPassword}"
                 android:layout_height="match_parent"
                 android:background="@drawable/edittext_selector"
                 android:fontFamily="@font/notosanskr_thin"
@@ -79,6 +79,7 @@
                 android:inputType="textPassword"
                 android:nextFocusDown="@id/login_next_btn"
                 android:singleLine="true"
+                android:text="@={vm.userPassword}"
                 android:textColor="@color/colorWhite"
                 android:textCursorDrawable="@drawable/cursor_orange"
                 android:textSize="15sp" />
@@ -89,9 +90,10 @@
             android:id="@+id/login_next_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{()->vm.login()}"
             android:layout_marginTop="40dp"
             android:background="@drawable/gray_radius_view"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:onClick="@{()->vm.login()}"
             android:text="다음"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/login_gl_right"
@@ -102,10 +104,10 @@
             android:id="@+id/login_go_register_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="아직 회원이 아니신가요?"
-            android:padding="8dp"
-            android:onClick="@{()->vm.goRegister()}"
             android:layout_marginBottom="32dp"
+            android:onClick="@{()->vm.goRegister()}"
+            android:padding="8dp"
+            android:text="아직 회원이 아니신가요?"
             android:textColor="@color/colorWhite"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

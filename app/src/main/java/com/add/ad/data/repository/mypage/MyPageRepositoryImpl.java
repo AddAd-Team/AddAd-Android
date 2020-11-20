@@ -1,7 +1,10 @@
 package com.add.ad.data.repository.mypage;
 
 import com.add.ad.data.api.Api;
+import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -31,6 +34,16 @@ public class MyPageRepositoryImpl implements MyPageRepository{
     @Override
     public Single<Response<Void>> editProfile(MultipartBody.Part file, RequestBody profileName, RequestBody profileDescription, RequestBody profileTag) {
         return api.editProfile(file, profileName, profileDescription, profileTag);
+    }
+
+    @Override
+    public Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAdList() {
+        return api.getLikeAdList();
+    }
+
+    @Override
+    public Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList() {
+        return api.getMyAdList();
     }
 
 }

@@ -35,7 +35,6 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding, SearchVi
         setLayout(R.layout.fragment_search);
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        binding.setVm(viewModel);
         viewModel.getCreatorList();
 
         return v;

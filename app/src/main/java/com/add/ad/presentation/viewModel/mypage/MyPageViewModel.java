@@ -35,6 +35,7 @@ public class MyPageViewModel extends BaseViewModel {
 
     public SingleLiveEvent<Void> logoutEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> myAdEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> adLikeEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> myProfileEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> changePwEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> confirmLogoutEvent = new SingleLiveEvent<>();
@@ -80,5 +81,9 @@ public class MyPageViewModel extends BaseViewModel {
 
     public void setLogoutEvent() {
         logoutEvent.call();
+    }
+
+    public void clickAdLike() {
+        adLikeEvent.call();
     }
 }

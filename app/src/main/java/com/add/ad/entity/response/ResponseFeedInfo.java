@@ -16,9 +16,9 @@ public class ResponseFeedInfo {
     @SerializedName("price")
     private String feedPrice;
     @SerializedName("postTime")
-    private String feedCloseRecruitment;
+    private String postTime;
     @SerializedName("deadline")
-    private String feedCloseAd;
+    private String deadline;
     @SerializedName("hashtag")
     private String feedTag;
     @SerializedName("description")
@@ -27,6 +27,12 @@ public class ResponseFeedInfo {
     private Boolean feedLikes;
     @SerializedName("application")
     private Boolean isApplied;
+    @SerializedName("dateRemaining")
+    private String feedRemainDate;
+    @SerializedName("recruitmentClosing")
+    private String feedCloseRecruitmentDate;
+    @SerializedName("adClosing")
+    private String feedCloseAdDate;
 
     public Boolean getFeedLikes() {
         return feedLikes;
@@ -60,12 +66,12 @@ public class ResponseFeedInfo {
         return feedPrice;
     }
 
-    public String getFeedCloseRecruitment() {
-        return feedCloseRecruitment.substring(4,6) + "월 " + feedCloseRecruitment.substring(6,8) + "일";
+    public String getPostTime() {
+        return postTime.substring(4,6) + "월 " + postTime.substring(6,8) + "일";
     }
 
-    public String getFeedCloseAd() {
-        return feedCloseAd.substring(4,6) + "월 " + feedCloseAd.substring(6,8) + "일";
+    public String getDeadline() {
+        return deadline.substring(4,6) + "월 " + deadline.substring(6,8) + "일";
     }
 
     public String getFeedTag() {
@@ -74,5 +80,17 @@ public class ResponseFeedInfo {
 
     public String getFeedDescription() {
         return feedDescription;
+    }
+
+    public int getFeedRemainDate() {
+        return Integer.parseInt(feedRemainDate);
+    }
+
+    public int getFeedCloseRecruitmentDate() {
+        return Integer.parseInt(feedCloseRecruitmentDate);
+    }
+
+    public int getFeedCloseAdDate() {
+        return Integer.parseInt(feedCloseAdDate);
     }
 }
