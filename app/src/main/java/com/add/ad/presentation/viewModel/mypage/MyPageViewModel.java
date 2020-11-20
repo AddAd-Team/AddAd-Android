@@ -1,7 +1,5 @@
 package com.add.ad.presentation.viewModel.mypage;
 
-import android.util.Log;
-
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
@@ -47,8 +45,6 @@ public class MyPageViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-                    Log.d("url", it.body() != null ? it.body().getUserImage() : null);
-
                     if (it.code() == 200) {
                         profileImageUrl.setValue(it.body() != null ? it.body().getUserImage() : null);
                         profileName.setValue(it.body() != null ? it.body().getUserName() : null);
@@ -60,6 +56,7 @@ public class MyPageViewModel extends BaseViewModel {
 
     public void clickConfirm() {
         sharedPref.removeToken(true);
+        sharedPref.removeToken(false);
         confirmLogoutEvent.call();
     }
 
