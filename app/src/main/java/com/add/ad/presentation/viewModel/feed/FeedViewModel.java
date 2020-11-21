@@ -27,6 +27,7 @@ public class FeedViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> likeClickable = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> application = new MutableLiveData<>(false);
 
+    public SingleLiveEvent<Void> feedShimmerEndEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedDetailEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
 
@@ -44,6 +45,7 @@ public class FeedViewModel extends BaseViewModel {
                 .subscribe(it -> {
                     if (it.code() == 200) {
                         if (it.body() != null) {
+                            feedShimmerEndEvent.call();
                             feedList.setValue(new ArrayList<>(it.body()));
                             feedListEvent.call();
                         }
