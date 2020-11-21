@@ -37,6 +37,8 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
         setLayout(R.layout.fragment_login);
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
+        viewModel.autoLogin();
+
         return v;
     }
 
