@@ -9,38 +9,44 @@ public class SharedPref {
     Context context;
 
     @Inject
-    public SharedPref(Context context){
+    public SharedPref(Context context) {
         this.context = context;
     }
 
-    public void saveToken(String token, Boolean access){
-        getPref(context, true).edit().putString(getKey(access),token).apply();
+    public void saveToken(String token, Boolean access) {
+        getPref(context).edit().putString(getKey(access), token).apply();
     }
 
-    public String getToken(Boolean access){
-        if(getPref(context,true).getString(getKey(access), "").isEmpty()) {
-            return "";
-        } else return "Bearer " + getPref(context,true).getString(getKey(access), "");
+    public String getToken(Boolean access) {
+        if (!getPref(context).getString(getKey(access), "").isEmpty()) {
+            return "Bearer " + getPref(context).getString(getKey(access), "");
+        } else return "";
     }
 
-    public void saveInfo(String info, Boolean bool){
-        getPref(context, false).edit().putString(getKey(bool),info).apply();
-    }
-
-    public String getInfo(Boolean bool){
-         return getPref(context,false).getString(getKey(bool), "");
-    }
-
-    public void removeToken(Boolean bool){
-        getPref(context, bool).edit().remove(getKey(bool)).apply();
-    }
-
-    private SharedPreferences getPref(Context context, Boolean bool) {
-        return bool ? context.getSharedPreferences("auth", Context.MODE_PRIVATE) : context.getSharedPreferences("info", Context.MODE_PRIVATE);
+    private SharedPreferences getPref(Context context) {
+        return context.getSharedPreferences("auth", Context.MODE_PRIVATE);
     }
 
     private String getKey(Boolean access) {
         if (access) return "Access";
-        else return "Info";
+        else return "Refresh";
     }
+
+    public void saveInfo(String info) {
+        context.getSharedPreferences("userInfo", Context.MODE_PRIVATE).edit()
+                .putString("UserInfo", info).apply();
+    }
+
+    public String getInfo() {
+        return context.getSharedPreferences("userInfo", Context.MODE_PRIVATE).getString("UserInfo", "");
+    }
+
+    public void removeToken(Boolean bool) {
+        getPref(context).edit().remove(getKey(bool)).apply();
+    }
+
+    public void removeUserInfo() {
+        context.getSharedPreferences("userInfo", Context.MODE_PRIVATE).edit().remove("UserInfo").apply();
+    }
+
 }
