@@ -62,9 +62,9 @@ public class MyAdViewModel extends BaseViewModel {
     }
 
     private Boolean getUserInfo() {
-        if (sharedPref.getInfo(false).equals("creator")) {
+        if (sharedPref.getInfo().equals("creator")) {
             return true;
-        } else if (sharedPref.getInfo(false).equals("advertiser")) {
+        } else if (sharedPref.getInfo().equals("advertiser")) {
             return false;
         }
         return false;

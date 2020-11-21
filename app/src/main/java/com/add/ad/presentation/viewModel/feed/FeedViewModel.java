@@ -92,7 +92,7 @@ public class FeedViewModel extends BaseViewModel {
     }
 
     public void clickApplyBtn() {
-        if (sharedPref.getInfo(false).equals("creator")) {
+        if (sharedPref.getInfo().equals("creator")) {
             application.setValue(!application.getValue());
 
             if (application.getValue()) {

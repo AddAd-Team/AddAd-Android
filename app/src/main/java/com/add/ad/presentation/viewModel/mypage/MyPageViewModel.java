@@ -57,6 +57,7 @@ public class MyPageViewModel extends BaseViewModel {
     public void clickConfirm() {
         sharedPref.removeToken(true);
         sharedPref.removeToken(false);
+        sharedPref.removeUserInfo();
         confirmLogoutEvent.call();
     }
 
