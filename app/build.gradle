@@ -84,4 +84,7 @@ dependencies {
     implementation("com.louiscad.splitties:splitties-views-dsl-appcompat:3.0.0-alpha06")
     implementation("com.louiscad.splitties:splitties-views-dsl-material:3.0.0-alpha06")
     implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-alpha06")
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
