@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.feed.FeedRepository;
+import com.add.ad.data.util.RefreshTokenUtil;
 import com.add.ad.entity.response.ResponseFeedInfo;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
@@ -21,6 +22,7 @@ public class FeedViewModel extends BaseViewModel {
     FeedRepository feedRepository;
     CompositeDisposable compositeDisposable;
     SharedPref sharedPref;
+    RefreshTokenUtil refreshTokenUtil;
 
     public MutableLiveData<ArrayList<ResponseFeedInfo>> feedList = new MutableLiveData<>();
     public MutableLiveData<ResponseFeedInfo> detailFeed = new MutableLiveData<>();
@@ -32,10 +34,11 @@ public class FeedViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
-    public FeedViewModel(FeedRepository feedRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref) {
+    public FeedViewModel(FeedRepository feedRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref, RefreshTokenUtil refreshTokenUtil) {
         this.feedRepository = feedRepository;
         this.compositeDisposable = compositeDisposable;
         this.sharedPref = sharedPref;
+        this.refreshTokenUtil = refreshTokenUtil;
     }
 
     public void getFeed() {
@@ -49,6 +52,9 @@ public class FeedViewModel extends BaseViewModel {
                             feedList.setValue(new ArrayList<>(it.body()));
                             feedListEvent.call();
                         }
+                    } else if (it.code() == 403) {
+                        refreshTokenUtil.getToken();
+                        getFeed();
                     }
                 }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
     }
