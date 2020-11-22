@@ -20,6 +20,8 @@ import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -28,6 +30,9 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api {
+    @GET("/api/auth/refresh")
+    Single<Response<Token>> getToken(@Header("Authorization") String refreshJwt);
+
     @POST("/api/auth/signin")
     Single<Response<Token>> signIn(@Body Auth authData);
 
@@ -74,7 +79,7 @@ public interface Api {
 
     @GET("api/search/name")
     Single<Response<ArrayList<ResponseSearchInfo>>> searchCreator(@Query("page") int pageId,
-                                                       @Query("name") String searchName);
+                                                                  @Query("name") String searchName);
 
     @GET("api/search/tag")
     Single<Response<ArrayList<ResponseSearchInfo>>> searchTag(@Query("page") int pageId,
