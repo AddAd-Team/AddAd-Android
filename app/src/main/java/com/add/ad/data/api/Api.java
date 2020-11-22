@@ -31,7 +31,7 @@ import retrofit2.http.Query;
 
 public interface Api {
     @GET("/api/auth/refresh")
-    Single<Response<Token>> getToken(@Header("Authorization") String refreshJwt);
+    Single<Response<Token>> getToken(@Header("refreshToken") String refreshJwt);
 
     @POST("/api/auth/signin")
     Single<Response<Token>> signIn(@Body Auth authData);
