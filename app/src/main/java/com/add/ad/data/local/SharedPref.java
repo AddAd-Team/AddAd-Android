@@ -19,7 +19,10 @@ public class SharedPref {
 
     public String getToken(Boolean access) {
         if (!getPref(context).getString(getKey(access), "").isEmpty()) {
-            return "Bearer " + getPref(context).getString(getKey(access), "");
+            if(access){
+                return "Bearer " + getPref(context).getString(getKey(access), "");
+            }else return getPref(context).getString(getKey(access), "");
+
         } else return "";
     }
 
