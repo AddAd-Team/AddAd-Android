@@ -34,7 +34,8 @@ public class ApplyAdViewModel extends BaseViewModel {
     }
 
     public void getAppliedList() {
-        compositeDisposable.add(myPageRepository.getAppliedList(Integer.parseInt(Objects.requireNonNull(position.getValue())))
+        int listPosition = Integer.parseInt(Objects.requireNonNull(position.getValue()));
+        compositeDisposable.add(myPageRepository.getAppliedList(listPosition)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
