@@ -1,17 +1,16 @@
 package com.add.ad.data.api;
 
 import com.add.ad.entity.Auth;
+import com.add.ad.entity.Token;
+import com.add.ad.entity.User;
+import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.entity.response.ResponseContactInfo;
 import com.add.ad.entity.response.ResponseFeedInfo;
 import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseSearchInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
-import com.add.ad.entity.Token;
-import com.add.ad.entity.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -21,7 +20,6 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -108,4 +106,7 @@ public interface Api {
 
     @GET("/api/mypage/adlist")
     Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList();
+
+    @GET("/api/application/basic/{postId}")
+    Single<Response<ArrayList<ResponseApplyInfo>>> getAppliedList(@Path("postId") int postId);
 }
