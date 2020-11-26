@@ -3,9 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="appliedItem"
             type="com.add.ad.entity.response.ResponseApplyInfo" />
+
+        <variable
+            name="vh"
+            type="com.add.ad.presentation.adapter.AppliedAdAdapter.AppliedViewHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,9 +30,9 @@
 
             <ImageView
                 android:id="@+id/ad_apply_image"
-                app:setImages="@{appliedItem.profileImage}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:setImages="@{appliedItem.profileImage}" />
 
         </androidx.cardview.widget.CardView>
 
@@ -35,9 +40,9 @@
             android:id="@+id/ad_apply_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:layout_marginStart="16dp"
             android:text="@{appliedItem.userName}"
             android:textColor="@color/colorWhite"
             android:textSize="14sp"
@@ -49,10 +54,12 @@
             android:id="@+id/ad_apply_access_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
+            android:onClick="@{()->vh.clickAccess()}"
+            android:padding="10dp"
             android:text="@string/access_tv"
-            android:padding="4dp"
             android:textColor="@color/colorOrange"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
