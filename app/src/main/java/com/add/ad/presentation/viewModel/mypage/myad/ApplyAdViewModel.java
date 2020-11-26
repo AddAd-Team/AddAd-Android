@@ -30,7 +30,6 @@ public class ApplyAdViewModel extends BaseViewModel {
     public MutableLiveData<ArrayList<ResponseApplyInfo>> appliedAdList = new MutableLiveData<>();
 
     public SingleLiveEvent<Void> appliedListEvent = new SingleLiveEvent<>();
-    public SingleLiveEvent<Void> accessListEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
     public ApplyAdViewModel(CompositeDisposable compositeDisposable, MyPageRepository myPageRepository) {
@@ -53,9 +52,5 @@ public class ApplyAdViewModel extends BaseViewModel {
 
     public void clickBack() {
         backEvent.call();
-    }
-
-    public void clickComplete(){
-        accessListEvent.call();
     }
 }

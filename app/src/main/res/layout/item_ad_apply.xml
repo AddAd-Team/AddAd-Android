@@ -57,7 +57,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:onClick="@{()->vh.clickAccess()}"
+            android:onClick="@{(v)-> vh.clickAccess(v)}"
             android:padding="10dp"
             android:text="@string/access_tv"
             android:textColor="@color/colorOrange"

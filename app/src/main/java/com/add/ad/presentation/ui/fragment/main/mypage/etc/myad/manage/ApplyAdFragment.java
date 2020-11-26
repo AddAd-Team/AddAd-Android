@@ -25,10 +25,7 @@ public class ApplyAdFragment extends BaseFragment<FragmentAdApplyBinding, ApplyA
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
         accessAdAdapter = new AccessAdAdapter(viewModel);
-        appliedAdAdapter = new AppliedAdAdapter(viewModel.appliedAdList.getValue(),viewModel);
-
-        accessAdAdapter.setAppliedAdAdapter(appliedAdAdapter);
-        appliedAdAdapter.setAccessAdAdapter(accessAdAdapter);
+        appliedAdAdapter = new AppliedAdAdapter(viewModel.appliedAdList.getValue(), viewModel, accessAdAdapter);
 
         if (getArguments() != null) {
             viewModel.position.setValue(getArguments().getString("position"));
@@ -55,7 +52,7 @@ public class ApplyAdFragment extends BaseFragment<FragmentAdApplyBinding, ApplyA
     @Override
     protected void observeEvent() {
         viewModel.appliedListEvent.observe(this, mVoid -> {
-            binding.adApplyRecyclerView.setAdapter(new AppliedAdAdapter(viewModel.appliedAdList.getValue(), viewModel));
+            binding.adApplyRecyclerView.setAdapter(new AppliedAdAdapter(viewModel.appliedAdList.getValue(), viewModel, accessAdAdapter));
             binding.adApplyRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         });
     }

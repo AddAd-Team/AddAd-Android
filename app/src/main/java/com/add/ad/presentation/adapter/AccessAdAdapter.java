@@ -21,20 +21,9 @@ import java.util.ArrayList;
 public class AccessAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<ResponseApplyInfo> accessItems = new ArrayList<>(10);
     ApplyAdViewModel applyAdViewModel;
-    AppliedAdAdapter appliedAdAdapter;
-
-    public void setAppliedAdAdapter(AppliedAdAdapter appliedAdAdapter) {
-        this.appliedAdAdapter = appliedAdAdapter;
-    }
 
     public AccessAdAdapter(ApplyAdViewModel applyAdViewModel) {
         this.applyAdViewModel = applyAdViewModel;
-    }
-
-    public void moveToApply(ResponseApplyInfo item){
-        appliedAdAdapter.add(item);
-        accessItems.remove(item);
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -77,9 +66,6 @@ public class AccessAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             this.position = position;
             binding.setAppliedItem(item);
             binding.setVh(this);
-        }
-        public void onClickCancel(View v){
-            moveToApply(item);
         }
     }
 }

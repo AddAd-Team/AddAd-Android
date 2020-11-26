@@ -22,10 +22,4 @@ public class MyPageModule {
         return new MyPageRepositoryImpl(api);
     }
 
-    @Provides
-    public AccessAdAdapter provideAccessAdapter(
-            ApplyAdViewModel applyAdViewModel
-    ){
-        return new AccessAdAdapter(applyAdViewModel);
-    }
 }
