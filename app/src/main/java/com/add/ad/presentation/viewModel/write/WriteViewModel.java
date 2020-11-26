@@ -1,9 +1,7 @@
 package com.add.ad.presentation.viewModel.write;
 
-import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.SavedStateHandle;
 
 import com.add.ad.data.repository.write.WriteRepository;
 import com.add.ad.presentation.base.BaseViewModel;
@@ -28,7 +26,7 @@ public class WriteViewModel extends BaseViewModel {
     WriteRepository writeRepository;
 
     @ViewModelInject
-    public WriteViewModel(WriteRepository writeRepository, CompositeDisposable compositeDisposable, @Assisted SavedStateHandle savedStateHandle) {
+    public WriteViewModel(WriteRepository writeRepository, CompositeDisposable compositeDisposable) {
         this.writeRepository = writeRepository;
         this.compositeDisposable = compositeDisposable;
     }
