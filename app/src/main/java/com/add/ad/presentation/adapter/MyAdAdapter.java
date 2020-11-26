@@ -69,7 +69,7 @@ public class MyAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 //creator 일 때
             }else {
                 myAdViewModel.clickSelectEvent.call();
-                myAdViewModel.adPosition.setValue(position);
+                myAdViewModel.adPosition.setValue(myAdViewModel.advertiserAdList.getValue().get(position).getPostId());
             }
         }
     }
