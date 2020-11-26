@@ -1,5 +1,6 @@
 package com.add.ad.data.repository.mypage;
 
+import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
 
@@ -20,4 +21,6 @@ public interface MyPageRepository {
     Single<Response<ArrayList<ResponseMyAdInfo>>> getLikeAdList();
 
     Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList();
+
+    Single<Response<ArrayList<ResponseApplyInfo>>> getAppliedList(int postId);
 }
