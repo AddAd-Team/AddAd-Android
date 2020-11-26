@@ -24,6 +24,7 @@ public class MyAdViewModel extends BaseViewModel {
     SharedPref sharedPref;
 
     public MutableLiveData<Boolean> userInfo = new MutableLiveData<>(true);
+    public MutableLiveData<Integer> adPosition = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> creatorAdList = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> advertiserAdList = new MutableLiveData<>();
 
