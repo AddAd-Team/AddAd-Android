@@ -1,6 +1,7 @@
 package com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.add.ad.presentation.adapter.AppliedAdAdapter;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.viewModel.mypage.myad.ApplyAdViewModel;
 
+import java.util.ArrayList;
+
 public class ApplyAdFragment extends BaseFragment<FragmentAdApplyBinding, ApplyAdViewModel> {
     AccessAdAdapter accessAdAdapter;
     AppliedAdAdapter appliedAdAdapter;
@@ -23,6 +26,8 @@ public class ApplyAdFragment extends BaseFragment<FragmentAdApplyBinding, ApplyA
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_ad_apply);
         View v = super.onCreateView(inflater, container, savedInstanceState);
+
+        viewModel.accessList = new ArrayList<>();
 
         accessAdAdapter = new AccessAdAdapter(viewModel);
         appliedAdAdapter = new AppliedAdAdapter(viewModel.appliedAdList.getValue(), viewModel, accessAdAdapter);
