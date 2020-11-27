@@ -19,7 +19,7 @@ import com.add.ad.presentation.viewModel.mypage.myad.ApplyAdViewModel;
 import java.util.ArrayList;
 
 public class AccessAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<ResponseApplyInfo> accessItems = new ArrayList<>(10);
+    private ArrayList<ResponseApplyInfo> accessItems = new ArrayList<>();
     ApplyAdViewModel applyAdViewModel;
 
     public AccessAdAdapter(ApplyAdViewModel applyAdViewModel) {
@@ -46,7 +46,7 @@ public class AccessAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return accessItems.size();
     }
 
-    public void add(ResponseApplyInfo data){
+    public void add(ResponseApplyInfo data) {
         accessItems.add(data);
         notifyDataSetChanged();
     }
