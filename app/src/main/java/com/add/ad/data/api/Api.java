@@ -1,5 +1,6 @@
 package com.add.ad.data.api;
 
+import com.add.ad.entity.AccessData;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
@@ -109,4 +110,7 @@ public interface Api {
 
     @GET("/api/application/basic/{postId}")
     Single<Response<ArrayList<ResponseApplyInfo>>> getAppliedList(@Path("postId") int postId);
+
+    @POST("/api/application/allow")
+    Single<Response<Void>> postAppliedList(@Body AccessData accessData);
 }
