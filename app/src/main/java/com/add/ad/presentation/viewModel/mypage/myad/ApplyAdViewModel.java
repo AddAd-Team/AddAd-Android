@@ -6,10 +6,12 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 
 import com.add.ad.data.repository.mypage.MyPageRepository;
+import com.add.ad.entity.AccessData;
 import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.presentation.adapter.AccessAdAdapter;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -28,6 +30,7 @@ public class ApplyAdViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> appliedResult = new MutableLiveData<>(true);
     public MutableLiveData<String> position = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseApplyInfo>> appliedAdList = new MutableLiveData<>();
+    public ArrayList<Integer> accessList = new ArrayList<>();
 
     public SingleLiveEvent<Void> appliedListEvent = new SingleLiveEvent<>();
 
@@ -47,6 +50,27 @@ public class ApplyAdViewModel extends BaseViewModel {
                     appliedListEvent.call();
                 }, it -> {
                     Log.e("errorGetAppliedList", it.getMessage());
+                }));
+    }
+
+    public void postUserId() {
+        int listPosition = Integer.parseInt(Objects.requireNonNull(position.getValue()));
+        Log.d("list", String.valueOf(accessList.size()));
+        Log.d("list", accessList.toString());
+        AccessData accessData = new AccessData(listPosition, accessList);
+
+        compositeDisposable.add(myPageRepository.postAppliedList(accessData)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    Log.d("code", String.valueOf(it.code()));
+                    Log.d("code", accessData.toString());
+                    if (it.code() == 200) {
+                        createSnackEvent.setValue("선택 성공");
+                        backEvent.call();
+                    }
+                }, it -> {
+                    Log.e("asdfa", it.getMessage());
                 }));
     }
 
