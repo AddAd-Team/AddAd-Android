@@ -21,6 +21,7 @@ import com.add.ad.presentation.adapter.FeedAdapter;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.viewModel.feed.FeedViewModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,7 @@ public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedViewMode
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
         viewModel.getFeed();
+        binding.feedShimmerContainer.startShimmer();
 
         return v;
     }
@@ -58,6 +60,11 @@ public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedViewMode
 
         viewModel.feedDetailEvent.observe(this, mVoid -> {
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_FeedDetailFragment);
+        });
+
+        viewModel.feedShimmerEndEvent.observe(this, mVoid -> {
+            binding.feedShimmerContainer.stopShimmer();
+            binding.feedShimmerContainer.setVisibility(View.GONE);
         });
     }
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.feed.FeedRepository;
+import com.add.ad.data.util.RefreshTokenUtil;
 import com.add.ad.entity.response.ResponseFeedInfo;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
@@ -21,20 +22,23 @@ public class FeedViewModel extends BaseViewModel {
     FeedRepository feedRepository;
     CompositeDisposable compositeDisposable;
     SharedPref sharedPref;
+    RefreshTokenUtil refreshTokenUtil;
 
     public MutableLiveData<ArrayList<ResponseFeedInfo>> feedList = new MutableLiveData<>();
     public MutableLiveData<ResponseFeedInfo> detailFeed = new MutableLiveData<>();
     public MutableLiveData<Boolean> likeClickable = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> application = new MutableLiveData<>(false);
 
+    public SingleLiveEvent<Void> feedShimmerEndEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedDetailEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
-    public FeedViewModel(FeedRepository feedRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref) {
+    public FeedViewModel(FeedRepository feedRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref, RefreshTokenUtil refreshTokenUtil) {
         this.feedRepository = feedRepository;
         this.compositeDisposable = compositeDisposable;
         this.sharedPref = sharedPref;
+        this.refreshTokenUtil = refreshTokenUtil;
     }
 
     public void getFeed() {
@@ -44,9 +48,13 @@ public class FeedViewModel extends BaseViewModel {
                 .subscribe(it -> {
                     if (it.code() == 200) {
                         if (it.body() != null) {
+                            feedShimmerEndEvent.call();
                             feedList.setValue(new ArrayList<>(it.body()));
                             feedListEvent.call();
                         }
+                    } else if (it.code() == 403) {
+                        refreshTokenUtil.getToken();
+                        getFeed();
                     }
                 }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
     }
@@ -90,7 +98,7 @@ public class FeedViewModel extends BaseViewModel {
     }
 
     public void clickApplyBtn() {
-        if (sharedPref.getInfo(false).equals("creator")) {
+        if (sharedPref.getInfo().equals("creator")) {
             application.setValue(!application.getValue());
 
             if (application.getValue()) {

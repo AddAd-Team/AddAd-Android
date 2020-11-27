@@ -25,7 +25,7 @@
         <action
             android:id="@+id/action_MainFragment_to_LoginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/firstLandingFragment"
+            app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_MainFragment_to_FeedDetailFragment"
@@ -45,6 +45,10 @@
         <action
             android:id="@+id/action_LoginInFragment_to_MainFragment"
             app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/firstLandingFragment"
             app:popUpToInclusive="true" />
         <action

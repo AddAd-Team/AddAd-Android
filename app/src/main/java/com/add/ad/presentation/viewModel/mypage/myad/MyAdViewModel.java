@@ -24,6 +24,7 @@ public class MyAdViewModel extends BaseViewModel {
     SharedPref sharedPref;
 
     public MutableLiveData<Boolean> userInfo = new MutableLiveData<>(true);
+    public MutableLiveData<Integer> adPosition = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> creatorAdList = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> advertiserAdList = new MutableLiveData<>();
 
@@ -62,9 +63,9 @@ public class MyAdViewModel extends BaseViewModel {
     }
 
     private Boolean getUserInfo() {
-        if (sharedPref.getInfo(false).equals("creator")) {
+        if (sharedPref.getInfo().equals("creator")) {
             return true;
-        } else if (sharedPref.getInfo(false).equals("advertiser")) {
+        } else if (sharedPref.getInfo().equals("advertiser")) {
             return false;
         }
         return false;

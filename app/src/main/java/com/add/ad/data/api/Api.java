@@ -1,17 +1,17 @@
 package com.add.ad.data.api;
 
+import com.add.ad.entity.AccessData;
 import com.add.ad.entity.Auth;
+import com.add.ad.entity.Token;
+import com.add.ad.entity.User;
+import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.entity.response.ResponseContactInfo;
 import com.add.ad.entity.response.ResponseFeedInfo;
 import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseSearchInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
-import com.add.ad.entity.Token;
-import com.add.ad.entity.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -20,6 +20,7 @@ import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -28,6 +29,9 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api {
+    @GET("/api/auth/refresh")
+    Single<Response<Token>> getToken(@Header("refreshToken") String refreshJwt);
+
     @POST("/api/auth/signin")
     Single<Response<Token>> signIn(@Body Auth authData);
 
@@ -74,7 +78,7 @@ public interface Api {
 
     @GET("api/search/name")
     Single<Response<ArrayList<ResponseSearchInfo>>> searchCreator(@Query("page") int pageId,
-                                                       @Query("name") String searchName);
+                                                                  @Query("name") String searchName);
 
     @GET("api/search/tag")
     Single<Response<ArrayList<ResponseSearchInfo>>> searchTag(@Query("page") int pageId,
@@ -103,4 +107,10 @@ public interface Api {
 
     @GET("/api/mypage/adlist")
     Single<Response<ArrayList<ResponseMyAdInfo>>> getMyAdList();
+
+    @GET("/api/application/basic/{postId}")
+    Single<Response<ArrayList<ResponseApplyInfo>>> getAppliedList(@Path("postId") int postId);
+
+    @POST("/api/application/allow")
+    Single<Response<Void>> postAppliedList(@Body AccessData accessData);
 }

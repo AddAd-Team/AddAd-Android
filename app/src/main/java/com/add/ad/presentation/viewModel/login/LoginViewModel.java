@@ -36,6 +36,12 @@ public class LoginViewModel extends BaseViewModel {
         this.sharedPref = sharedPref;
     }
 
+    public void autoLogin(){
+        if(!sharedPref.getInfo().isEmpty()){
+            startMain.call();
+        }
+    }
+
     public void login() {
         createProgressEvent.call();
         Auth auth = new Auth(userId.getValue(), userPassword.getValue());
@@ -44,7 +50,7 @@ public class LoginViewModel extends BaseViewModel {
                 authRepository.signIn(auth)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe(it -> loginSuccess(it)
+                        .subscribe(this::loginSuccess
                                 , t -> loginFail(t)));
 
     }
@@ -53,7 +59,8 @@ public class LoginViewModel extends BaseViewModel {
     private void loginSuccess(Response<Token> data) {
         if (data.code() / 2 == 100) {
             sharedPref.saveToken(data.body() != null ? data.body().getAccessToken() : null, true);
-            sharedPref.saveInfo(data.body() != null ? data.body().getUserInfo() : null, false);
+            sharedPref.saveToken(data.body() != null ? data.body().getRefreshToken() : null, false);
+            sharedPref.saveInfo(data.body() != null ? data.body().getUserInfo() : null);
             startMain.call();
             dismissProgressEvent.call();
             createToastEvent.setValue("로그인 성공");

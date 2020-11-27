@@ -1,9 +1,11 @@
 package com.add.ad.presentation.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +17,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
 
+import com.add.ad.R;
 import com.add.ad.presentation.util.ProgressDialogUtil;
+import com.google.android.material.snackbar.Snackbar;
 
 import static splitties.toast.ToastKt.toast;
 
@@ -46,6 +50,13 @@ public abstract class BaseFragment<T extends ViewDataBinding, E extends BaseView
         observeEvent();
 
         viewModel.createToastEvent.observe(this, it -> toast(it));
+        viewModel.createSnackEvent.observe(this, it -> {
+            Snackbar snackbar;
+            snackbar = Snackbar.make(view, it, Snackbar.LENGTH_SHORT);
+            View snackBarView = snackbar.getView();
+            snackBarView.setBackgroundColor(Color.parseColor("#4CD653"));
+            snackbar.show();
+        } );
         viewModel.createProgressEvent.observe(this, mVoid -> progressDialogUtil.show());
         viewModel.dismissProgressEvent.observe(this, mVoid -> progressDialogUtil.dismiss());
         viewModel.backEvent.observe(this, mVoid -> Navigation.findNavController(requireView()).popBackStack());

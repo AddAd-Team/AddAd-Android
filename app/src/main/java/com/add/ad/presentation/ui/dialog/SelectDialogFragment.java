@@ -17,6 +17,7 @@ import com.add.ad.R;
 import com.add.ad.databinding.FragmentSelectDialogBinding;
 import com.add.ad.presentation.base.BaseDialogFragment;
 import com.add.ad.presentation.base.BaseFragment;
+import com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.ApplyAdFragment;
 import com.add.ad.presentation.viewModel.mypage.MyPageViewModel;
 import com.add.ad.presentation.viewModel.mypage.myad.MyAdViewModel;
 
@@ -40,7 +41,13 @@ public class SelectDialogFragment extends BaseDialogFragment<FragmentSelectDialo
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         myAdViewModel.clickApplyListEvent.observe(this, mVoid -> {
-            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_myAdFragment_to_AdApplyFragment);
+            Bundle bundle = new Bundle();
+            ApplyAdFragment applyAdFragment = new ApplyAdFragment();
+            String position = myAdViewModel.adPosition.getValue().toString();
+            bundle.putString("position", position);
+            applyAdFragment.setArguments(bundle);
+
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_myAdFragment_to_AdApplyFragment, bundle);
             dismiss();
         });
         myAdViewModel.clickEditEvent.observe(this, mVoid -> {
