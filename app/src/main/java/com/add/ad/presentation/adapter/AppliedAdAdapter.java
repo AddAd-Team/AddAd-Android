@@ -68,11 +68,6 @@ public class AppliedAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             binding.setVh(this);
         }
 
-        public void add(ResponseApplyInfo data) {
-            applyItems.add(data);
-            notifyDataSetChanged();
-        }
-
         public void clickAccess(View v) {
             accessAdAdapter.add(item);
             applyItems.remove(item);
