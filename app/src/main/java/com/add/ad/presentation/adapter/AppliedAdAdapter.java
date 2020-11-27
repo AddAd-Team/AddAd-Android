@@ -77,6 +77,8 @@ public class AppliedAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             accessAdAdapter.add(item);
             applyItems.remove(item);
             notifyDataSetChanged();
+
+            applyAdViewModel.accessList.add(item.getUserId());
         }
     }
 }
