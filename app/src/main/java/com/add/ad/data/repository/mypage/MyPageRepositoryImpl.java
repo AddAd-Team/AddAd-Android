@@ -3,6 +3,7 @@ package com.add.ad.data.repository.mypage;
 import androidx.lifecycle.MutableLiveData;
 
 import com.add.ad.data.api.Api;
+import com.add.ad.entity.AccessData;
 import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.entity.response.ResponseMyAdInfo;
 import com.add.ad.entity.response.ResponseUserInfo;
@@ -52,6 +53,11 @@ public class MyPageRepositoryImpl implements MyPageRepository{
     @Override
     public Single<Response<ArrayList<ResponseApplyInfo>>> getAppliedList(int postId) {
         return api.getAppliedList(postId);
+    }
+
+    @Override
+    public Single<Response<Void>> postAppliedList(AccessData accessData) {
+        return api.postAppliedList(accessData);
     }
 
 }
