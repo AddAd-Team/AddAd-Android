@@ -113,4 +113,7 @@ public interface Api {
 
     @POST("/api/application/allow")
     Single<Response<Void>> postAppliedList(@Body AccessData accessData);
+
+    @DELETE("/api/post/feed/{postId}")
+    Single<Response<Void>> deletePost(@Path("postId") int postId);
 }
