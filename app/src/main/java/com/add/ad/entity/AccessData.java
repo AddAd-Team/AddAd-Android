@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class AccessData {
     private int postId;
-    private ArrayList<Integer> idList;
+    private ArrayList<UserListData> userList;
 
-    public AccessData(int postId, ArrayList<Integer> idList) {
+    public AccessData(int postId, ArrayList<UserListData> userList) {
         this.postId = postId;
-        this.idList = idList;
+        this.userList = userList;
     }
 }
