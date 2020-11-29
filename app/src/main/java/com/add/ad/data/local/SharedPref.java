@@ -40,6 +40,15 @@ public class SharedPref {
                 .putString("UserInfo", info).apply();
     }
 
+    public void saveDeviceToken(String token){
+        context.getSharedPreferences("deviceToken", Context.MODE_PRIVATE).edit()
+                .putString("DeviceToken", token).apply();
+    }
+
+    public String getDeviceToken(){
+        return context.getSharedPreferences("deviceToken", Context.MODE_PRIVATE).getString("DeviceToken", "");
+    }
+
     public String getInfo() {
         return context.getSharedPreferences("userInfo", Context.MODE_PRIVATE).getString("UserInfo", "");
     }
