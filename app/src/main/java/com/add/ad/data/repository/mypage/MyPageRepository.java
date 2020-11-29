@@ -27,4 +27,6 @@ public interface MyPageRepository {
     Single<Response<ArrayList<ResponseApplyInfo>>> getAppliedList(int postId);
 
     Single<Response<Void>> postAppliedList(AccessData accessData);
+
+    Single<Response<Void>> deletePost(int postId);
 }
