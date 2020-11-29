@@ -7,9 +7,12 @@ public class Auth {
     private String userEmail;
     @SerializedName("password")
     private String userPassword;
+    @SerializedName("deviceToken")
+    private String deviceToken;
 
-    public Auth(String userEmail, String userPassword){
+    public Auth(String userEmail, String userPassword, String deviceToken){
         this.userEmail = userEmail;
         this.userPassword = userPassword;
+        this.deviceToken = deviceToken;
     }
 }
