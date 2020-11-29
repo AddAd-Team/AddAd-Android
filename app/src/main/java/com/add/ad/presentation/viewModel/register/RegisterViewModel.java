@@ -53,11 +53,11 @@ public class RegisterViewModel extends BaseViewModel {
     public void clickSignUpNext() {
         clearErrorEvent.call();
         if (userEmail.getValue() != null && emailVerifyCode.getValue() != null && userPassword.getValue() != null && userPasswordCheck.getValue() != null) {
-            if(isCertified){
+            if (isCertified) {
                 if (userPassword.getValue().equals(userPasswordCheck.getValue())) {
                     startNextRegister.call();
                 } else pwErrorEvent.setValue("비밀번호가 일치하지 않습니다");
-            }else createToastEvent.setValue("이메일 인증을 완료해주세요");
+            } else createToastEvent.setValue("이메일 인증을 완료해주세요");
         } else createToastEvent.setValue("빈칸을 모두 채워주세요");
     }
 
@@ -123,6 +123,7 @@ public class RegisterViewModel extends BaseViewModel {
     }
 
     public void signUp() {
+        createProgressEvent.call();
         User user = userBuilder
                 .setUserType(userType.getValue())
                 .setUserEmail(userEmail.getValue())
@@ -136,11 +137,18 @@ public class RegisterViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
                     if (it.code() == 200) {
+                        dismissProgressEvent.call();
                         startLogin.call();
-                    }else if(it.code() == 409){
+                    } else if (it.code() == 409) {
+                        dismissProgressEvent.call();
                         createToastEvent.setValue("이미 존재하는 유저입니다.");
+                    } else {
+                        dismissProgressEvent.call();
+                        createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
                     }
-                    else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
-                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
+                }, it -> {
+                    dismissProgressEvent.call();
+                    createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                }));
     }
 }

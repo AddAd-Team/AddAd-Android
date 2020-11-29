@@ -45,6 +45,10 @@ public class FirstWriteFragment extends BaseFragment<FragmentFirstWriteBinding, 
 
     @Override
     protected void observeEvent() {
+        viewModel.adTitle.setValue("");
+        viewModel.adContent.setValue("");
+        viewModel.adTag.setValue("");
+
         viewModel.clickNextEvent.observe(this, mVoid ->
                 Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_SecondWriteFragment));
     }

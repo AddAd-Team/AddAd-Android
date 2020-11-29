@@ -43,6 +43,7 @@ public class AccessAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemCount() {
         applyAdViewModel.accessResult.setValue(accessItems.size() != 0);
+        applyAdViewModel.accessCount.setValue(accessItems.size());
         return accessItems.size();
     }
 

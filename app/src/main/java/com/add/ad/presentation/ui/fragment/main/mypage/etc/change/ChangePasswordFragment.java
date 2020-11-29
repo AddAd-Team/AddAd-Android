@@ -44,8 +44,19 @@ public class ChangePasswordFragment extends BaseFragment<FragmentChangePasswordB
 
     @Override
     protected void observeEvent() {
-        viewModel.pwChangeEvent.observe(this, mVoid -> {
-            Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_changePasswordFragment_to_mainFragment);
+        viewModel.passwordMediator.addSource(viewModel.newPassword, value -> {
+            viewModel.passwordMediator.setValue(checkFullText());
         });
+        viewModel.passwordMediator.addSource(viewModel.newPasswordCheck, value -> {
+            viewModel.passwordMediator.setValue(checkFullText());
+        });
+
+        viewModel.pwChangeEvent.observe(this, mVoid -> {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_changePasswordFragment_to_mainFragment);
+        });
+    }
+
+    private boolean checkFullText() {
+        return !viewModel.newPassword.getValue().isEmpty() && !viewModel.newPasswordCheck.getValue().isEmpty();
     }
 }

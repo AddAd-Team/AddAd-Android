@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.add.ad.R;
 import com.add.ad.databinding.ItemAdApplyBinding;
+import com.add.ad.entity.User;
+import com.add.ad.entity.UserListData;
 import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.presentation.viewModel.mypage.myad.ApplyAdViewModel;
 
@@ -43,6 +45,7 @@ public class AppliedAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemCount() {
         applyAdViewModel.appliedResult.setValue(applyItems.size() != 0);
+        applyAdViewModel.applyCount.setValue(applyItems.size());
         return applyItems.size();
     }
 
@@ -73,7 +76,8 @@ public class AppliedAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             applyItems.remove(item);
             notifyDataSetChanged();
 
-            applyAdViewModel.accessList.add(item.getUserId());
+            UserListData userListData = new UserListData(item.getUserId(), item.getDeviceToken());
+            applyAdViewModel.accessList.add(userListData);
         }
     }
 }

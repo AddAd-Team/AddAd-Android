@@ -54,7 +54,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, E extends BaseView
             Snackbar snackbar;
             snackbar = Snackbar.make(view, it, Snackbar.LENGTH_SHORT);
             View snackBarView = snackbar.getView();
-            snackBarView.setBackgroundColor(Color.parseColor("#4CD653"));
+            snackBarView.setBackgroundColor(Color.parseColor("#4DBD53"));
             snackbar.show();
         } );
         viewModel.createProgressEvent.observe(this, mVoid -> progressDialogUtil.show());
