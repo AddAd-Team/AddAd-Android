@@ -39,6 +39,7 @@ public class LikeAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public int getItemCount() {
+        likeAdViewModel.likeAdResult.setValue(likeAdItems.size() != 0);
         return likeAdItems.size();
     }
 

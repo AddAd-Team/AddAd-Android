@@ -18,8 +18,10 @@ public class LikeAdViewModel extends BaseViewModel {
     CompositeDisposable compositeDisposable;
     MyPageRepository myPageRepository;
 
+    public MutableLiveData<Boolean> likeAdResult = new MutableLiveData<>(true);
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> likeAdList = new MutableLiveData<>();
 
+    public SingleLiveEvent<Void> stopProgressEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> likeAdEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
@@ -34,10 +36,12 @@ public class LikeAdViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
                     if (it.code() == 200) {
+                        stopProgressEvent.call();
                         likeAdList.setValue(it.body());
                         likeAdEvent.call();
                     }
                 }, it -> {
+                    stopProgressEvent.call();
                     createToastEvent.setValue("알 수 없는 오류가 발생했습니다.");
                 }));
     }

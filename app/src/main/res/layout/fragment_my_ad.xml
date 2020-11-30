@@ -69,6 +69,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
+            android:id="@+id/scrollView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -80,6 +81,15 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/myAdProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_ad_apply_tv" />
 
                 <TextView
                     android:id="@+id/my_ad_apply_tv"
@@ -107,8 +117,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/my_ad_apply_tv"
-                    tools:listitem="@layout/item_my_ad" />
+                    app:layout_constraintTop_toBottomOf="@+id/my_ad_apply_tv" />
 
                 <TextView
                     android:id="@+id/my_ad_upload_tv"
@@ -136,8 +145,22 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/my_ad_upload_tv"
-                    tools:listitem="@layout/item_my_ad" />
+                    app:layout_constraintTop_toBottomOf="@+id/my_ad_upload_tv" />
+
+                <TextView
+                    android:id="@+id/ad_access_result_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:padding="24dp"
+                    android:text="내 광고가 없습니다."
+                    android:textColor="@color/colorGray"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_ad_apply_tv"
+                    app:setItemVisibility="@{vm.myAdResult}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

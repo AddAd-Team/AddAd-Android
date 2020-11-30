@@ -13,7 +13,6 @@ import com.add.ad.presentation.base.SingleLiveEvent;
 
 import java.util.ArrayList;
 
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -23,11 +22,13 @@ public class MyAdViewModel extends BaseViewModel {
     MyPageRepository myPageRepository;
     SharedPref sharedPref;
 
+    public MutableLiveData<Boolean> myAdResult = new MutableLiveData<>(true);
     public MutableLiveData<Boolean> userInfo = new MutableLiveData<>(true);
     public MutableLiveData<Integer> adPosition = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> creatorAdList = new MutableLiveData<>();
     public MutableLiveData<ArrayList<ResponseMyAdInfo>> advertiserAdList = new MutableLiveData<>();
 
+    public SingleLiveEvent<Void> stopProgressEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> clickSelectEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> creatorAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> advertiserAdEvent = new SingleLiveEvent<>();
@@ -49,6 +50,7 @@ public class MyAdViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
                     if (it.code() == 200) {
+                        stopProgressEvent.call();
                         if (getUserInfo()) {
                             creatorAdList.setValue(it.body());
                             creatorAdEvent.call();
@@ -58,6 +60,7 @@ public class MyAdViewModel extends BaseViewModel {
                         }
                     }
                 }, it -> {
+                    stopProgressEvent.call();
                     Log.e("error", it.getMessage());
                 }));
     }

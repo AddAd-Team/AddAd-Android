@@ -14,6 +14,7 @@ import com.add.ad.presentation.base.SingleLiveEvent;
 
 import java.util.ArrayList;
 
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -29,6 +30,7 @@ public class FeedViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> likeClickable = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> application = new MutableLiveData<>(false);
 
+    public SingleLiveEvent<Void> stopProgressEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedShimmerEndEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedDetailEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> feedListEvent = new SingleLiveEvent<>();
@@ -65,6 +67,7 @@ public class FeedViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
                     if (it.code() == 200) {
+                        stopProgressEvent.call();
                         detailFeed.setValue(it.body());
                         application.setValue(detailFeed.getValue().getApplied());
                     }

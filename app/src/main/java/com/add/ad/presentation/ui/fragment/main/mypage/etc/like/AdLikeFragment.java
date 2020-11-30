@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -26,6 +27,8 @@ public class AdLikeFragment extends BaseFragment<FragmentAdLikeBinding, LikeAdVi
 
         viewModel.getLikeAdList();
 
+        viewModel.likeAdResult = new MutableLiveData<>(true);
+
         return v;
     }
 
@@ -46,6 +49,9 @@ public class AdLikeFragment extends BaseFragment<FragmentAdLikeBinding, LikeAdVi
         viewModel.likeAdEvent.observe(this, mVoid -> {
             binding.adLikeRecyclerView.setAdapter(new LikeAdAdapter(viewModel.likeAdList.getValue(), viewModel));
             binding.adLikeRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        });
+        viewModel.stopProgressEvent.observe(this, mVoid -> {
+            binding.likeAdProgressBar.setVisibility(View.GONE);
         });
     }
 }

@@ -41,6 +41,7 @@ public class MyAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
+        myAdViewModel.myAdResult.setValue(myAdItems.size() != 0);
         return myAdItems.size();
     }
 

@@ -2,25 +2,18 @@ package com.add.ad.presentation.ui.fragment.main.mypage.etc.myad;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelStoreOwner;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentMyAdBinding;
-import com.add.ad.presentation.adapter.LikeAdAdapter;
 import com.add.ad.presentation.adapter.MyAdAdapter;
 import com.add.ad.presentation.base.BaseFragment;
-import com.add.ad.presentation.ui.dialog.LogoutDialogFragment;
 import com.add.ad.presentation.ui.dialog.SelectDialogFragment;
 import com.add.ad.presentation.viewModel.mypage.myad.MyAdViewModel;
 
@@ -33,8 +26,9 @@ public class MyAdFragment extends BaseFragment<FragmentMyAdBinding, MyAdViewMode
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setLayout(R.layout.fragment_my_ad);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-
         viewModel.getMyAdList();
+
+        viewModel.myAdResult = new MutableLiveData<>(true);
 
         return v;
     }
@@ -62,6 +56,9 @@ public class MyAdFragment extends BaseFragment<FragmentMyAdBinding, MyAdViewMode
         viewModel.clickSelectEvent.observe(this, mVoid -> {
             SelectDialogFragment selectDialogFragment = new SelectDialogFragment();
             selectDialogFragment.show(requireActivity().getSupportFragmentManager(), "SelectDialogFragment");
+        });
+        viewModel.stopProgressEvent.observe(this, mVoid -> {
+            binding.myAdProgressBar.setVisibility(View.GONE);
         });
     }
 }

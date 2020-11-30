@@ -3,6 +3,7 @@ package com.add.ad.presentation.viewModel.write;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 
+import com.add.ad.data.local.SharedPref;
 import com.add.ad.data.repository.write.WriteRepository;
 import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
@@ -24,11 +25,13 @@ import okhttp3.RequestBody;
 public class WriteViewModel extends BaseViewModel {
     CompositeDisposable compositeDisposable;
     WriteRepository writeRepository;
+    SharedPref sharedPref;
 
     @ViewModelInject
-    public WriteViewModel(WriteRepository writeRepository, CompositeDisposable compositeDisposable) {
+    public WriteViewModel(WriteRepository writeRepository, CompositeDisposable compositeDisposable, SharedPref sharedPref) {
         this.writeRepository = writeRepository;
         this.compositeDisposable = compositeDisposable;
+        this.sharedPref = sharedPref;
     }
 
     public MutableLiveData<String> adTitle = new MutableLiveData<>();
