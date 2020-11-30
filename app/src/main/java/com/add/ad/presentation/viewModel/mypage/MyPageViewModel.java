@@ -28,11 +28,11 @@ public class MyPageViewModel extends BaseViewModel {
         this.sharedPref = sharedPref;
     }
 
-
     public MutableLiveData<String> profileName = new MutableLiveData<>();
     public MutableLiveData<String> profileTag = new MutableLiveData<>();
     public MutableLiveData<String> profileImageUrl = new MutableLiveData<>();
 
+    public SingleLiveEvent<Void> infoEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> logoutEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> myAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> adLikeEvent = new SingleLiveEvent<>();
@@ -80,6 +80,10 @@ public class MyPageViewModel extends BaseViewModel {
 
     public void clickMyAd() {
         myAdEvent.call();
+    }
+
+    public void clickInfo() {
+        infoEvent.call();
     }
 
     public void setLogoutEvent() {

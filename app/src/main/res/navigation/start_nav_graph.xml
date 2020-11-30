@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_MainFragment_to_AdLikeFragment"
             app:destination="@id/adLikeFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_InfoFragment"
+            app:destination="@id/infoFragment"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -171,4 +174,9 @@
             android:id="@+id/action_AdLikeFragment_to_FeedDetailFragment"
             app:destination="@id/feedDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.info.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>

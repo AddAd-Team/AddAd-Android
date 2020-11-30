@@ -46,6 +46,7 @@ public class MyPageFragment extends BaseFragment<FragmentMyPageBinding, MyPageVi
         viewModel.myAdEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyAdFragment));
         viewModel.myProfileEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_MyProfileFragment));
         viewModel.changePwEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_MainFragment_to_ChangePasswordFragment));
+        viewModel.infoEvent.observe(this, mVoid -> Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_MainFragment_to_InfoFragment));
         viewModel.logoutEvent.observe(this, mVoid -> {
             LogoutDialogFragment logoutDialogFragment = new LogoutDialogFragment();
             logoutDialogFragment.show(requireActivity().getSupportFragmentManager(), "LogoutDialogFragment");
