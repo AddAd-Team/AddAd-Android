@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="@color/colorTopBlack">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_my_ad_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_my_ad_gl_middle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_my_ad_title_tv"
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="8dp"
+        android:ellipsize="end"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@id/item_my_ad_end_date_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/item_my_ad_gl_middle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_my_ad_end_date_tv"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="8dp"
+        android:ellipsize="end"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@id/item_my_ad_tag_tv"
+        app:layout_constraintStart_toStartOf="@+id/item_my_ad_gl_middle"
+        app:layout_constraintTop_toBottomOf="@+id/item_my_ad_title_tv" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_my_ad_tag_tv"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="8dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/item_my_ad_gl_middle"
+        app:layout_constraintTop_toBottomOf="@+id/item_my_ad_end_date_tv" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/item_my_ad_gl_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
