@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
 
         <variable
             name="feedItem"
@@ -100,10 +101,10 @@
             android:layout_marginStart="8dp"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:visibility="@{feedItem.feedRemainDate > 0 ? View.VISIBLE : View.GONE}"
             android:text="@{@string/remain_date_tv(feedItem.feedRemainDate)}"
             android:textColor="@color/colorOrange"
             android:textSize="14sp"
+            android:visibility="@{feedItem.feedRemainDate > 0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toEndOf="@+id/feed_end_date_tv"
             app:layout_constraintTop_toBottomOf="@+id/feed_price_tv" />
 

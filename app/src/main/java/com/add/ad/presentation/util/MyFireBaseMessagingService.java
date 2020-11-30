@@ -15,11 +15,14 @@ import androidx.core.app.NotificationCompat;
 
 import com.add.ad.R;
 import com.add.ad.presentation.ui.activity.MainActivity;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
-    @Override
+        @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
     }
@@ -27,8 +30,12 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         if (remoteMessage.getNotification() != null) {
-            String testBody = remoteMessage.getData().get("body");
-            String testTitle = remoteMessage.getData().get("title");
+            String testBody = remoteMessage.getNotification().getBody();
+            String testTitle = remoteMessage.getNotification().getTitle();
+
+            Log.d("remoteMesage", remoteMessage.toString());
+
+            Log.d("testBody", String.valueOf(remoteMessage.getData()));
 
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -39,6 +46,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
 
             NotificationCompat.Builder notificationBuilder =
                     new NotificationCompat.Builder(this, channelId)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
                             .setContentTitle(testTitle)
                             .setContentText(testBody)
                             .setAutoCancel(true)
