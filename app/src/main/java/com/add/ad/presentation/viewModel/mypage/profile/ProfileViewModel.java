@@ -1,5 +1,7 @@
 package com.add.ad.presentation.viewModel.mypage.profile;
 
+import android.util.Log;
+
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
@@ -74,6 +76,7 @@ public class ProfileViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
+                    Log.d("code", String.valueOf(it.code()));
                     if (it.code() == 200) {
                         dismissProgressEvent.call();
                         profileEditCompleteEvent.call();
@@ -85,7 +88,7 @@ public class ProfileViewModel extends BaseViewModel {
                     }
                 }, it -> {
                     dismissProgressEvent.call();
-                    createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                    createToastEvent.setValue(it.getMessage());
                 }));
     }
 

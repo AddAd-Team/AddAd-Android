@@ -50,8 +50,10 @@ public class SelectDialogFragment extends BaseDialogFragment<FragmentSelectDialo
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_myAdFragment_to_AdApplyFragment, bundle);
             dismiss();
         });
-        myAdViewModel.clickEditEvent.observe(this, mVoid -> {
-            Log.d("clickEditEvent", "ckjcmckcjlk");
+        myAdViewModel.clickDeleteEvent.observe(this, mVoid -> {
+
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).popBackStack();
+            dismiss();
         });
     }
 }

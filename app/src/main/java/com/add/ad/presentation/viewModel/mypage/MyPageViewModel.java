@@ -1,5 +1,7 @@
 package com.add.ad.presentation.viewModel.mypage;
 
+import android.util.Log;
+
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
@@ -50,7 +52,10 @@ public class MyPageViewModel extends BaseViewModel {
                         profileName.setValue(it.body() != null ? it.body().getUserName() : null);
                         profileTag.setValue(it.body() != null ? it.body().getUserTag() : null);
                     }
-                }, it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
+                }, it -> {
+                    Log.e("error profile", it.getMessage());
+                    createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                }));
 
     }
 

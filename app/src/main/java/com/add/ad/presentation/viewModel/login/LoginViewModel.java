@@ -2,6 +2,7 @@ package com.add.ad.presentation.viewModel.login;
 
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
@@ -22,8 +23,10 @@ public class LoginViewModel extends BaseViewModel {
     AuthRepository authRepository;
     SharedPref sharedPref;
 
-    public MutableLiveData<String> userId = new MutableLiveData<>();
-    public MutableLiveData<String> userPassword = new MutableLiveData<>();
+    public MutableLiveData<String> userId = new MutableLiveData<>("");
+    public MutableLiveData<String> userPassword = new MutableLiveData<>("");
+
+    public MediatorLiveData<Boolean> loginMediator = new MediatorLiveData<>();
 
     public SingleLiveEvent<Void> startMain = new SingleLiveEvent<>();
     public SingleLiveEvent<String> pwErrorEvent = new SingleLiveEvent<>();
@@ -44,7 +47,8 @@ public class LoginViewModel extends BaseViewModel {
 
     public void login() {
         createProgressEvent.call();
-        Auth auth = new Auth(userId.getValue(), userPassword.getValue());
+        String deviceToken = sharedPref.getDeviceToken();
+        Auth auth = new Auth(userId.getValue(), userPassword.getValue(), deviceToken);
 
         compositeDisposable.add(
                 authRepository.signIn(auth)
@@ -63,7 +67,7 @@ public class LoginViewModel extends BaseViewModel {
             sharedPref.saveInfo(data.body() != null ? data.body().getUserInfo() : null);
             startMain.call();
             dismissProgressEvent.call();
-            createToastEvent.setValue("로그인 성공");
+            createSnackEvent.setValue("로그인 성공");
         } else {
             dismissProgressEvent.call();
             pwErrorEvent.setValue("비밀번호가 일치하지 않습니다.");

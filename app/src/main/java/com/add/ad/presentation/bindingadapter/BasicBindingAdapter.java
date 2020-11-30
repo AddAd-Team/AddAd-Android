@@ -1,14 +1,12 @@
-package com.add.ad.presentation.bindinadapter;
+package com.add.ad.presentation.bindingadapter;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.add.ad.R;
-import com.add.ad.presentation.adapter.AccessAdAdapter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 

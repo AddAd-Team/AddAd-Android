@@ -32,7 +32,7 @@ public class MyAdViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> creatorAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> advertiserAdEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> clickApplyListEvent = new SingleLiveEvent<>();
-    public SingleLiveEvent<Void> clickEditEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> clickDeleteEvent = new SingleLiveEvent<>();
 
     @ViewModelInject
     public MyAdViewModel(CompositeDisposable compositeDisposable, MyPageRepository myPageRepository, SharedPref sharedPref) {
@@ -75,11 +75,24 @@ public class MyAdViewModel extends BaseViewModel {
         backEvent.call();
     }
 
-    public void clickApplyList(){
+    public void clickApplyList() {
         clickApplyListEvent.call();
     }
 
-    public void clickEdit(){
-        clickEditEvent.call();
+    public void clickDelete() {
+        createProgressEvent.call();
+
+        compositeDisposable.add(myPageRepository.deletePost(adPosition.getValue())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(it -> {
+                    if (it.code() == 200) {
+                        dismissProgressEvent.call();
+                        clickDeleteEvent.call();
+                        createSnackEvent.setValue("글 삭제 성공");
+                    }
+                }, it -> {
+                    createToastEvent.setValue(it.getMessage());
+                }));
     }
 }

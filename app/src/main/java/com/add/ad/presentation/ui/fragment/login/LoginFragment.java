@@ -54,7 +54,14 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
 
     @Override
     protected void observeEvent() {
-         viewModel.startMain.observe(this, mVoid ->
+        viewModel.loginMediator.addSource(viewModel.userId, value -> {
+            viewModel.loginMediator.setValue(checkFullText());
+        });
+        viewModel.loginMediator.addSource(viewModel.userPassword, value -> {
+            viewModel.loginMediator.setValue(checkFullText());
+        });
+
+        viewModel.startMain.observe(this, mVoid ->
                 Navigation.findNavController(requireView()).navigate(R.id.action_LoginInFragment_to_MainFragment));
 
         viewModel.pwErrorEvent.observe(this, s -> binding.loginPwEtLayout.setError(s));
@@ -62,5 +69,8 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
         viewModel.startRegister.observe(this, mVoid ->
                 Navigation.findNavController(requireView()).navigate(R.id.action_LoginInFragment_to_RegisterFragment));
 
+    }
+    private boolean checkFullText() {
+        return !viewModel.userId.getValue().isEmpty() && !viewModel.userPassword.getValue().isEmpty();
     }
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
@@ -23,6 +24,11 @@ import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.util.FileUtil;
 import com.add.ad.presentation.viewModel.write.WriteViewModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
 import static android.app.Activity.RESULT_OK;
@@ -30,6 +36,11 @@ import static splitties.toast.ToastKt.toast;
 
 @AndroidEntryPoint
 public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding, WriteViewModel> {
+
+    Date currentTime = Calendar.getInstance().getTime();
+    SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+    SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
+    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +64,14 @@ public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding
 
     @Override
     protected void observeEvent() {
+        viewModel.adPrice.setValue("0");
+        viewModel.postEndYear.setValue(yearFormat.format(currentTime));
+        viewModel.postEndMonth.setValue(monthFormat.format(currentTime));
+        viewModel.postEndDay.setValue(dayFormat.format(currentTime));
+        viewModel.adEndYear.setValue(yearFormat.format(currentTime));
+        viewModel.adEndMonth.setValue(monthFormat.format(currentTime));
+        viewModel.adEndDay.setValue(dayFormat.format(currentTime));
+
         viewModel.selectImageEvent.observe(this, mVoid -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");

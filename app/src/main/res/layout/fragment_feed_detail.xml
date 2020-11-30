@@ -120,6 +120,7 @@
                     android:id="@+id/feed_image"
                     android:layout_width="match_parent"
                     android:layout_height="280dp"
+                    android:scaleType="centerCrop"
                     android:background="@color/colorMiddleBlack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -175,11 +176,11 @@
                     android:includeFontPadding="false"
                     android:text="@{@string/remain_date_tv(vm.detailFeed.feedCloseRecruitmentDate)}"
                     android:textColor="@color/colorOrange"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:visibility="@{vm.detailFeed.feedCloseRecruitmentDate > 0 ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintBottom_toTopOf="@id/feed_detail_ad_end_date_tv"
+                    app:layout_constraintBottom_toBottomOf="@+id/feed_detail_recruit_end_date_tv"
                     app:layout_constraintStart_toEndOf="@id/feed_detail_recruit_end_date_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/view6" />
+                    app:layout_constraintTop_toTopOf="@+id/feed_detail_recruit_end_date_tv" />
 
                 <TextView
                     android:id="@+id/feed_detail_ad_end_date_tv"
@@ -189,7 +190,7 @@
                     android:includeFontPadding="false"
                     android:text="@{@string/ad_end_date_tv(vm.detailFeed.deadline)}"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/feed_detail_gl_middle2"
                     app:layout_constraintStart_toStartOf="@+id/feed_detail_gl_left"
                     app:layout_constraintTop_toBottomOf="@+id/feed_detail_recruit_end_date_tv" />
@@ -203,7 +204,7 @@
                     android:includeFontPadding="false"
                     android:text="@{@string/remain_date_tv(vm.detailFeed.feedCloseAdDate)}"
                     android:textColor="@color/colorOrange"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:visibility="@{vm.detailFeed.feedCloseAdDate > 0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toTopOf="@+id/feed_detail_gl_middle2"
                     app:layout_constraintStart_toEndOf="@+id/feed_detail_ad_end_date_tv"
@@ -215,13 +216,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:background="@drawable/outline_white_radius_view"
-                    android:paddingStart="32dp"
-                    android:paddingTop="10sp"
-                    android:paddingEnd="32dp"
-                    android:paddingBottom="10sp"
+                    android:paddingVertical="14dp"
+                    android:paddingHorizontal="20dp"
                     android:text="@{@string/price_tv(vm.detailFeed.feedPrice)}"
                     android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/feed_detail_gl_middle2"
                     app:layout_constraintEnd_toStartOf="@+id/feed_detail_gl_right"
                     app:layout_constraintTop_toBottomOf="@+id/view6" />

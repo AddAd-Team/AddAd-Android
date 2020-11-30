@@ -60,4 +60,9 @@ public class MyPageRepositoryImpl implements MyPageRepository{
         return api.postAppliedList(accessData);
     }
 
+    @Override
+    public Single<Response<Void>> deletePost(int postId) {
+        return api.deletePost(postId);
+    }
+
 }

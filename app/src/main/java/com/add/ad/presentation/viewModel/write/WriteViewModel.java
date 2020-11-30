@@ -31,21 +31,16 @@ public class WriteViewModel extends BaseViewModel {
         this.compositeDisposable = compositeDisposable;
     }
 
-    Date currentTime = Calendar.getInstance().getTime();
-    SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
-    SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
-    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
-
     public MutableLiveData<String> adTitle = new MutableLiveData<>();
     public MutableLiveData<String> adTag = new MutableLiveData<>();
     public MutableLiveData<String> adContent = new MutableLiveData<>();
     public MutableLiveData<String> adPrice = new MutableLiveData<>("0");
-    public MutableLiveData<String> postEndYear = new MutableLiveData<>(yearFormat.format(currentTime));
-    public MutableLiveData<String> postEndMonth = new MutableLiveData<>(monthFormat.format(currentTime));
-    public MutableLiveData<String> postEndDay = new MutableLiveData<>(dayFormat.format(currentTime));
-    public MutableLiveData<String> adEndYear = new MutableLiveData<>(yearFormat.format(currentTime));
-    public MutableLiveData<String> adEndMonth = new MutableLiveData<>(monthFormat.format(currentTime));
-    public MutableLiveData<String> adEndDay = new MutableLiveData<>(dayFormat.format(currentTime));
+    public MutableLiveData<String> postEndYear = new MutableLiveData<>();
+    public MutableLiveData<String> postEndMonth = new MutableLiveData<>();
+    public MutableLiveData<String> postEndDay = new MutableLiveData<>();
+    public MutableLiveData<String> adEndYear = new MutableLiveData<>();
+    public MutableLiveData<String> adEndMonth = new MutableLiveData<>();
+    public MutableLiveData<String> adEndDay = new MutableLiveData<>();
     public MutableLiveData<String> adImageUri = new MutableLiveData<>();
 
     public SingleLiveEvent<Void> clickComplete = new SingleLiveEvent<>();
@@ -84,7 +79,7 @@ public class WriteViewModel extends BaseViewModel {
                         if (it.code() == 200) {
                             dismissProgressEvent.call();
                             clickComplete.call();
-                            createToastEvent.setValue("글 올리기 성공");
+                            createSnackEvent.setValue("글 올리기 성공");
                         }
                     }, it -> {
                         dismissProgressEvent.call();
