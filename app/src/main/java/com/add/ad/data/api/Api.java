@@ -4,6 +4,7 @@ import com.add.ad.entity.AccessData;
 import com.add.ad.entity.Auth;
 import com.add.ad.entity.Token;
 import com.add.ad.entity.User;
+import com.add.ad.entity.response.ResponseAlertInfo;
 import com.add.ad.entity.response.ResponseApplyInfo;
 import com.add.ad.entity.response.ResponseContactInfo;
 import com.add.ad.entity.response.ResponseFeedInfo;
@@ -116,4 +117,7 @@ public interface Api {
 
     @DELETE("/api/post/feed/{postId}")
     Single<Response<Void>> deletePost(@Path("postId") int postId);
+
+    @GET("/api/notification/list")
+    Single<Response<ArrayList<ResponseAlertInfo>>> getNotificationList();
 }

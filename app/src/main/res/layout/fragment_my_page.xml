@@ -102,8 +102,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="@{()->vm.clickMyProfile()}"
-            app:layout_constraintBottom_toTopOf="@id/my_page_ad_view"
+            app:layout_constraintBottom_toTopOf="@id/my_page_alert_view"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
             app:layout_constraintStart_toStartOf="@+id/my_page_gl_left"
             app:layout_constraintTop_toTopOf="@+id/my_page_gl_top">
@@ -154,14 +155,67 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/my_page_alert_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:onClick="@{()->vm.clickAlert()}"
+            app:layout_constraintBottom_toTopOf="@id/my_page_ad_view"
+            app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
+            app:layout_constraintStart_toStartOf="@+id/my_page_gl_left"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_profile_view">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="32dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_alert"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/my_page_gl_left_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/my_page_alert_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/alert_tv"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/my_page_gl_left_8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="18dp"
+                android:background="@drawable/ic_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/my_page_gl_left_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.11" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/my_page_ad_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="@{()->vm.clickMyAd()}"
             app:layout_constraintBottom_toTopOf="@id/my_page_like_view"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
             app:layout_constraintStart_toStartOf="@+id/my_page_gl_left"
-            app:layout_constraintTop_toBottomOf="@+id/my_page_profile_view">
+            app:layout_constraintTop_toBottomOf="@+id/my_page_alert_view">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -208,6 +262,7 @@
             android:id="@+id/my_page_change_pw_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="@{()->vm.clickChangePw()}"
             app:layout_constraintBottom_toTopOf="@id/my_page_info_view"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
@@ -261,6 +316,7 @@
             android:id="@+id/my_page_info_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="@{()->vm.clickInfo()}"
             app:layout_constraintBottom_toTopOf="@id/my_page_logout_view"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
@@ -313,6 +369,7 @@
             android:id="@+id/my_page_like_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="@{()->vm.clickAdLike()}"
             app:layout_constraintBottom_toTopOf="@id/my_page_change_pw_view"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"
@@ -321,7 +378,7 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="28dp"
+                android:layout_width="26dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -364,6 +421,7 @@
             android:id="@+id/my_page_logout_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="@{()->vm.setLogoutEvent()}"
             app:layout_constraintBottom_toTopOf="@+id/my_page_gl_bottom"
             app:layout_constraintEnd_toStartOf="@+id/my_page_gl_right"

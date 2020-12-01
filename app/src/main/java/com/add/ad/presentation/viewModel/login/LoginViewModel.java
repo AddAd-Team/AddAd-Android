@@ -39,8 +39,8 @@ public class LoginViewModel extends BaseViewModel {
         this.sharedPref = sharedPref;
     }
 
-    public void autoLogin(){
-        if(!sharedPref.getInfo().isEmpty()){
+    public void autoLogin() {
+        if (!sharedPref.getInfo().isEmpty()) {
             startMain.call();
         }
     }

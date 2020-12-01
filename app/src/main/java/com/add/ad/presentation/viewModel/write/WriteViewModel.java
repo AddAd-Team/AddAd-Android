@@ -50,10 +50,21 @@ public class WriteViewModel extends BaseViewModel {
     public SingleLiveEvent<Void> clickNextEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> selectImageEvent = new SingleLiveEvent<>();
 
+    public Boolean getUserInfo() {
+        if (sharedPref.getInfo().equals("creator")) {
+            return true;
+        } else if (sharedPref.getInfo().equals("advertiser")) {
+            return false;
+        }
+        return false;
+    }
+
     public void clickNext() {
-        if (adTitle.getValue() != null && adTag.getValue() != null && adContent.getValue() != null) {
-            clickNextEvent.call();
-        } else createToastEvent.setValue("빈칸을 모두 채워주세요");
+        if(!getUserInfo()){
+            if (adTitle.getValue() != null && adTag.getValue() != null && adContent.getValue() != null) {
+                clickNextEvent.call();
+            } else createToastEvent.setValue("빈칸을 모두 채워주세요");
+        }else createToastEvent.setValue("크리에이터는 글을 쓸 수 없습니다.");
     }
 
     public void selectImage() {

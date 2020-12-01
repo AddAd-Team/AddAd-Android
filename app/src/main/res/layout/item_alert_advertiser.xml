@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="alertItem"
+            type="com.add.ad.entity.response.ResponseAlertInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTopBlack"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView12"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/colorTopBlack"
+            app:cardCornerRadius="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/alert_advertiser_profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_sample_profile"
+                app:setImages="@{alertItem.profileImg}" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:backgroundTint="@color/colorDarkGray"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cardView12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5">
+
+            <TextView
+                android:id="@+id/alert_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp"
+                android:text="@{alertItem.title + alertItem.description}"
+                android:textColor="@color/colorWhite" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

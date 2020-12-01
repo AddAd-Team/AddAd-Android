@@ -32,6 +32,7 @@ public class MyPageViewModel extends BaseViewModel {
     public MutableLiveData<String> profileTag = new MutableLiveData<>();
     public MutableLiveData<String> profileImageUrl = new MutableLiveData<>();
 
+    public SingleLiveEvent<Void> alertEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> infoEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> logoutEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> myAdEvent = new SingleLiveEvent<>();
@@ -92,5 +93,9 @@ public class MyPageViewModel extends BaseViewModel {
 
     public void clickAdLike() {
         adLikeEvent.call();
+    }
+
+    public void clickAlert() {
+        alertEvent.call();
     }
 }

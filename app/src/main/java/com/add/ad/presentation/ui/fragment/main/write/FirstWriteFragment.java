@@ -11,11 +11,13 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentFirstWriteBinding;
 import com.add.ad.presentation.base.BaseFragment;
 import com.add.ad.presentation.base.BaseViewModel;
+import com.add.ad.presentation.util.AlertDialogUtil;
 import com.add.ad.presentation.viewModel.write.WriteViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -28,7 +30,11 @@ public class FirstWriteFragment extends BaseFragment<FragmentFirstWriteBinding, 
         setLayout(R.layout.fragment_first_write);
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        binding.setVm(viewModel);
+        if(viewModel.getUserInfo()){
+            AlertDialogUtil alertDialogUtil = new AlertDialogUtil(requireContext());
+            alertDialogUtil.show();
+            binding.firstWriteNextTv.setVisibility(View.GONE);
+        }
 
         return v;
     }

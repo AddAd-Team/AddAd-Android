@@ -1,5 +1,11 @@
 package com.add.ad.presentation.bindingadapter;
 
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,5 +54,13 @@ public class BasicBindingAdapter {
         }else {
             textView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @BindingAdapter({"setTextColor1","setTextColor2"})
+    public static void setTextColor(TextView textView, String s1, String s2){
+        SpannableString span = new SpannableString(s1 + s2);
+        span.setSpan(new ForegroundColorSpan(Color.parseColor("#FF6138")),0,s1.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textView.setText(span);
     }
 }

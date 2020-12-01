@@ -42,8 +42,10 @@ public class ContactFragment extends BaseFragment<FragmentContactBinding, Contac
     @Override
     protected void observeEvent() {
         viewModel.contactEvent.observe(this, mVoid -> {
-            binding.contactRecyclerView.setAdapter(new ContactAdapter(viewModel.contactList.getValue(),viewModel));
+            binding.contactRecyclerView.setAdapter(new ContactAdapter(viewModel.contactList.getValue(), viewModel));
             binding.contactRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+            binding.contactProgressBar.setVisibility(View.GONE);
         });
     }
 }

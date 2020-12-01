@@ -61,4 +61,8 @@ public class SharedPref {
         context.getSharedPreferences("userInfo", Context.MODE_PRIVATE).edit().remove("UserInfo").apply();
     }
 
+    public void removeDeviceToken() {
+        context.getSharedPreferences("deviceToken", Context.MODE_PRIVATE).edit().remove("DeviceToken").apply();
+    }
+
 }
