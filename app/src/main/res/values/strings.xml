@@ -1,11 +1,75 @@
 <resources>
     <string name="app_name">AddAd-Android</string>
 
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior
+    </string>
+
     <string name="next_tv">다음</string>
     <string name="start_tv">시작하기</string>
     <string name="main_tv">addad</string>
+    <string name="back_tv">뒤로</string>
+
+    //login
     <string name="email_tv">이메일</string>
     <string name="pw_tv">비밀번호</string>
+
+    //register
+    <string name="pw_check_tv">비밀번호 확인</string>
+    <string name="verify_code_tv">확인코드</string>
+
+    //feed
+    <string name="feed_price_tv">금액 : %s만원</string>
+    <string name="price_tv">%s 만원</string>
+    <string name="feed_end_date_tv">모집마감 : %s</string>
+    <string name="end_date_tv">마감일 : %s</string>
+    <string name="ad_end_date_tv">광고마감 : %s</string>
+
+    //mypage
+    <string name="my_page_tv">마이페이지</string>
+    <string name="profile_tv">프로필</string>
+    <string name="my_ad_tv">내 광고</string>
+    <string name="like_ad_tv">관심있는 광고</string>
+    <string name="change_pw_tv">비밀번호 변경</string>
+    <string name="info_tv">정보</string>
+    <string name="logout_tv">로그아웃</string>
+
+    //search
+    <string name="cancel_tv">취소</string>
+
+    //change password
+    <string name="change_password_tv">비밀번호 변경</string>
+
+    //my profile
+    <string name="edit_tv">편집</string>
+    <string name="visit_email_tv">Email : %s</string>
+
+    //my ad
+    <string name="my_ad_manage_tv">관리</string>
+    <string name="my_ad_apply_tv">내가 신청한 광고</string>
+    <string name="my_ad_upload_tv">내가 올린 광고</string>
+    <string name="my_ad_finish_tv">종료된 광고</string>
+
+    //write
+    <string name="write_tv">글쓰기</string>
+    <string name="complete_tv">완료</string>
+
+    //detail feed
+    <string name="apply_tv">신청하기</string>
+    <string name="cancel_apply_tv">신청취소</string>
+
+    //like ad
+    <string name="interest_ad_tv">관심있는 광고</string>
+    <string name="remain_date_tv">( %s일 )</string>
+
+    //my ad
+    <string name="apply_list_tv">신청자 목록</string>
+    <string name="access_tv">수락</string>
+    <string name="delete_tv">삭제</string>
+    <string name="apply_ac_count_tv">신청한 크리에이터 ( %d )</string>
+    <string name="access_ad_count_tv">수락한 크리에이터 ( %d )</string>
+    <string name="alert_tv">알림</string>
+    <string name="alert_body_tv"><font color="#ff0000">%s</font>%s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

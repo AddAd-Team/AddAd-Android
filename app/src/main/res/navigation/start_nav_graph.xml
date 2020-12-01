@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.add.ad.presentation.ui.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_MainFragment_to_ChangePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_MyProfileFragment"
+            app:destination="@+id/myProfileFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_MyAdFragment"
+            app:destination="@id/myAdFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_SecondWriteFragment"
+            app:destination="@id/secondWriteFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_LoginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_MainFragment_to_FeedDetailFragment"
+            app:destination="@id/feedDetailFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_VisitProfileFragment"
+            app:destination="@id/visitProfileFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_AdLikeFragment"
+            app:destination="@id/adLikeFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_InfoFragment"
+            app:destination="@id/infoFragment"/>
+        <action
+            android:id="@+id/action_MainFragment_to_AlertFragment"
+            app:destination="@id/alertFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.add.ad.presentation.ui.fragment.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_LoginInFragment_to_MainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/firstLandingFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_LoginInFragment_to_RegisterFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_FirstLandingFragment"
+            app:destination="@id/firstLandingFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.add.ad.presentation.ui.fragment.register.FirstRegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_first_register">
+        <action
+            android:id="@+id/action_FirstRegisterFragment_to_SecondRegisterFragment"
+            app:destination="@id/secondRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.FirstLandingFragment"
+        android:label="FirstLandingFragment"
+        tools:layout="@layout/fragment_first_landing">
+        <action
+            android:id="@+id/action_FirstLandingFragment_to_SecondLandingFragment"
+            app:destination="@id/secondLandingFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.SecondLandingFragment"
+        android:label="fragment_second_landing"
+        tools:layout="@layout/fragment_second_landing">
+        <action
+            android:id="@+id/action_SecondLandingFragment_to_ThirdLandingFragment"
+            app:destination="@id/thirdLandingFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdLandingFragment"
+        android:name="com.add.ad.presentation.ui.fragment.landing.ThirdLandingFragment"
+        android:label="ThirdLandingFragment"
+        tools:layout="@layout/fragment_third_landing">
+        <action
+            android:id="@+id/action_ThirdLandingFragment_to_LoginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.change.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password">
+        <action
+            android:id="@+id/action_changePasswordFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.profile.MyProfileFragment"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/visitProfileFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.visit.VisitProfileFragment"
+        android:label="fragment_visit_profile"
+        tools:layout="@layout/fragment_visit_profile" />
+    <fragment
+        android:id="@+id/myAdFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.MyAdFragment"
+        android:label="fragment_my_ad"
+        tools:layout="@layout/fragment_my_ad">
+        <action
+            android:id="@+id/action_myAdFragment_to_AdApplyFragment"
+            app:destination="@id/adApplyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adApplyFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.myad.manage.ApplyAdFragment"
+        android:label="fragment_ad_manage"
+        tools:layout="@layout/fragment_ad_apply" />
+    <fragment
+        android:id="@+id/secondRegisterFragment"
+        android:name="com.add.ad.presentation.ui.fragment.register.SecondRegisterFragment"
+        android:label="fragment_second_register"
+        tools:layout="@layout/fragment_second_register">
+        <action
+            android:id="@+id/action_SecondRegisterFragment_to_LoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondWriteFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.write.SecondWriteFragment"
+        android:label="fragment_second_write"
+        tools:layout="@layout/fragment_second_write">
+        <action
+            android:id="@+id/action_secondWriteFragment_to_MainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/firstLandingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedDetailFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.feed.FeedDetailFragment"
+        android:label="fragment_feed_detail"
+        tools:layout="@layout/fragment_feed_detail" />
+    <fragment
+        android:id="@+id/adLikeFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.like.AdLikeFragment"
+        android:label="fragment_ad_like"
+        tools:layout="@layout/fragment_ad_like">
+        <action
+            android:id="@+id/action_AdLikeFragment_to_FeedDetailFragment"
+            app:destination="@id/feedDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.info.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/alertFragment"
+        android:name="com.add.ad.presentation.ui.fragment.main.mypage.etc.alert.AlertFragment"
+        android:label="fragment_alert"
+        tools:layout="@layout/fragment_alert" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.add.ad.presentation.ui.fragment.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_splashFragment_to_FirstLandingFragment"
+            app:destination="@id/firstLandingFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
+
+    </fragment>
+</navigation>

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorTopBlack"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="presentation.ui.fragment.landing.ThirdLandingFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="280dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1"
         android:background="@color/colorWhite"
         app:cardCornerRadius="1000dp"
         app:layout_constraintBottom_toTopOf="@+id/third_landing_gl_middle"
+        app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toStartOf="@+id/third_landing_gl_right"
         app:layout_constraintStart_toStartOf="@+id/third_landing_gl_left"
         app:layout_constraintTop_toTopOf="@+id/third_landing_gl_top">
 
         <ImageView
-            android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="20dp"
             android:background="@drawable/ic_third_landing" />
 
     </androidx.cardview.widget.CardView>
@@ -32,13 +32,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/notosanskr_bold"
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="여러분의 상품으로 수익을 내세요"
         android:textColor="@color/colorWhite"
         android:textSize="17sp"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/third_landing_gl_right"
         app:layout_constraintStart_toStartOf="@+id/third_landing_gl_left"
         app:layout_constraintTop_toTopOf="@+id/third_landing_gl_middle" />
@@ -47,9 +47,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/notosanskr_regular"
         android:gravity="center"
-        android:layout_marginTop="8dp"
         android:includeFontPadding="false"
         android:text="정산 탭에서 증가된 여러분의 수익을 확인하세요."
         android:textColor="@color/colorWhite"
@@ -62,50 +62,50 @@
         android:id="@+id/complete_landing_btn"
         android:layout_width="0dp"
         android:layout_height="44dp"
-        android:background="@drawable/white_radius_view"
-        android:backgroundTint="@color/colorOrange"
+        android:background="@drawable/orange_radius_view"
         android:fontFamily="@font/notosanskr_regular"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:includeFontPadding="false"
         android:text="@string/start_tv"
         android:textColor="@color/colorWhite"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/third_landing_gl_bottom"
         app:layout_constraintEnd_toStartOf="@+id/third_landing_gl_right"
         app:layout_constraintStart_toStartOf="@+id/third_landing_gl_left" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/third_landing_gl_top"
-        app:layout_constraintGuide_percent="0.06"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/third_landing_gl_middle"
-        app:layout_constraintGuide_percent="0.48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/third_landing_gl_bottom"
-        app:layout_constraintGuide_percent="0.9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/third_landing_gl_left"
-        app:layout_constraintGuide_percent="0.14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.14" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/third_landing_gl_right"
-        app:layout_constraintGuide_percent="0.88"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.88" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
