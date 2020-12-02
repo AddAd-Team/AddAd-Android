@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                    }
                     String token = task.getResult().getToken();
                     sharedPref.saveDeviceToken(token);
                 });
