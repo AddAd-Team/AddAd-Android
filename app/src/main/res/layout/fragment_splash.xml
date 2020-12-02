@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vh"
             type="com.add.ad.presentation.viewModel.splash.SplashViewModel" />
@@ -12,13 +13,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorTopBlack"
         tools:context=".presentation.ui.fragment.splash.SplashFragment">
 
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:background="@drawable/ic_launcher_logo_foreground"
+            android:background="@drawable/ic_launcher_new_logo_foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +29,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
             android:fontFamily="@font/angmuburi"
             android:includeFontPadding="false"
             android:text="addad"
+            android:textColor="@color/colorWhite"
             android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="48dp"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
