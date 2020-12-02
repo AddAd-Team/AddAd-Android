@@ -18,9 +18,8 @@ public class SplashViewModel extends BaseViewModel {
     }
 
     public void startApp() {
-        if (sharedPref.getDeviceToken().isEmpty()) {
+        if (sharedPref.getIsFirst().isEmpty()) {
             firstLandingEvent.call();
         } else loginEvent.call();
-
     }
 }

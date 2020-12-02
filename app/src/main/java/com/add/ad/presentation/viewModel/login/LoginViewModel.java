@@ -65,6 +65,7 @@ public class LoginViewModel extends BaseViewModel {
             sharedPref.saveToken(data.body() != null ? data.body().getAccessToken() : null, true);
             sharedPref.saveToken(data.body() != null ? data.body().getRefreshToken() : null, false);
             sharedPref.saveInfo(data.body() != null ? data.body().getUserInfo() : null);
+            sharedPref.saveIsFirst(true);
             startMain.call();
             dismissProgressEvent.call();
             createSnackEvent.setValue("로그인 성공");
