@@ -88,7 +88,7 @@
                     android:id="@+id/myAdProgressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="40dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/my_ad_apply_tv" />
@@ -147,15 +147,15 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/my_ad_upload_tv" />
+                    app:layout_constraintTop_toBottomOf="@+id/my_ad_apply_tv" />
 
                 <TextView
                     android:id="@+id/ad_access_result_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/notosanskr_regular"
-                    android:includeFontPadding="false"
+                    android:padding="24dp"
+                    android:layout_marginTop="8dp"
                     android:text="내 광고가 없습니다."
                     android:textColor="@color/colorGray"
                     android:textSize="16sp"
