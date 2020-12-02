@@ -34,6 +34,9 @@ public class FirstWriteFragment extends BaseFragment<FragmentFirstWriteBinding, 
             AlertDialogUtil alertDialogUtil = new AlertDialogUtil(requireContext());
             alertDialogUtil.show();
             binding.firstWriteNextTv.setVisibility(View.GONE);
+            binding.firstWriteTitleEt.setFocusable(false);
+            binding.firstWriteContentEt.setFocusable(false);
+            binding.firstWriteTagEt.setFocusable(false);
         }
 
         return v;
