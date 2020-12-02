@@ -58,8 +58,6 @@
                 android:text="@{@string/alert_body_tv(alertItem.title, alertItem.description)}"
                 android:textColor="@color/colorWhite" />
 
-<!--            android:text="@{alertItem.title + alertItem.description}"-->
-
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

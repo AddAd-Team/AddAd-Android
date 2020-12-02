@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorTopBlack"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView12"
@@ -43,32 +43,25 @@
             android:layout_marginHorizontal="18dp"
             android:backgroundTint="@color/colorDarkGray"
             app:cardCornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cardView12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5">
+            app:layout_constraintTop_toTopOf="@+id/cardView12">
 
             <TextView
                 android:id="@+id/alert_content_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="18dp"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="10dp"
-                android:text="@{alertItem.title + alertItem.description}"
-                android:textColor="@color/colorWhite" />
+                android:text="@{@string/alert_body_tv(alertItem.title, alertItem.description)}"
+                android:textColor="@color/colorWhite"
+                app:setTextColor1="@{alertItem.title}"
+                app:setTextColor2="@{alertItem.description}" />
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.06" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
