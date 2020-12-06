@@ -14,13 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorTopBlack"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="12dp">
+        android:paddingHorizontal="16dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView12"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:backgroundTint="@color/colorTopBlack"
             app:cardCornerRadius="250dp"
             app:layout_constraintBottom_toBottomOf="parent"
