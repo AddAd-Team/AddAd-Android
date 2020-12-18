@@ -9,9 +9,7 @@ import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.base.SingleLiveEvent;
 import com.add.ad.presentation.util.FileUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -34,18 +32,17 @@ public class WriteViewModel extends BaseViewModel {
         this.sharedPref = sharedPref;
     }
 
+    public Calendar calendar = Calendar.getInstance(Locale.KOREA);
     public MutableLiveData<String> adTitle = new MutableLiveData<>();
     public MutableLiveData<String> adTag = new MutableLiveData<>();
     public MutableLiveData<String> adContent = new MutableLiveData<>();
     public MutableLiveData<String> adPrice = new MutableLiveData<>("0");
-    public MutableLiveData<String> postEndYear = new MutableLiveData<>();
-    public MutableLiveData<String> postEndMonth = new MutableLiveData<>();
-    public MutableLiveData<String> postEndDay = new MutableLiveData<>();
-    public MutableLiveData<String> adEndYear = new MutableLiveData<>();
-    public MutableLiveData<String> adEndMonth = new MutableLiveData<>();
-    public MutableLiveData<String> adEndDay = new MutableLiveData<>();
     public MutableLiveData<String> adImageUri = new MutableLiveData<>();
+    public MutableLiveData<String> postEndDate = new MutableLiveData<>();
+    public MutableLiveData<String> adEndDate = new MutableLiveData<>();
 
+    public SingleLiveEvent<Void> clickPostDate = new SingleLiveEvent<>();
+    public SingleLiveEvent<Void> clickAdDate = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> clickComplete = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> clickNextEvent = new SingleLiveEvent<>();
     public SingleLiveEvent<Void> selectImageEvent = new SingleLiveEvent<>();
@@ -60,11 +57,11 @@ public class WriteViewModel extends BaseViewModel {
     }
 
     public void clickNext() {
-        if(!getUserInfo()){
+        if (!getUserInfo()) {
             if (adTitle.getValue() != null && adTag.getValue() != null && adContent.getValue() != null) {
                 clickNextEvent.call();
             } else createToastEvent.setValue("빈칸을 모두 채워주세요");
-        }else createToastEvent.setValue("크리에이터는 글을 쓸 수 없습니다.");
+        } else createToastEvent.setValue("크리에이터는 글을 쓸 수 없습니다.");
     }
 
     public void selectImage() {
@@ -73,8 +70,9 @@ public class WriteViewModel extends BaseViewModel {
 
     public void selectComplete() {
         createProgressEvent.call();
-        String postEndDate = postEndYear.getValue() + postEndMonth.getValue() + postEndDay.getValue();
-        String adEndDate = adEndYear.getValue() + adEndMonth.getValue() + adEndDay.getValue();
+
+        String postEndDate = this.postEndDate.getValue().substring(0,4) + this.postEndDate.getValue().substring(6,8) + this.postEndDate.getValue().substring(10,12);
+        String adEndDate = this.adEndDate.getValue().substring(0,4) + this.adEndDate.getValue().substring(6,8) + this.adEndDate.getValue().substring(10,12);
 
         RequestBody requestAdTitle = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adTitle.getValue()));
         RequestBody requestAdTag = RequestBody.create(MediaType.parse("multipart/form-data"), Objects.requireNonNull(adTag.getValue()));
@@ -106,5 +104,13 @@ public class WriteViewModel extends BaseViewModel {
 
     public void clickBack() {
         backEvent.call();
+    }
+
+    public void setClickPostDate() {
+        clickPostDate.call();
+    }
+
+    public void setClickAdDate() {
+        clickAdDate.call();
     }
 }

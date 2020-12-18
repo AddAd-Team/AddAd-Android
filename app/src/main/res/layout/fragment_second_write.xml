@@ -62,7 +62,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:onClick="@{()-> vm.selectComplete()}"
+                android:onClick="@{()->vm.selectComplete()}"
                 android:text="@string/complete_tv"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
@@ -203,6 +203,7 @@
             android:drawablePadding="8dp"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
+            android:onClick="@{()->vm.setClickPostDate()}"
             android:text="공고 마감일"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
@@ -210,188 +211,45 @@
             app:layout_constraintStart_toStartOf="@+id/second_write_gl_left"
             app:layout_constraintTop_toBottomOf="@+id/second_write_price_et" />
 
-        <EditText
-            android:id="@+id/second_write_post_end_year_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="4"
-            android:text="@={vm.postEndYear}"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@id/textView17"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/second_write_gl_left"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_tv" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="년"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/second_write_post_end_year_et"
-            app:layout_constraintEnd_toStartOf="@id/second_write_post_end_month_et"
-            app:layout_constraintStart_toEndOf="@+id/second_write_post_end_year_et"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_tv" />
-
-        <EditText
-            android:id="@+id/second_write_post_end_month_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="2"
-            android:text="@={vm.postEndMonth}"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@id/textView18"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_tv" />
-
         <TextView
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="월"
+            android:layout_marginTop="16dp"
+            android:text="@={vm.postEndDate}"
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/second_write_post_end_year_et"
-            app:layout_constraintEnd_toStartOf="@id/second_write_post_end_day_et"
-            app:layout_constraintStart_toEndOf="@+id/second_write_post_end_month_et"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_tv" />
-
-        <EditText
-            android:id="@+id/second_write_post_end_day_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="2"
-            android:text="@={vm.postEndDay}"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@id/textView19"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_tv" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="일"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/second_write_post_end_year_et"
             app:layout_constraintEnd_toStartOf="@+id/second_write_gl_right"
-            app:layout_constraintStart_toEndOf="@+id/second_write_post_end_day_et"
+            app:layout_constraintStart_toStartOf="@+id/second_write_gl_left"
             app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_tv" />
 
         <TextView
             android:id="@+id/second_write_ad_end_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:drawableEnd="@drawable/ic_question"
             android:drawablePadding="8dp"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
+            android:onClick="@{()->vm.setClickAdDate()}"
             android:text="광고 마감일"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/second_write_gl_right"
             app:layout_constraintStart_toStartOf="@+id/second_write_gl_left"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_post_end_month_et" />
-
-        <EditText
-            android:id="@+id/second_write_ad_end_year_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="4"
-            android:text="@={vm.adEndYear}"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView20"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/second_write_gl_left"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_ad_end_tv" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="년"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/second_write_ad_end_year_et"
-            app:layout_constraintEnd_toStartOf="@id/second_write_ad_end_month_et"
-            app:layout_constraintStart_toEndOf="@+id/second_write_ad_end_year_et"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_ad_end_tv" />
-
-        <EditText
-            android:id="@+id/second_write_ad_end_month_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="2"
-            android:text="@={vm.adEndMonth}"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@id/textView21"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_ad_end_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="월"
+            android:layout_marginTop="16dp"
+            android:text="@={vm.adEndDate}"
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/second_write_ad_end_month_et"
-            app:layout_constraintEnd_toStartOf="@id/second_write_ad_end_day_et"
-            app:layout_constraintStart_toEndOf="@+id/second_write_ad_end_month_et"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_ad_end_tv" />
-
-        <EditText
-            android:id="@+id/second_write_ad_end_day_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="2"
-            android:text="@={vm.adEndDay}"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@id/textView22"
-            app:layout_constraintStart_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/second_write_ad_end_tv" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="일"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/second_write_ad_end_year_et"
             app:layout_constraintEnd_toStartOf="@+id/second_write_gl_right"
-            app:layout_constraintStart_toEndOf="@+id/second_write_ad_end_day_et"
+            app:layout_constraintStart_toStartOf="@+id/second_write_gl_left"
             app:layout_constraintTop_toBottomOf="@+id/second_write_ad_end_tv" />
 
         <androidx.constraintlayout.widget.Guideline

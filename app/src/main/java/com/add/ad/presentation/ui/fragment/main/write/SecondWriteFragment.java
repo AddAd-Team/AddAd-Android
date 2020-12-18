@@ -1,5 +1,6 @@
 package com.add.ad.presentation.ui.fragment.main.write;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -13,9 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 
 import com.add.ad.R;
 import com.add.ad.databinding.FragmentSecondWriteBinding;
@@ -24,6 +27,7 @@ import com.add.ad.presentation.base.BaseViewModel;
 import com.add.ad.presentation.util.FileUtil;
 import com.add.ad.presentation.viewModel.write.WriteViewModel;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,11 +40,6 @@ import static splitties.toast.ToastKt.toast;
 
 @AndroidEntryPoint
 public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding, WriteViewModel> {
-
-    Date currentTime = Calendar.getInstance().getTime();
-    SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
-    SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
-    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,12 +64,6 @@ public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding
     @Override
     protected void observeEvent() {
         viewModel.adPrice.setValue("0");
-        viewModel.postEndYear.setValue(yearFormat.format(currentTime));
-        viewModel.postEndMonth.setValue(monthFormat.format(currentTime));
-        viewModel.postEndDay.setValue(dayFormat.format(currentTime));
-        viewModel.adEndYear.setValue(yearFormat.format(currentTime));
-        viewModel.adEndMonth.setValue(monthFormat.format(currentTime));
-        viewModel.adEndDay.setValue(dayFormat.format(currentTime));
 
         viewModel.selectImageEvent.observe(this, mVoid -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
@@ -79,6 +72,36 @@ public class SecondWriteFragment extends BaseFragment<FragmentSecondWriteBinding
         });
         viewModel.clickComplete.observe(this, mVoid -> {
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(R.id.action_secondWriteFragment_to_MainFragment);
+        });
+
+        viewModel.clickPostDate.observe(this, mVoid -> {
+            DatePickerDialog.OnDateSetListener datePickerDialogListener = (datePicker, year, month, day) -> {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+                viewModel.calendar.set(year, month, day);
+                String dateString = simpleDateFormat.format(viewModel.calendar.getTime());
+                viewModel.postEndDate.setValue(dateString);
+            };
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    requireContext(), datePickerDialogListener, viewModel.calendar.get(Calendar.YEAR), viewModel.calendar.get(Calendar.MONTH), viewModel.calendar.get(Calendar.DAY_OF_MONTH)
+            );
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+            datePickerDialog.show();
+        });
+
+        viewModel.clickAdDate.observe(this, mVoid -> {
+            DatePickerDialog.OnDateSetListener datePickerDialogListener = (datePicker, year, month, day) -> {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+                viewModel.calendar.set(year, month, day);
+                String dateString = simpleDateFormat.format(viewModel.calendar.getTime());
+                viewModel.adEndDate.setValue(dateString);
+            };
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    requireContext(), datePickerDialogListener, viewModel.calendar.get(Calendar.YEAR), viewModel.calendar.get(Calendar.MONTH), viewModel.calendar.get(Calendar.DAY_OF_MONTH)
+            );
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+            datePickerDialog.show();
         });
     }
 

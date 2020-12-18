@@ -95,6 +95,7 @@ public class RegisterViewModel extends BaseViewModel {
     }
 
     private void apiVerifyCode() {
+        viewVerifyCode.call();
 
         User user = userBuilder
                 .setUserEmail(userEmail.getValue())
@@ -104,9 +105,9 @@ public class RegisterViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(it -> {
-                            if (it.code() == 200) {
-                                viewVerifyCode.call();
-                            } else createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                            if (it.code() != 200) {
+                                createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.");
+                            }
                         },
                         it -> createToastEvent.setValue("알 수 없는 오류가 발생하였습니다.")));
     }
