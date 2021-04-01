@@ -33,10 +33,6 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             String testBody = remoteMessage.getNotification().getBody();
             String testTitle = remoteMessage.getNotification().getTitle();
 
-            Log.d("remoteMesage", remoteMessage.toString());
-
-            Log.d("testBody", String.valueOf(remoteMessage.getData()));
-
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
